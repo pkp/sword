@@ -133,12 +133,14 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 				$depositedIds = [];
 				foreach ($selectSubmissionsConfig['items'] as $item) {
 					$publishedArticle = $publishedArticleDao->getByArticleId($item['id']);
+					if (is_null($publishedArticle)) {
+						continue;
+					}
 					if ($ssi = $publishedArticle->getData("swordStatementIri")) {
 						$depositedIds[$item['id']] = $ssi;
 					}
 				}
 				$selectSubmissionsConfig = json_encode($selectSubmissionsConfig);
-
 
 				$templateMgr->assign(array(
 					'selectedDepositPoint' 		=> $request->getUserVar('selectedDepositPoint'),
@@ -213,21 +215,22 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 								$password,
 								$request->getUserVar('swordApiKey'));
 
-
 							$stmt_link = array_shift(
 								array_filter($response->sac_links, function($link) {
 									return $link->sac_linkrel == 'http://purl.org/net/sword/terms/statement' || $link->sac_linkrel == 'http://purl.org/net/sword/terms/add';
 								}));
-							$stmt_href = $stmt_link->sac_linkhref->__toString();
-							$data = $publishedArticle->getAllData();
-							$ssi = [];
-							if (array_has($data, 'swordStatementIri')) {
-								$ssi = unserialize($data['swordStatementIri'], true);
+							if (!is_null($stmt_link)) {
+								$stmt_href = $stmt_link->sac_linkhref->__toString();
+								$data = $publishedArticle->getAllData();
+								$ssi = [];
+								if (array_has($data, 'swordStatementIri')) {
+									$ssi = unserialize($data['swordStatementIri'], true);
+								}
+								$ssi[$depositPointId] = $stmt_href;
+								$publishedArticle->setData('swordStatementIri', serialize($ssi));
+								$publishedArticleDao->updateDataObjectSettings(
+									'submission_settings', $publishedArticle, ['submission_id' => $articleId]);
 							}
-							$ssi[$depositPointId] = $stmt_href;
-							$publishedArticle->setData('swordStatementIri', serialize($ssi));
-							$publishedArticleDao->updateDataObjectSettings(
-								'submission_settings', $publishedArticle, ['submission_id' => $articleId]);
 							$deposit->cleanup();
 							$depositIds[] = $response->sac_id;
 						}
