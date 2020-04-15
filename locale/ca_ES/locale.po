@@ -2,20 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2020-04-16 10:37+0000\n"
+"Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
+"Language-Team: Catalan <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ca/>\n"
+"Language: ca_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "Mòdul SWORD"
 
 msgid "plugins.generic.sword.description"
-msgstr "Aquest mòdul permet als administradors/ores de la revista i als autors/ores (opcional) dipositar articles mitjançant el protocol SWORD."
+msgstr ""
+"Permetre als administradors/ores de la revista i als autors/ores (opcional) "
+"dipositar articles mitjançant el protocol SWORD"
 
 msgid "plugins.generic.sword.enabled"
 msgstr "S'ha activat el mòdulor SWORD."
@@ -24,16 +29,16 @@ msgid "plugins.generic.sword.settings"
 msgstr "Configuració"
 
 msgid "plugins.generic.sword.settings.allowAuthorSpecify"
-msgstr "Permet a l'autor/a indicar un punt de dipòsit."
+msgstr "Permetre a l'autor/a especificar un punt de dipòsit"
 
 msgid "plugins.generic.sword.settings.depositPoints"
-msgstr "Punts de dipòsit."
+msgstr "Punts de dipòsit"
 
 msgid "plugins.generic.sword.depositPoints.create"
-msgstr "Crea un punt de dipòsit."
+msgstr "Crear un punt de dipòsit"
 
 msgid "plugins.generic.sword.depositPoints.edit"
-msgstr "Edita un punt de dipòsit."
+msgstr "Editar un punt de dipòsit"
 
 msgid "plugins.generic.sword.depositPoints.type.automatic"
 msgstr "Automàtic"
@@ -72,7 +77,9 @@ msgid "plugins.importexport.sword.displayName"
 msgstr "Mòdul de dipòsit d'importació/exportació SWORD"
 
 msgid "plugins.importexport.sword.description"
-msgstr "Diposita articles en dipòsits remots mitjançant el protocol de dipòsit SWORD."
+msgstr ""
+"Dipositar articles en repositoris remots mitjançant el protocol de dipòsit "
+"SWORD"
 
 msgid "plugins.importexport.sword.deposit"
 msgstr "Dipòsit"
@@ -106,3 +113,36 @@ msgstr "Dipòsit erroni"
 
 msgid "plugins.generic.sword.descriptionUnsupported"
 msgstr "Permetre als gestors de la revista i (opcionalment) als autors dipositar articles mitjançant el protocol SWORD. Tingues en compte que aquest mòdul requereix l'extensió Zip, la qual NO es troba actualment instal·lada al servidor."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr ""
+"La clau api és obligatòria a menys que apareguin el nom d'usuari/ària i la "
+"contrasenya."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr ""
+" La contrasenya és obligatòria si apareix el nom d'usuari/ària o la clau api "
+"està buida."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"El nom d'usuari/ària és obligatori si apareix la contrasenya o si la clau "
+"api està buida."
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "No s'ha creat cap punt de dipòsit."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Configuració guardada!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Seleccioneu com a mínim una tramesa per depositar."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Tramesa sol·licitada"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "Clau API"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "Clau API"
