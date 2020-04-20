@@ -2,14 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2020-04-21 16:37+0000\n"
+"Last-Translator: Fylypovych Georgii <red.ukr@gmail.com>\n"
+"Language-Team: Ukrainian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/uk/>\n"
+"Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "Модуль SWORD"
@@ -112,3 +116,40 @@ msgstr "Об'єкт(и) було депоновано."
 
 msgid "plugins.importexport.sword.depositFailed"
 msgstr "Депонування невдале"
+
+#, fuzzy
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr "API ключ необхідно ввести, поки ім'я користувача і пароль не введені."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr ""
+" Необхідно ввести пароль, якщо введено ім'я користувача або API не введено."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"Якщо є пароль, необхідно ввести ім'я користувача АБО ключ API не введено."
+
+#, fuzzy
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Не створено точок депонування."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Налаштування Збережені!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Будь ласка, оберіть принаймі одне подання для депонування."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Необхідне Подання"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "Ключ API"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "Ключ API"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Дозволити Менеджерам Журналу і (за необхідності) Авторам депонувати статті "
+"через протокол SWORD. Зверніть увагу, що цей плагін потребує PHP-розширення "
+"Zip, яке наразі НЕ ІНСТАЛЬОВАНЕ."
