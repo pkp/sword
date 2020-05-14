@@ -162,6 +162,9 @@ class PKPSwordDeposit {
 	 * @param $password string SWORD deposit password
 	 */
 	public function deposit($url, $username, $password, $apikey = null) {
+		if (!preg_match('/^http(s)?:\/\/.+/', $url)) {
+			throw new Exception(__('plugins.generic.sword.badDepositPointUrl'));
+		}
 		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : array();
 		$client = new SWORDAPPClient($clientOpts);
 		$response = $client->deposit(

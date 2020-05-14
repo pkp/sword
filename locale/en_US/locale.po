@@ -139,3 +139,6 @@ msgstr " Password required if username is present or api key is empty."
 
 msgid "plugins.generic.sword.formErrors.apikey"
 msgstr "Api key required unless username and password are present."
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Please check the url of the deposit point."

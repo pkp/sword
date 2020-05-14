@@ -135,14 +135,6 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 					],
 					'usingApi' => true,
 					));
-
-				$script = '$(document).data("depositedIdMap", '. json_encode($depositedIds) .');';
-				$templateMgr->addJavaScript('depositedIds', $script, ['inline' => true, 'contexts' => 'backend']);
-				$templateMgr->addJavaScript(
-					'disableDepositedIds',
-					$this->getSwordPlugin()->getJsUrl($request) .'/SwordDisableDepositedItems.js',
-					['contexts' => 'backend']);
-
 				$templateMgr->display($this->getTemplateResource('submissions.tpl'));
 				break;
 
