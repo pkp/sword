@@ -2,14 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2020-06-15 07:39+0000\n"
+"Last-Translator: M. Ali <vorteem@gmail.com>\n"
+"Language-Team: Arabic <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ar_IQ/>\n"
+"Language: ar_IQ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "إضافة SWORD"
@@ -112,3 +116,35 @@ msgstr "الفقرات المحددة قد تم إيداعها."
 
 msgid "plugins.importexport.sword.depositFailed"
 msgstr "فشلت عملية الإيداع"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "لطفاً، تحقق من صحة رابط نقطة الإيداع."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr "لا بد من توفير مفتاح API ما لم يكن اسم المستخدم  وكلمة المرور  حاضرين."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr ""
+"لا بد من توفير كلمة المرور  عند وجود اسم المستخدم أو كان مفتاح API فارغاً."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"لا بد من توفير اسم المستخدم عند وجود كلمة المرور أو كان مفتاح API فارغاً."
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "لم يتم إنشاء نقاط إيداع بعد."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "الإعدادات حفظت بنجاح!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "لطفاً، إختر طلب تقديم واحد على الأقل لإيداعه."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "طلب التقديم مطلوب"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "مفتاح API"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "مفتاح API"
