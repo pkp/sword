@@ -1,2 +1,30 @@
 msgid ""
-msgstr "X-Generator: Weblate\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit"
+msgstr ""
+"PO-Revision-Date: 2020-06-18 17:39+0000\n"
+"Last-Translator: Viveka Svensson <viveka.svensson@lnu.se>\n"
+"Language-Team: Swedish <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/sv_SE/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "Lägg till/ta bort"
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "Namn"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Automatiskt"
+
+msgid "plugins.generic.sword.settings"
+msgstr "Insällningar"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "SWORD pluginet har aktiverats."
+
+msgid "plugins.generic.sword.displayName"
+msgstr "SWORD plugin"
