@@ -2,14 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2020-07-31 13:57+0000\n"
+"Last-Translator: Heike Riegler <heike.riegler@julius-kuehn.de>\n"
+"Language-Team: German <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/de/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "SWORD-Plug-In"
@@ -112,3 +115,39 @@ msgstr "Die ausgewählten Einträge sind archiviert worden."
 
 msgid "plugins.importexport.sword.depositFailed"
 msgstr "Archivierung fehlgeschlagen"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "API Key"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Bitte prüfen Sie die URL des Archivierungspunktes."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr ""
+"Api-Schlüssel erforderlich, außer wenn Nutzername und Passwort vorhanden "
+"sind."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr ""
+" Passwort erforderlich, wenn Nutzername vorhanden oder der api-Schlüssel "
+"leer ist."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"Nutzername erforderlich, wenn das Passwort vorhanden oder der api-Schlüssel "
+"leer ist."
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Es wurden keine Archivierungspunkte erzeugt."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Einstellungen gespeichert!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Bitte wählen Sie mindestens eine Einreichung für die Archivierung aus."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Einreichung erforderlich"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "API Key"
