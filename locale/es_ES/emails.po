@@ -16,7 +16,7 @@ msgstr "Notificación de depósito"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Enhorabuena por la aceptación del envío, \"{$articleTitle}\", para que se publique en {$journalName}. Si así lo desea, puede depositar automáticamente el envío en uno o más repositorios. \n"
+"Enhorabuena por la aceptación del envío, \"{$submissionTitle}\", para que se publique en {$contextName}. Si así lo desea, puede depositar automáticamente el envío en uno o más repositorios. \n"
 "\n"
 "Para proceder, vaya a {$swordDepositUrl}.\n"
 "\n"

@@ -16,7 +16,7 @@ msgstr "Bericht van opname"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Gefeliciteerd met de acceptatie van uw inzending, \"{$articleTitle}\", voor publicatie in {$journalName}. Als u wilt, kunt u uw inzending automatisch opnemen in één of meer repositories.\n"
+"Gefeliciteerd met de acceptatie van uw inzending, \"{$submissionTitle}\", voor publicatie in {$contextName}. Als u wilt, kunt u uw inzending automatisch opnemen in één of meer repositories.\n"
 "\n"
 "Ga daarvoor naar {$swordDepositUrl}.\n"
 "\n"

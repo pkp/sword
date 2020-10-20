@@ -16,7 +16,7 @@ msgstr "Avis de dépôt"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Félicitations pour l'acceptation de votre soumission, \"{$articleTitle}\", pour publication dans la revue {$journalName}. Si vous le souhaitez, vous pouvez déposer automatiquement votre soumission dans un ou plusieurs de nos services d'archivage.\n"
+"Félicitations pour l'acceptation de votre soumission, \"{$submissionTitle}\", pour publication dans la revue {$contextName}. Si vous le souhaitez, vous pouvez déposer automatiquement votre soumission dans un ou plusieurs de nos services d'archivage.\n"
 "\n"
 "Allez à {$swordDepositUrl} afin de procéder.\n"
 "\n"

@@ -19,7 +19,7 @@ msgstr "Depozito Bildirimi"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"{$journalName} için kabul edilen  \"{$articleTitle}\" başlıklı makaleniz "
+"{$contextName} için kabul edilen  \"{$submissionTitle}\" başlıklı makaleniz "
 "için tebrik ederiz. İsterseniz, makaleniz için otomatik olarak bir veya daha "
 "fazla depozito yatırabilirsiniz.\n"
 "\n"

@@ -16,7 +16,7 @@ msgstr "デポジット通知"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"この度は， {$journalName} に  \"{$articleTitle}\" を投稿いただきまして誠に有難うございます。\n"
+"この度は， {$contextName} に  \"{$submissionTitle}\" を投稿いただきまして誠に有難うございます。\n"
 "\n"
 "ご希望の場合は，下記のURLから他のリポジトリにも自動的にデポジットすることができます。\n"
 "\n"

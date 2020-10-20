@@ -20,7 +20,7 @@ msgstr "Înștiințare pentru depozitare"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Felicitări pentru acceptul propunerii de articol \"{$articleTitle}\" pentru a fi publicat în  {$journalName}. Dacă doriți, puteți depozita automat propunerea în unul sau mai multe depozite.\n"
+"Felicitări pentru acceptul propunerii de articol \"{$submissionTitle}\" pentru a fi publicat în  {$contextName}. Dacă doriți, puteți depozita automat propunerea în unul sau mai multe depozite.\n"
 "\n"
 "Mergi la {$swordDepositUrl} pentru a proceda.\n"
 "\n"

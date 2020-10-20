@@ -16,7 +16,7 @@ msgstr "Upozornění o uložení"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Gratulujeme k přijetí vašeho příspěvku \"{$articleTitle}\" k publikaci v časopisu {$journalName}. Pokud se rozhodnete, můžete článek automaticky uložit do jednoho či více repozitářů.\n"
+"Gratulujeme k přijetí vašeho příspěvku \"{$submissionTitle}\" k publikaci v časopisu {$contextName}. Pokud se rozhodnete, můžete článek automaticky uložit do jednoho či více repozitářů.\n"
 "\n"
 "Jděte na {$swordDepositUrl} pro toto uložení.\n"
 "\n"

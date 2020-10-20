@@ -16,7 +16,7 @@ msgstr "Gordailuari buruzko jakinarazpena"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Zorionak zure aurkezpena, \"{$articleTitle}, {$journalName} aldizkarian argitaratzeko onartu delako. Nahi izanez gero, zure aurkezpena automatikoki jar dezakezu gordailu batean edo gehiagotan.\n"
+"Zorionak zure aurkezpena, \"{$submissionTitle}, {$contextName} aldizkarian argitaratzeko onartu delako. Nahi izanez gero, zure aurkezpena automatikoki jar dezakezu gordailu batean edo gehiagotan.\n"
 "\n"
 "Horretarako, joan zaitez hona: {$swordDepositUrl}.\n"
 "\n"

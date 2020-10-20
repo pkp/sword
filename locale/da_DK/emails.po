@@ -16,7 +16,7 @@ msgstr "Deponeringsmeddelelse"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Tillykke med, at dit bidrag \"{$articleTitle}\" er blevet accepteret til udgivelse i {$journalName}. Hvis du ønsker det, kan du automatisk deponere dit bidrag på et eller flere lagringssteder.\n"
+"Tillykke med, at dit bidrag \"{$submissionTitle}\" er blevet accepteret til udgivelse i {$contextName}. Hvis du ønsker det, kan du automatisk deponere dit bidrag på et eller flere lagringssteder.\n"
 "\n"
 "Gå til {$swordDepositUrl} for at fortsætte.\n"
 "\n"

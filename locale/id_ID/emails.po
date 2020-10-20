@@ -16,7 +16,7 @@ msgstr "Notifikasi Deposit"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Selamat atas diterimanya naskah Anda, \"{$articleTitle}\", untuk penerbitan di  {$journalName}. Jika Anda memilih, Anda boleh secara otomatis menyimpan naskah Anda di satu repositori atau lebih.  \n"
+"Selamat atas diterimanya naskah Anda, \"{$submissionTitle}\", untuk penerbitan di {$contextName}. Jika Anda memilih, Anda boleh secara otomatis menyimpan naskah Anda di satu repositori atau lebih.  \n"
 "\n"
 "Pergi ke {$swordDepositUrl} untuk melanjutkan.\n"
 "\n"

@@ -16,7 +16,7 @@ msgstr "Notifica di deposito"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Congratulazioni per l'accettazione della tua proposta \"{$articleTitle}\" per la pubblicazione in {$journalName}. \n"
+"Congratulazioni per l'accettazione della tua proposta \"{$submissionTitle}\" per la pubblicazione in {$contextName}. \n"
 "\n"
 "Se vuoi, puoi depositare automaticamente la tua submission in uno o più archivi.\n"
 "\n"

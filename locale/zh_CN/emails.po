@@ -16,7 +16,7 @@ msgstr "存入通知"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"恭喜您的文章\"{$articleTitle}\"已经被 {$journalName}录取。您可以选择这篇稿件自动存入一个或者多个仓储。\n"
+"恭喜您的文章\"{$submissionTitle}\"已经被 {$contextName}录取。您可以选择这篇稿件自动存入一个或者多个仓储。\n"
 "\n"
 "进入{$swordDepositUrl}继续。\n"
 "\n"

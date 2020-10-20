@@ -16,7 +16,7 @@ msgstr "Notificació de dipòsit"
 
 msgid "emails.swordDepositNotification.body"
 msgstr ""
-"Enhorabona per l'acceptació de la teva presentació, \"($ articleTitle)\", per a ser publicada a {$journalName}. Si ho desitges, pot dipositar de forma automàtica la teva presentació a un o varis repositoris.\n"
+"Enhorabona per l'acceptació de la teva presentació, \"($submissionTitle)\", per a ser publicada a {$contextName}. Si ho desitges, pot dipositar de forma automàtica la teva presentació a un o varis repositoris.\n"
 "\n"
 "Vagi a {$swordDepositUrl} per a continuar.\n"
 "\n"
