@@ -315,10 +315,11 @@ class SwordPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * Get the filename of the ADODB schema for this plugin.
+	 * @copydoc PKPPlugin::getInstallMigration()
 	 */
-	public function getInstallSchemaFile() {
-		return $this->getPluginPath() . '/schema.xml';
+	function getInstallMigration() {
+		$this->import('classes.SwordSchemaMigration');
+		return new SwordSchemaMigration();
 	}
 
 	/**
