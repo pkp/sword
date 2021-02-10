@@ -1,0 +1,181 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-01-22 07:53+0000\n"
+"Last-Translator: Mirko Spiroski <mspiroski@id-press.eu>\n"
+"Language-Team: Macedonian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/mk_MK/>\n"
+"Language: mk_MK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n==1 || n%10==1 ? 0 : 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Молам проверете ја УРЛ адресата на точката за складирање."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr "Потребен е АПИ клуч доколку има корисничко име и лозинка."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr " Потребна е лозинка ако има корисничко име или АПИ клучот е празен."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"Потребно е корисничко име ако е присутна лозинка или ако АПИ клучот е празен."
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Не се создадени точки на складирање."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Подесувањето е снимено!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Молам избрете најмалку еден поднесок за складирање."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Потребен е поднесок"
+
+msgid "plugins.importexport.sword.depositFailed"
+msgstr "Складирањето не успеа"
+
+msgid "plugins.importexport.sword.depositSuccessfulDescription"
+msgstr "Избраните податоци се складирани."
+
+msgid "plugins.importexport.sword.depositSuccessful"
+msgstr "Успешно складирање"
+
+msgid "plugins.importexport.sword.depositEditorial"
+msgstr "Складирај најнов уреднички фајл"
+
+msgid "plugins.importexport.sword.depositGalleys"
+msgstr "Складирај отисоци"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "Додади/отстрани"
+
+msgid "plugins.importexport.sword.depositPoint"
+msgstr "Складишна точка"
+
+msgid "plugins.importexport.sword.depositUrl"
+msgstr "УРЛ адреса на складишна точка"
+
+msgid "plugins.importexport.sword.serviceDocUrl"
+msgstr "УРЛ адреса на сервисот за документи"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "АПИ клуч"
+
+msgid "plugins.importexport.sword.deposit"
+msgstr "Складирање"
+
+msgid "plugins.importexport.sword.description"
+msgstr ""
+"Складирање трудови во оддалечени складишта со користење на SWORD протокол за "
+"складирање"
+
+msgid "plugins.importexport.sword.displayName"
+msgstr "Плагин за SWORD внес/изнес складирање"
+
+msgid "plugins.generic.sword.authorCustomDepositDescription"
+msgstr ""
+"<p>Изборно можете да специфицирате SWORD-погодна точка на складирање во "
+"следниот формат. Ако е потребно, молам специфицирајте SWORD URL, корисничко "
+"име и лозинка за вашето складиште и поднесокот ќе биде складиран.</p>"
+
+msgid "plugins.generic.sword.authorDepositDescription"
+msgstr ""
+"<p>Можете изборно да го користите долниот формат за складирање на вашиот "
+"поднесок, \"{$submissionTitle}\", во едно од наведените складишта. Користи "
+"ги квадратчињата долу од левата колона за да избереш во кои складишта сакаш "
+"да го внесеш твојот поднесок; секое складиште моѓе да овозможи специфична "
+"точка на складирање од листата на паѓачкото мени.</p>"
+
+msgid "plugins.generic.sword.depositComplete"
+msgstr ""
+"Податокот \"{$itemTitle}\" беше складиран во складиштето \"{$repositoryName}"
+"\"."
+
+msgid "plugins.generic.sword.automaticDepositComplete"
+msgstr ""
+"Податокот \"{$itemTitle}\" беше автоматски внесен во складиштето \""
+"{$repositoryName}\"."
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "Име"
+
+msgid "plugins.generic.sword.depositPoints.password.description"
+msgstr ""
+"Ако не специфицираш тука лозинка, ти и/или авторот ќе биде принуден да ја "
+"внесе кога ќе складира. Забележи дека оваа лозинка ќе биде видлива за сите "
+"менаџери на списанието и ќе биде складирана во базата на податоци без "
+"кодирање."
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>Видови складирачки точки:</h4>\n"
+"<p><strong>Автоматски</strong>: Складирањето се остварува автоматски. "
+"Комплетна SWORD складирачка точка е специфицирана. Мора да бидат "
+"специфицирани корисничко име и лозинка. Складирањето се остварува после "
+"прифаќање нотификацијата од авторот.<br/>\n"
+"<strong>Опција; флексибилно</strong>: Авторот може да избере дали ќе- или "
+"нема да складира. Специфицираната УРЛ адреса укажува на серверот на "
+"документот, а авторот може да избере која специфична точка на складирање ќе "
+"користи за соодветниот документ. Складирањето се остварува после прифаќање "
+"нотификацијата од авторот.<br/>\n"
+"<strong>Опција; Фиксно</strong>: Авторот може да избере дали ќе- или нема да "
+"складира.  Специфицираната УРЛ адреса укажува на специфична SWORD точка на "
+"складирање. Складирањето се остварува после прифаќање нотификацијата од "
+"авторот.<br/>\n"
+"<strong>Само менаџер</strong>: Само менаџерот на списанието може да ја "
+"користи оваа точка на складирање. УРЛ адресата укажува на серфвер на "
+"документот. Складирањето рачно се остварува од Менаџерот на списаниетосо "
+"користње на Внеси/изнеси инртерфејс во менаџирање на списанието.\n"
+"</p>"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "Само за менаџерот"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "Опција; фиксирано"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "Опција; флексибилно"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "АПИ клуч"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Автоматски"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "Поправи точка на складирање"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "Создади точка на складирање"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "Точки на складирање"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "Овозможи му на авторот да специфицира точка на складирање"
+
+msgid "plugins.generic.sword.settings"
+msgstr "Подесувања"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "SWORD плагинот е активиран."
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Овозможи им на менаџерите на списанијата и (опција) на авторите да ги "
+"складираат трудовите според SWORD протоколот. Забележи дека овој плагин бара "
+"Zip екстензија која во моментов не е инсталирана."
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"Овозможи им на менаџерите на списанијата и (опција) на авторите да ги "
+"складираат трудовите според SWORD протоколот"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "SWORD плагин"
