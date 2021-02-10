@@ -54,17 +54,18 @@ class SwordSettingsForm extends Form {
 	/**
 	 * @copydoc Form::fetch()
 	 */
-	public function fetch($request) {
+	function fetch($request, $template = null, $display = false) {
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pluginJavaScriptURL', $this->_plugin->getJsUrl($request));
-		return parent::fetch($request);
+		return parent::fetch($request, $template, $display);
 	}
 
 	/**
 	 * Save form.
 	 */
-	public function execute() {
+	public function execute(...$functionArgs) {
 		$allowAuthorSpecify = intval($this->getData('allowAuthorSpecify'));
 		$this->_plugin->updateSetting($this->_context->getId(), 'allowAuthorSpecify', $allowAuthorSpecify);
+		parent::execute(...$functionArgs);
 	}
 }

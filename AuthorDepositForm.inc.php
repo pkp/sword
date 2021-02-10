@@ -169,8 +169,8 @@ class AuthorDepositForm extends Form {
 		$this->getSwordPlugin()->import('classes.DepositPoint');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$this->getSwordPlugin()->import('classes.DepositPointsHelper');
-		$depositPoints = $depositPointDao->getByContextId($context->getId(), null);
-		while ($depositPoint = $depositPoints->next()) {
+		$depositPoints = $depositPointDao->getByContextId($context->getId());
+		foreach ($depositPoints as $depositPoint) {
 			if (!in_array($depositPoint->getType(), array(SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION, SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED)))
 				continue;
 

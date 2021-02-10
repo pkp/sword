@@ -74,7 +74,7 @@ class SwordDepositPointForm extends Form {
 	 * Assign form data to user-submitted data.
 	 * @param $request PKPRequest
 	 */
-	public function readInputData($request) {
+	public function readInputData($request = null) {
 		$this->readUserVars(
 			array(
 				'swordUrl',
@@ -90,21 +90,21 @@ class SwordDepositPointForm extends Form {
 	/**
 	 * @copydoc Form::fetch()
 	 */
-	public function fetch($request) {
+	function fetch($request, $template = null, $display = false) {
 		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign(array(
+		$templateMgr->assign([
 			'depositPointId' => $this->_depositPointId,
 			'depositPointTypes' => $this->_plugin->getTypeMap(),
 			'selectedType' => $this->selectedType,
 			'pluginJavaScriptURL' 	=> $this->_plugin->getJsUrl($request),
-		));
-		return parent::fetch($request);
+		]);
+		return parent::fetch($request, $template, $display);
 	}
 
 	/**
-	 * Save form.
+	 * @copydoc Form::execute
 	 */
-	public function execute() {
+	function execute(...$functionArgs) {
 		$plugin = $this->_plugin;
 
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
@@ -139,5 +139,6 @@ class SwordDepositPointForm extends Form {
 			$depositPointDao->insertObject($depositPoint);
 			$depositPointDao->resequenceDepositPoints($depositPoint->getContextId());
 		}
+		parent::execute(...$functionArgs);
 	}
 }

@@ -91,9 +91,9 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 			case '':
 				$this->getSwordPlugin()->import('classes.DepositPoint');
 				$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
-				$depositPoints = $depositPointDao->getByContextId($context->getId(), null, SWORD_DEPOSIT_TYPE_MANAGER);
-				$depositPointsData = array('' => __('common.select'));
-				while ($depositPoint = $depositPoints->next()) {
+				$depositPoints = $depositPointDao->getByContextId($context->getId(), SWORD_DEPOSIT_TYPE_MANAGER);
+				$depositPointsData = ['' => __('common.select')];
+				foreach ($depositPoints as $depositPoint) {
 					$depositPointsData[$depositPoint->getId()] = $depositPoint->getLocalizedName();
 				}
 				$dispatcher = $request->getDispatcher();

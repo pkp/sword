@@ -42,20 +42,15 @@ class DepositPointDAO extends DAO {
 	 * @return DepositPoint
 	 */
 	public function getById($depositPointId, $contextId = null) {
-		$params = array((int) $depositPointId);
+		$params = [(int) $depositPointId];
 		if ($contextId) $params[] = (int) $contextId;
 		
 		$result = $this->retrieve(
 			'SELECT * FROM deposit_points WHERE deposit_point_id = ? ' . ($contextId?' AND context_id = ?':''),
 			$params
 		);
-		
-		$returner = null;
-		if ($result->RecordCount() != 0) {
-			$returner = $this->_fromRow($result->GetRowAssoc(false));
-		}
-		$result->Close();
-		return $returner;
+		$row = $result->current();
+		return $row ? $this->_fromRow((array) $row) : null;
 	}
 
 	/**
@@ -101,7 +96,7 @@ class DepositPointDAO extends DAO {
 				sword_apikey)
 			VALUES
 				(?, ?, ?, ?, ?, ?, ?)',
-			array(
+			[
 				$depositPoint->getContextId(),
 				$depositPoint->getSwordUrl(),
 				$depositPoint->getSequence(),
@@ -109,7 +104,7 @@ class DepositPointDAO extends DAO {
 				$depositPoint->getSwordUsername(),
 				$depositPoint->getSwordPassword(),
 				$depositPoint->getSwordApikey(),
-			)
+			]
 		);
 		$depositPoint->setId($this->getInsertId());
 		
@@ -123,7 +118,7 @@ class DepositPointDAO extends DAO {
 	 * @return array
 	 */
 	public function getLocaleFieldNames() {
-		return array('name');
+		return ['name'];
 	}
 
 	/**
@@ -131,9 +126,10 @@ class DepositPointDAO extends DAO {
 	 * @param $depositPoint DepositPoint
 	 */
 	public function updateLocaleFields($depositPoint) {
-		$this->updateDataObjectSettings('deposit_point_settings', $depositPoint, array(
-			'deposit_point_id' => $depositPoint->getId()
-		));
+		$this->updateDataObjectSettings(
+			'deposit_point_settings', $depositPoint,
+			['deposit_point_id' => $depositPoint->getId()]
+		);
 	}
 
 	/**
@@ -153,7 +149,7 @@ class DepositPointDAO extends DAO {
 					sword_password = ?,
 					sword_apikey = ?
 			WHERE deposit_point_id = ?',
-			array(
+			[
 				$depositPoint->getContextId(),
 				$depositPoint->getSwordUrl(),
 				$depositPoint->getSequence(),
@@ -162,7 +158,7 @@ class DepositPointDAO extends DAO {
 				$depositPoint->getSwordPassword(),
 				$depositPoint->getSwordApikey(),
 				$depositPoint->getId()
-			)
+			]
 		);
 		
 		$this->updateLocaleFields($depositPoint);
@@ -184,12 +180,11 @@ class DepositPointDAO extends DAO {
 	 */
 	public function depositPointExists($depositPointId, $contextId) {
 		$result = $this->retrieve(
-			'SELECT COUNT(*) FROM deposit_points WHERE deposit_point_id = ? AND context_id = ?',
-			array((int) $depositPointId, (int) $contextId)
+			'SELECT COUNT(*) AS row_count FROM deposit_points WHERE deposit_point_id = ? AND context_id = ?',
+			[(int) $depositPointId, (int) $contextId]
 		);
-		$returner = isset($result->fields[0]) && $result->fields[0] == 1 ? true : false;
-		$result->Close();
-		return $returner;
+		$row = $result->current();
+		return $row ? (boolean) $row->row_count : false;
 	}
 
 	/**
@@ -201,10 +196,10 @@ class DepositPointDAO extends DAO {
 	public function deleteById($depositPointId, $contextId = null) {
 		if (isset($contextId) && !$this->depositPointExists($depositPointId, $contextId)) return false;
 		$this->update(
-			'DELETE FROM deposit_points WHERE deposit_point_id = ?', $depositPointId
+			'DELETE FROM deposit_points WHERE deposit_point_id = ?', [$depositPointId]
 		);
 		$this->update(
-			'DELETE FROM deposit_point_settings WHERE deposit_point_id = ?', $depositPointId
+			'DELETE FROM deposit_point_settings WHERE deposit_point_id = ?', [$depositPointId]
 		);
 		return true;
 	}
@@ -214,9 +209,7 @@ class DepositPointDAO extends DAO {
 	 * @param $contextId int
 	 */
 	public function deleteByContextId($contextId) {
-		$depositPoints = $this->getByContextId($contextId);
-		
-		while ($depositPoint = $depositPoints->next()) {
+		foreach ($this->getByContextId($contextId) as $depositPoint) {
 			$this->deleteById($depositPoint->getId());
 		}
 	}
@@ -226,18 +219,18 @@ class DepositPointDAO extends DAO {
 	 * @param $contextId int
 	 * @param $rangeInfo object DBRangeInfo object describing range of results to return
 	 * @param $type int limit results to a specific type
-	 * @return object DAOResultFactory containing matching DepositPoints
+	 * @return Generator Set of matching DepositPoints
 	 */
-	public function getByContextId($contextId, $rangeInfo = null, $type = null) {
-		$params = array((int) $contextId);
+	public function getByContextId($contextId, $type = null) {
+		$params = [(int) $contextId];
 		if ($type) $params[] = (int) $type;
-		$result = $this->retrieveRange(
+		$result = $this->retrieve(
 			'SELECT * FROM deposit_points WHERE context_id = ? '.($type?' AND type = ?':'').' ORDER BY seq ASC',
-			$params,
-			$rangeInfo
+			$params
 		);
-		
-		return new DAOResultFactory($result, $this, '_fromRow');
+		foreach ($result as $row) {
+			yield $row->deposit_point_id => $this->_fromRow((array) $row);
+		}
 	}
 
 	/**
@@ -247,21 +240,16 @@ class DepositPointDAO extends DAO {
 	public function resequenceDepositPoints($contextId) {
 		$result = $this->retrieve(
 			'SELECT deposit_point_id FROM deposit_points WHERE context_id = ? ORDER BY seq',
-			$contextId
+			[$contextId]
 		);
-		for ($i=1; !$result->EOF; $i++) {
-			list($depositPointId) = $result->fields;
+		$i=1;
+		foreach ($result as $row) {
 			$this->update(
 				'UPDATE deposit_points SET seq = ? WHERE deposit_point_id = ?',
-				array(
-					$i,
-					$depositPointId
-				)
+				[$i, $row->deposit_point_id]
 			);
-			
-			$result->MoveNext();
+			$i++;
 		}
-		$result->Close();
 	}
 
 	/**

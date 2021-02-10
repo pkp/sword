@@ -87,7 +87,7 @@ class SwordPlugin extends GenericPlugin {
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		$sendDepositNotification = $this->getSetting($context->getId(), 'allowAuthorSpecify') ? true : false;
-		while ($depositPoint = $depositPoints->next()) {
+		foreach ($depositPoints as $depositPoint) {
 			$depositType = $depositPoint->getType();
 			if (($depositType == SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION)
 				|| $depositType == SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED) {
