@@ -7,8 +7,8 @@
  *
  * Deposit articles in remote repositories
  *}
-
-{include file="common/header.tpl" pageTitle="plugins.importexport.sword.displayName"}
+{extends file="layouts/backend.tpl"}
+{block name="page"}
 <script src="{$pluginJavaScriptURL}/SwordDepositPointsFormHandler.js"></script>
 <script type="text/javascript">
 	$(function() {ldelim}
@@ -77,5 +77,4 @@
 		</form>
 	</div>
 </div>
-
-{include file="common/footer.tpl"}
+{/block}
