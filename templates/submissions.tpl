@@ -8,7 +8,9 @@
  * Deposit articles in remote repositories
  *}
 {extends file="layouts/backend.tpl"}
+
 {block name="page"}
+
 <script src="{$pluginJavaScriptURL}/SwordDepositPointsFormHandler.js"></script>
 <script type="text/javascript">
 	$(function() {ldelim}
@@ -30,7 +32,7 @@
 		<form id="articlesForm" class="pkp_form" method="post" action="{plugin_url path="deposit"}">
 			{csrf}
 			{include file="controllers/notification/inPlaceNotification.tpl" notificationId="ArticlesNotification"}
-			{fbvFormSection}
+			{fbvFormArea id="submissionsXmlForm"}
 				{fbvFormSection title="plugins.importexport.sword.depositPoint"}
 					{fbvElement type="select" id="depositPoint" from=$depositPoints selected=$selectedDepositPoint translate=false}
 					<a href="{$swordSettingsPageUrl}">{translate key="plugins.importexport.sword.depositPoint.addRemove"}</a>
@@ -49,31 +51,40 @@
 					{fbvElement type="select" id="swordDepositPoint" translate=false}
 					{fbvElement type="button" label="common.refresh" id="refreshBtn" inline=true}
 				{/fbvFormSection}
-			{/fbvFormSection}
-			{fbvFormSection title="common.options" list=true}
-				{fbvElement type="checkbox" id="depositGalleys" value="1" checked=$depositGalleys label="plugins.importexport.sword.depositGalleys"}
-				{fbvElement type="checkbox" id="depositEditorial" value="1" checked=$depositEditorial label="plugins.importexport.sword.depositEditorial"}
-			{/fbvFormSection}
-			{assign var="uuid" value=""|uniqid|escape}
-			{if $usingApi}
-			<div id="select-submissions-{$uuid}">
-				<select-submissions-list-panel
-					v-bind="components.selectSubmissionsListPanel"
+				{fbvFormSection title="common.options" list=true}
+					{fbvElement type="checkbox" id="depositGalleys" value="1" checked=$depositGalleys label="plugins.importexport.sword.depositGalleys"}
+					{fbvElement type="checkbox" id="depositEditorial" value="1" checked=$depositEditorial label="plugins.importexport.sword.depositEditorial"}
+				{/fbvFormSection}
+				{fbvFormSection}
+				{assign var="uuid" value=""|uniqid|escape}
+				<submissions-list-panel
+					v-bind="components.submissions"
 					@set="set"
-					/>
-			</div>
-			<script type="text/javascript">
-				pkp.registry.init('select-submissions-{$uuid}', 'Container', {$selectSubmissionsListData|json_encode});
-			</script>
-			{else}
-			<div id="select-submissions-list-handler-{$uuid}">
-				<script type="text/javascript">
-					pkp.registry.init('select-submissions-list-handler-{$uuid}', 'SelectSubmissionsListPanel', {$selectSubmissionsListData});
-				</script>
-			</div>
-			{/if}
-			{fbvElement type="submit" label="plugins.importexport.sword.deposit" id="depositBtn" inline=true}
-			{fbvElement type="button" label="common.selectAll" id="selectAllBtn" inline=true}
+				>
+
+					<template v-slot:item="{ldelim}item{rdelim}">
+						<div class="listPanel__itemSummary">
+							<label>
+								<input
+									type="checkbox"
+									name="selectedSubmissions[]"
+									:value="item.id"
+									v-model="selectedSubmissions"
+								/>
+								<span class="listPanel__itemSubTitle">
+									{{ localize(item.publications.find(p => p.id == item.currentPublicationId).fullTitle) }}
+								</span>
+							</label>
+							<pkp-button element="a" :href="item.urlWorkflow" style="margin-left: auto;">
+								{{ __('common.view') }}
+							</pkp-button>
+						</div>
+					</template>
+				</submissions-list-panel>
+				{/fbvFormSection}
+				{fbvElement type="submit" label="plugins.importexport.sword.deposit" id="depositBtn" inline=true}
+				{fbvElement type="button" label="common.selectAll" id="selectAllBtn" inline=true}
+			{/fbvFormArea}
 		</form>
 	</div>
 </div>

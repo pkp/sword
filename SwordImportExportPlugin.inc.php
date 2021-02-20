@@ -104,43 +104,40 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 					'swordSettings'
 				);
 
-				$selectSubmissionsListPanel = new \PKP\components\listPanels\PKPSelectSubmissionsListPanel(
-					'selectSubmissionsListPanel',
-					'select submissions panel',
+				$apiUrl = $request->getDispatcher()->url($request, ROUTE_API, $context->getPath(), 'submissions');
+				$submissionsListPanel = new \APP\components\listPanels\SubmissionsListPanel(
+					'submissions',
+					__('common.publications'),
 					[
-						'apiUrl' => $request->getDispatcher()->url(
-							$request,
-							ROUTE_API,
-							$context->getPath(),
-							'_submissions'
-						),
-						'canSelect' => true,
-						'canSelectAll' => true,
+						'apiUrl' => $apiUrl,
 						'count' => 100,
+						'getParams' => new stdClass(),
 						'lazyLoad' => true,
-						'selectorName' => 'selectedSubmissions[]',
 					]
 				);
-				$templateMgr->assign(array(
+				$submissionsConfig = $submissionsListPanel->getConfig();
+				$submissionsConfig['addUrl'] = '';
+				$submissionsConfig['filters'] = array_slice($submissionsConfig['filters'], 1);
+				$templateMgr->setState([
+					'components' => [
+						'submissions' => $submissionsConfig,
+					],
+				]);
+				$templateMgr->assign([
+					'pageComponent' => 'ImportExportPage',
 					'selectedDepositPoint' 		=> $request->getUserVar('selectedDepositPoint'),
 					'depositEditorial' 		=> $request->getUserVar('depositEditorial'),
 					'depositGalleys' 		=> $request->getUserVar('depositGalleys'),
 					'swordSettingsPageUrl' 		=> $settingUrl,
 					'depositPoints' 		=> $depositPointsData,
 					'pluginJavaScriptURL' 		=> $this->getSwordPlugin()->getJsUrl($request),
-					'selectSubmissionsListData' => [
-						'components' => [
-							'selectSubmissionsListPanel' => $selectSubmissionsListPanel->getConfig()
-						]
-					],
-					'usingApi' => true,
-					));
+				]);
 				$templateMgr->display($this->getTemplateResource('submissions.tpl'));
 				break;
 
 			case 'deposit':
 				$context = $request->getContext();
-				$submissionDao = Application::getSubmissionDAO();
+				$submissionDao = DAORegistry::getDAO('SubmissionDAO');
 				$this->getSwordPlugin()->import('classes.PKPSwordDeposit');
 				$depositPointId = $request->getUserVar('depositPoint');
 				$password = $request->getUserVar('swordPassword');

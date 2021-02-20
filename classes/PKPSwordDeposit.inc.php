@@ -99,9 +99,12 @@ class PKPSwordDeposit {
 	 * @param $submissionFile SubmissionFile
 	 */
 	public function _addFile($submissionFile) {
-		$targetFilename = $this->_outPath . '/files/' . $submissionFile->getOriginalFileName();
-		copy($submissionFile->getFilePath(), $targetFilename);
-		$this->_package->addFile($submissionFile->getOriginalFileName(), $submissionFile->getFileType());
+		$fileService = Services::get('file');
+		$file = $fileService->get($submissionFile->getData('fileId'));
+		$targetFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $submissionFile->getLocalizedData('name'));
+		$targetFilePath = $this->_outPath . '/files/' . $targetFilename;
+		file_put_contents($targetFilePath, $fileService->fs->read($file->path));
+		$this->_package->addFile($targetFilename, $file->mimetype);
 	}
 
 	/**
@@ -118,27 +121,29 @@ class PKPSwordDeposit {
 	 * @return boolean true iff a file was successfully added to the package
 	 */
 	public function addEditorial() {
-		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
-		$submissionFiles = $submissionFileDao->getBySubmissionId($this->_submission->getId());
-		// getBySubmission orders results by id ASC, let's reverse the array to have recent files first
-		$submissionFiles = array_reverse($submissionFiles, true);
-		$files = array();
-		foreach ($submissionFiles as $submissionFile) {
-			$fileStage = $submissionFile->getFileStage();
-			if (!isset($files[$fileStage])) {
-				$files[$fileStage] = array();
-			}
-			$files[$fileStage][] = $submissionFile;
-		}
-		// Move through stages in reverse order and try to use them.
-		$stages = array(
+		$fileStages = array(
 			SUBMISSION_FILE_PRODUCTION_READY,
 			SUBMISSION_FILE_COPYEDIT,
 			SUBMISSION_FILE_REVIEW_FILE,
 			SUBMISSION_FILE_SUBMISSION
 		);
+		$submissionFiles = iterator_to_array(Services::get('submissionFile')->getMany([
+			'submissionIds' => [$this->_submission->getId()],
+			'fileStages' => $fileStages,
+		]));
+		// getBySubmission orders results by id ASC, let's reverse the array to have recent files first
+		$submissionFiles = array_reverse($submissionFiles, true);
+		$files = [];
+		foreach ($submissionFiles as $submissionFile) {
+			$fileStage = $submissionFile->getFileStage();
+			if (!isset($files[$fileStage])) {
+				$files[$fileStage] = [];
+			}
+			$files[$fileStage][] = $submissionFile;
+		}
+		// Move through stages in reverse order and try to use them.
 		$mostRecentEditorialFile = null;
-		foreach ($stages as $subFileStage) {
+		foreach ($fileStages as $subFileStage) {
 			if (isset($files[$subFileStage])) {
 				$mostRecentEditorialFile = array_shift($files[$subFileStage]);
 				$this->_addFile($mostRecentEditorialFile);
@@ -165,8 +170,9 @@ class PKPSwordDeposit {
 		if (!preg_match('/^http(s)?:\/\/.+/', $url)) {
 			throw new Exception(__('plugins.generic.sword.badDepositPointUrl'));
 		}
-		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : array();
+		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
 		$client = new SWORDAPPClient($clientOpts);
+
 		$response = $client->deposit(
 			$url, $username, $password,
 			'',
@@ -174,6 +180,7 @@ class PKPSwordDeposit {
 			'http://purl.org/net/sword/package/METSDSpaceSIP',
 			'application/zip', false, true
 		);
+
 		if ($response->sac_status > 299)
 			throw new Exception("Status: $response->sac_status , summary: $response->sac_summary");
 
