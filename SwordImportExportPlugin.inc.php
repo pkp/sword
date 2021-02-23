@@ -193,17 +193,18 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 								$password,
 								$request->getUserVar('swordApiKey'));
 
-							$stmt_link = array_shift(
-								array_filter($response->sac_links, function($link) {
-									return $link->sac_linkrel == 'http://purl.org/net/sword/terms/statement' || $link->sac_linkrel == 'http://purl.org/net/sword/terms/add';
-								}));
-							$stmt_href = $stmt_link->sac_linkhref->__toString();
+							$statementCandidates = array_filter($response->sac_links, function($link) {
+								return $link->sac_linkrel == 'http://purl.org/net/sword/terms/statement' || $link->sac_linkrel == 'http://purl.org/net/sword/terms/add';
+							});
+
+							$statementLink = array_shift($statementCandidates);
+							$statementHref = $statementLink->sac_linkhref->__toString();
 							$data = $submission->getAllData();
 							$ssi = [];
-							if (array_has($data, 'swordStatementIri')) {
+							if (isset($data['swordStatementIri'])) {
 								$ssi = unserialize($data['swordStatementIri'], true);
 							}
-							$ssi[$depositPointId] = $stmt_href;
+							$ssi[$depositPointId] = $statementHref;
 							$submission->setData('swordStatementIri', serialize($ssi));
 							$submissionDao->updateDataObjectSettings(
 								'submission_settings', $submission, ['submission_id' => $submissionId]);
