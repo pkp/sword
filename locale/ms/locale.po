@@ -1,8 +1,78 @@
 # Studiorimau <studiorimau@gmail.com>, 2021.
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-11-02 14:07+0000\n"
+"Last-Translator: Studiorimau <studiorimau@gmail.com>\n"
+"Language-Team: Malay <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Weblate\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>Jenis Poin Deposit:</h4>\n"
+"<p><strong>Automatik</strong>: Deposit berlaku secara automatik. Poin "
+"deposit penuh SWORD ditentukan. Nama pengguna dan kata laluan mesti "
+"dinyatakan. Deposit berlaku selepas memaklumkan pengarang penerimaan.<br/>\n"
+"<strong>Pilihan; Fleksibel</strong>: Pengarang boleh memilih sama ada untuk "
+"mendeposit atau tidak. URL yang ditentukan menunjukkan dokumen perkhidmatan "
+"dan pengarang boleh memilih tempat deposit tertentu untuk digunakan daripada "
+"dokumen itu. Deposit berlaku selepas memaklumkan pengarang penerimaan.<br/>\n"
+"<strong>Pilihan; Tetap</strong>: Pengarang boleh memilih sama ada untuk "
+"mendeposit atau tidak. URL menentukan poin deposit SWORD tertentu. Deposit "
+"berlaku selepas memaklumkan pengarang penerimaan.<br/>\n"
+"<strong>Pengurus Sahaja</strong>: Hanya Pengurus boleh menggunakan poin "
+"deposit ini. URL menunjukkan dokumen perkhidmatan. Deposit dilakukan secara "
+"manual oleh Pengurus menggunakan antara muka Import/Eksport.\n"
+"</p>"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "Pengurus Sahaja"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "Pilihan; Tetap"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "Pilihan; Fleksibel"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Automatik"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "Kunci API"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "Cipta Poin Deposit"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "Cipta Poin Deposit"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "Poin Deposit"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "Benarkan pengarang untuk menentukan poin deposit"
+
+msgid "plugins.generic.sword.settings"
+msgstr "Tetapan"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "Plugin SWORD telah didayakan."
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Benarkan Pengurus dan (pilihan) Pengarang untuk mendepositkan penyerahan "
+"melalui protokol SWORD. Ambil perhatian bahawa plugin ini memerlukan "
+"sambungan Zip, yang pada masa ini TIDAK dipasang."
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"Benarkan Pengurus dan (pilihan) Pengarang untuk mendepositkan penyerahan "
+"melalui protokol SWORD"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "Plugin SWORD"
