@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-05-02 09:13+0000\n"
+"Last-Translator: Dimitri Gogelia <dimitri.gogelia@iliauni.edu.ge>\n"
+"Language-Team: Georgian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ka_GE/>\n"
+"Language: ka_GE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>ანაბრის წერტილის ტიპები:</h4>\n"
+"<p><strong>ავტომატური</strong>: ანაბარი ხდება ავტომატურად. მითითებულია SWORD "
+"სრული ანაბრის წერტილი. მითითებული უნდა იყოს მომხმარებლის სახელი და პაროლი. "
+"ანაბარი ხდება ავტორთან მიღების შესახებ შეტყობინების მიღების შემდეგ.<br/>\n"
+"<strong> სურვილისამებრ; მოქნილი </strong>: ავტორს შეუძლია აირჩიოს დეპოზიტის "
+"შეტანა. მითითებული URL მიუთითებს მომსახურების დოკუმენტზე და ავტორს შეუძლია "
+"აირჩიოს რომელი კონკრეტული სადეპოზიტო პუნქტი გამოიყენოს ამ დოკუმენტიდან. "
+"ანაბარი ხდება ავტორთან მიღების შესახებ შეტყობინების მიღების შემდეგ.<br/>\n"
+"<strong>სურვილისამებრ; დაფიქსირდა </strong> ავტორს შეუძლია აირჩიოს დეპოზიტის "
+"შეტანა. URL განსაზღვრავს სპეციალურ SWORD დეპოზიტის წერტილს. ანაბარი ხდება "
+"ავტორთან მიღების შესახებ შეტყობინების მიღების შემდეგ.<br/>\n"
+"<strong> მხოლოდ მენეჯერი </strong>: დეპოზიტის ამ პუნქტის გამოყენება მხოლოდ "
+"მენეჯერს შეუძლია. URL მიუთითებს მომსახურების დოკუმენტზე. ანაბარს ხელით "
+"ასრულებს მენეჯერი იმპორტი / ექსპორტი ინტერფეისის გამოყენებით.\n"
+"</p>"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "SWORD პლაგინი"
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"მიეცით საშუალება მენეჯერებს და (სურვილისამებრ) ავტორებს, შეიტანონ "
+"დეკლარაციები SWORD პროტოკოლის საშუალებით"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"მიეცით საშუალება მენეჯერებს და (სურვილისამებრ) ავტორებს, შეიტანონ "
+"დეკლარაციები SWORD პროტოკოლის საშუალებით. გაითვალისწინეთ, რომ ამ მოდულს "
+"სჭირდება Zip გაფართოება, რომელიც ამჟამად დაინსტალირებული არ არის."
+
+msgid "plugins.generic.sword.enabled"
+msgstr "SWORD პლაგინი ჩართულია."
+
+msgid "plugins.generic.sword.settings"
+msgstr "პარამეტრები"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "ავტორს მიეცით საშუალება მიუთითოს სადეპოზიტო პუნქტი"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "დეპოზიტის ქულები"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "დეპოზიტის წერტილის შექმნა"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "დეპოზიტის წერტილის ჩასწორება"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "API გასაღები"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "ავტომატურად"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "სურვილისამებრ; მოქნილი"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "სურვილისამებრ; ფიქსირებული"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "მხოლოდ მენეჯერი"
+
+msgid "plugins.generic.sword.depositPoints.password.description"
+msgstr ""
+"თუ აქ არ მიუთითებთ პაროლს, დეპოზიტის დადგომისას თქვენ ან / და ავტორს "
+"მოგთხოვთ. გაითვალისწინეთ, რომ ეს პაროლი ხილული იქნება ყველა მენეჯერისთვის და "
+"ინახება დაშიფრული მონაცემთა ბაზაში."
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "სახელი"
+
+msgid "plugins.generic.sword.automaticDepositComplete"
+msgstr ""
+"ერთეული \"{$itemTitle}\" ავტომატურად შეინახება საცავში \"{$repositoryName}\"."
+
+msgid "plugins.generic.sword.depositComplete"
+msgstr "ერთეული \"{$itemTitle}\" ინახება საცავში \"{$repositoryName}\"."
+
+msgid "plugins.generic.sword.authorDepositDescription"
+msgstr ""
+"<p>თქვენ შეგიძლიათ გამოიყენოთ შემდეგი ფორმა, რომ წარადგინოთ თქვენი წარდგენა, "
+"“{$submissionTitle}”, ერთ-ერთ ჩამოთვლილ საცავში. გამოიყენეთ მონიშნეთ ველები "
+"მარცხენა სვეტის ქვემოთ, რომ აირჩიოთ თუ რომელ საცავებში გსურთ განათავსოთ "
+"თქვენი წარდგენა; თითოეულმა საცავმა შეიძლება ასევე მოგცეთ საშუალება "
+"ჩამოთვლილი სიიდან მიუთითოთ ანაბრის წერტილი.</p>"
+
+msgid "plugins.generic.sword.authorCustomDepositDescription"
+msgstr ""
+"<p>თქვენ შეგიძლიათ არჩევითად მიუთითოთ SWORD- ის შესაბამისი დეპოზიტის წერტილი "
+"შემდეგ ფორმაში. თუ გსურთ, მიუთითეთ SWORD URL, მომხმარებლის სახელი და პაროლი "
+"თქვენს საცავში და წარდგენილ იქნა დეპონირება.</p>"
+
+msgid "plugins.importexport.sword.displayName"
+msgstr "SWORD იმპორტ/ექსპორტის დეპოზიტის პლაგინი"
+
+msgid "plugins.importexport.sword.description"
+msgstr ""
+"ანაბრის გაგზავნა დისტანციურ საცავებში SWORD ანაბრის პროტოკოლის გამოყენებით"
+
+msgid "plugins.importexport.sword.deposit"
+msgstr "დეპოზიტი"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "API გასაღები"
+
+msgid "plugins.importexport.sword.serviceDocUrl"
+msgstr "მომსახურების დოკუმენტის URL"
+
+msgid "plugins.importexport.sword.depositUrl"
+msgstr "დეპოზიტის წერტილის URL"
+
+msgid "plugins.importexport.sword.depositPoint"
+msgstr "დეპოზიტის წერტილი"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "დამატება/ამოღება"
+
+msgid "plugins.importexport.sword.depositGalleys"
+msgstr "დეპოზიტის სვეტები"
+
+msgid "plugins.importexport.sword.depositEditorial"
+msgstr "დეპოზიტის უახლესი სარედაქციო ფაილი"
+
+msgid "plugins.importexport.sword.depositSuccessful"
+msgstr "დეპოზიტი წარმატებით დასრულდა"
+
+msgid "plugins.importexport.sword.depositSuccessfulDescription"
+msgstr "შერჩეული ელემენტ(ებ)ი დეპონირებულია."
+
+msgid "plugins.importexport.sword.depositFailed"
+msgstr "დეპოზიტი ვერ შესრულდა"
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "შენატანი მოთხოვნილია"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "გთხოვთ, შეარჩიოთ მინიმუმ ერთი გაგზავნა დეპონირებისთვის."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "პარამეტრები დამახსოვრებულია!"
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "დეპოზიტების რაოდენობა არ შექმნილა."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr "საჭიროა პაროლი, თუ პაროლი არსებობს ან api კოდი ცარიელია."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr " პაროლი საჭიროა, თუ მომხმარებლის სახელი არსებობს ან api კოდი ცარიელია."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr "საჭიროა Api გასაღები, თუ არ არსებობს მომხმარებლის სახელი და პაროლი."
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "გთხოვთ, შეამოწმოთ დეპოზიტის პუნქტის url."
