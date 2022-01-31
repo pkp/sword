@@ -24,5 +24,12 @@ tab. Find the Sword plugin listed there and use the `Install` button to install 
 -   Save and Exit
   
  ### Import/Export Plugin
- 
+ - Select Sword Plugin in Import/Export Plugins
+ - Got to **Import/Export Data**
+ - Select the **configured**  Deposit Point
+ - Avaliable Collections will be available under **Deposit Point**
+ - Choose the oprions either  Deposit Galleys / Deposit Most Recent Editorial Fil or both.
+ - Select the artciles
+ - Click deposit
+
   
