@@ -13,10 +13,10 @@ tab. Find the Sword plugin listed there and use the `Install` button to install 
 ### General Settings
 - After successful installation, you  have to **enable** the plugin in both generic and import export plugin section.
 - A new tab, **Sword Settings** will be available next to Website Settings -> plugins
-- After clicking the tab, ad a new Peposit point using the **Create Deposit Point**
+- After clicking the tab, add a new Deposit point using the **Create Deposit Point**
 - Add your Service Provider Information there. 
   -   Name: Customized name
-  -   Deposit Point URL: Service Document name :   e.g.http://demo.dspace.org/swordv2/servicedocument
+  -   Deposit Point URL: Service Document name :  Depending on the deposit point type, the URL will either need to be the service document or the deposit point URL. See the documentation on the form about this.  e.g.http://demo.dspace.org/swordv2/servicedocument
   -   Username: Username
   -   Password: Password
   -   API Key: Some repository providers may supply you an API key.
