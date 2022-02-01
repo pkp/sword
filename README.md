@@ -11,7 +11,7 @@ tab. Find the Sword plugin listed there and use the `Install` button to install 
 ## Configuration
 
 ### General Settings
-- After successfull installation, you  have to **enable** the plugin in both generic and inmport export plgun section.
+- After successful installation, you  have to **enable** the plugin in both generic and import export plugin section.
 - A new tab, **Sword Settings** will be available next to Website Settigns -> plugins
 - After clicking the tab, ad a new Peposit point using the **Create Deposit Point**
 - Add your Service Provider Information there. 
