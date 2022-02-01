@@ -29,7 +29,7 @@ tab. Find the Sword plugin listed there and use the `Install` button to install 
  - Select the **configured**  Deposit Point
  - Avaliable Collections will be available under **Deposit Point**
  - Choose the oprtons either  Deposit Galleys / Deposit Most Recent Editorial File or both.
- - Select the artciles
+ - Select the articles
  - Click deposit
 
   
