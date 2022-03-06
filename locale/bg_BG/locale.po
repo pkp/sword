@@ -1,8 +1,181 @@
 # Cyril Kamburov <cc@intermedia.bg>, 2022.
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-03-06 12:37+0000\n"
+"Last-Translator: Cyril Kamburov <cc@intermedia.bg>\n"
+"Language-Team: Bulgarian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/bg_BG/>\n"
 "Language: bg_BG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Weblate\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Моля, проверете URL адреса на точката за депозит."
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr ""
+"Изисква се API ключ, освен ако не са зададени потребителско име и парола."
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr ""
+" Изисква се парола, ако е зададено потребителско име или ключът за API е "
+"празен."
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr ""
+"Изисква се потребителско име, ако е зададена парола или ключът за API е "
+"празен."
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Не са създадени депозитни точки."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Настройките са запазени!"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Моля, изберете поне един материал за депозиране."
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Изисква се материал за депозиране"
+
+msgid "plugins.importexport.sword.depositFailed"
+msgstr "Депозирането е неуспешно"
+
+msgid "plugins.importexport.sword.depositSuccessfulDescription"
+msgstr "Избраните елементи са депозирани."
+
+msgid "plugins.importexport.sword.depositSuccessful"
+msgstr "Депозирането е успешно"
+
+msgid "plugins.importexport.sword.depositEditorial"
+msgstr "Депозиране на последния редактиран материал"
+
+msgid "plugins.importexport.sword.depositGalleys"
+msgstr "Депозиране на типографии"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "Добавяне/Премахване"
+
+msgid "plugins.importexport.sword.depositPoint"
+msgstr "Точка за депозит"
+
+msgid "plugins.importexport.sword.depositUrl"
+msgstr "URL на точката за депозит"
+
+msgid "plugins.importexport.sword.serviceDocUrl"
+msgstr "URL на сервизния документ"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "API Ключ"
+
+msgid "plugins.importexport.sword.deposit"
+msgstr "Депозит"
+
+msgid "plugins.importexport.sword.description"
+msgstr ""
+"Депозиране в отдалечени хранилища с помощта на протокола за депозит SWORD"
+
+msgid "plugins.importexport.sword.displayName"
+msgstr "SWORD Импорт/Експорт Deposit Plugin"
+
+msgid "plugins.generic.sword.authorCustomDepositDescription"
+msgstr ""
+"<p>Можете по избор да посочите съвместим с SWORD пункт за депозит в следния "
+"формуляр. Ако желаете, моля, посочете URL адрес на SWORD, потребителско име "
+"и парола за вашето хранилище и изпратеното ще бъде депозирано.</p>"
+
+msgid "plugins.generic.sword.authorDepositDescription"
+msgstr ""
+"<p>Можете по избор да използвате следния формуляр, за да депозирате вашия "
+"материал, \"{$submissionTitle}\", в едно от изброените хранилища. "
+"Използвайте квадратчетата за отметка надолу в лявата колона, за да изберете "
+"в кои хранилища искате да депозирате вашия материал; всяко хранилище може "
+"също да ви позволи да посочите точка на депозит от падащ списък.</p>"
+
+msgid "plugins.generic.sword.depositComplete"
+msgstr ""
+"Елементът \"{$itemTitle}\" беше депозиран в хранилището \"{$repositoryName}\""
+"."
+
+msgid "plugins.generic.sword.automaticDepositComplete"
+msgstr ""
+"Елементът \"{$itemTitle}\" беше автоматично депозиран в хранилището \""
+"{$repositoryName}\"."
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "Име"
+
+msgid "plugins.generic.sword.depositPoints.password.description"
+msgstr ""
+"Ако не посочите парола тук, вие и/или авторът ще бъдете подканени да я "
+"въведете при депозита. Имайте предвид, че тази парола ще бъде видима за "
+"всички мениджъри и ще се съхранява некриптирана в базата данни."
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>Видове депозитни точки:</h4>\n"
+"<p><strong>Автоматично</strong>: Депозирането се извършва автоматично. "
+"Посочена е пълната точка за депозит на SWORD. Трябва да се посочи "
+"потребителско име и парола. Депозитът се извършва след уведомяване на автора "
+"за приемане.<br/>\n"
+"<strong>Опционално; Гъвкаво</strong>: Авторът може да избере дали да "
+"депозира или не. Посоченият URL адрес указва служебен документ и авторът "
+"може да избере коя конкретна точка за депозит да използва от този документ. "
+"Депозитът се извършва след уведомяване на автора за приемане.<br/>\n"
+"<strong>Опционално; Фиксирано</strong>: Авторът може да избере дали да "
+"депозира или не. URL адресът посочва конкретната точка за депозит на SWORD. "
+"Депозитът се извършва след уведомяване на автора за приемане.<br/>\n"
+"<strong>Само мениджър</strong>: Само мениджърът може да използва тази точка "
+"за депозит. URL адресът указва сервизен документ. Депозирането се извършва "
+"ръчно от мениджъра с помощта на интерфейса Импорт/Експорт.\n"
+"</p>"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "Само мениджъра"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "Опционално; Фиксирано"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "Опционално; Гъвкаво"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Автоматично"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "API ключ"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "Редакция на точка за депозит"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "Създаване на точка за депозит"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "Точки за депозит"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "Позволете на автора да посочи точка за депозит"
+
+msgid "plugins.generic.sword.settings"
+msgstr "Настройки"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "Приставката (плъгин) SWORD е активирана."
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Позволете на мениджърите и (по избор) на авторите да депозират материали "
+"чрез протокола SWORD. Имайте предвид, че този плъгин изисква разширението "
+"Zip, което в момента НЕ е инсталирано."
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"Позволете на мениджърите и (по избор) на авторите да депозират материали "
+"чрез протокола SWORD"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "SWORD Plugin (плъгин)"
