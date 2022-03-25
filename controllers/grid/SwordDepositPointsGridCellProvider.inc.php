@@ -26,19 +26,19 @@ class SwordDepositPointsGridCellProvider extends GridCellProvider {
 		$depositPoint = $row->getData();
 		switch ($column->getId()) {
 			case 'name':
-				return array('label' => $depositPoint->getLocalizedName());
+				return ['label' => $depositPoint->getLocalizedName()];
 			case 'url':
-				return array('label' => $depositPoint->getSwordUrl());
+				return ['label' => $depositPoint->getSwordUrl()];
 			case 'type':
 				switch ($depositPoint->getType()) {
 					case SWORD_DEPOSIT_TYPE_AUTOMATIC:
-						return array('label' => __('plugins.generic.sword.depositPoints.type.automatic'));
+						return ['label' => __('plugins.generic.sword.depositPoints.type.automatic')];
 					case SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION:
-						return array('label' => __('plugins.generic.sword.depositPoints.type.optionalSelection'));
+						return ['label' => __('plugins.generic.sword.depositPoints.type.optionalSelection')];
 					case SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED:
-						return array('label' => __('plugins.generic.sword.depositPoints.type.optionalFixed'));
+						return ['label' => __('plugins.generic.sword.depositPoints.type.optionalFixed')];
 					case SWORD_DEPOSIT_TYPE_MANAGER:
-						return array('label' => __('plugins.generic.sword.depositPoints.type.manager'));
+						return ['label' => __('plugins.generic.sword.depositPoints.type.manager')];
 					default:
 						return assert(false);
 				}

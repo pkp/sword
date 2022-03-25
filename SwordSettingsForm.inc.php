@@ -46,9 +46,7 @@ class SwordSettingsForm extends Form {
 	 * @return void
 	 */
 	public function readInputData() {
-		$this->readUserVars(
-			array('allowAuthorSpecify')
-		);
+		$this->readUserVars(['allowAuthorSpecify']);
 	}
 
 	/**

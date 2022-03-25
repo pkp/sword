@@ -33,8 +33,8 @@ class SwordDepositPointsGridHandler extends GridHandler {
 	public function __construct() {
 		parent::__construct();
 		$this->addRoleAssignment(
-			array(ROLE_ID_MANAGER),
-			array('index', 'fetchGrid', 'fetchRow', 'addDepositPoint', 'editDepositPoint', 'updateDepositPoint', 'delete')
+			[ROLE_ID_MANAGER],
+			['index', 'fetchGrid', 'fetchRow', 'addDepositPoint', 'editDepositPoint', 'updateDepositPoint', 'delete']
 		);
 	}
 

@@ -30,7 +30,7 @@ class SwordDepositPointsGridRow extends GridRow {
 				new LinkAction(
 					'editDepositPoint',
 					new AjaxModal(
-						$router->url($request, null, null, 'editDepositPoint', null, array('depositPointId' => $depositPointId)),
+						$router->url($request, null, null, 'editDepositPoint', null, ['depositPointId' => $depositPointId]),
 						__('grid.action.edit'),
 						'modal_edit',
 						true),
@@ -48,7 +48,7 @@ class SwordDepositPointsGridRow extends GridRow {
 						$request->getSession(),
 						__('common.confirmDelete'),
 						__('grid.action.delete'),
-						$router->url($request, null, null, 'delete', null, array('depositPointId' => $depositPointId)), 'modal_delete'
+						$router->url($request, null, null, 'delete', null, ['depositPointId' => $depositPointId]), 'modal_delete'
 					),
 					__('grid.action.delete'),
 					'delete'

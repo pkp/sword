@@ -22,12 +22,12 @@ class DepositPointsHelper {
 	 * @return array|null
 	 */
 	public static function loadCollectionsFromServer($url, $username, $password, $apikey = null) {
-		$depositPoints = array();
-		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : array();
+		$depositPoints = [];
+		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
 		$client = new SWORDAPPClient($clientOpts);
 		$doc = $client->servicedocument($url, $username, $password, '');
 		if ($doc->sac_status != 200) {
-			return array('#' => 'Service Document Unreachable');
+			return ['#' => 'Service Document Unreachable'];
 		}
 		if (is_array($doc->sac_workspaces)) {
 			foreach ($doc->sac_workspaces as $workspace) {

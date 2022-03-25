@@ -24,12 +24,12 @@ class SwordHandler extends Handler {
 		// set reference to markup plugin
 		$this->_parentPlugin = PluginRegistry::getPlugin('generic', 'swordplugin');
 		$this->addRoleAssignment(
-			array(ROLE_ID_MANAGER),
-			array('depositPoints','performManagerOnlyDeposit')
+			[ROLE_ID_MANAGER],
+			['depositPoints','performManagerOnlyDeposit']
 		);
 		$this->addRoleAssignment(
-			array(ROLE_ID_MANAGER, ROLE_ID_AUTHOR),
-			array('index')
+			[ROLE_ID_MANAGER, ROLE_ID_AUTHOR],
+			['index']
 		);
 	}
 
@@ -74,12 +74,12 @@ class SwordHandler extends Handler {
 			$depositPoint->getSwordPassword(),
 			$depositPoint->getSwordApikey()
 		);
-		return new JSONMessage(true, array(
+		return new JSONMessage(true, [
 			'username' => $depositPoint->getSwordUsername(),
 			'password' => SWORD_PASSWORD_SLUG,
 			'apikey' => $depositPoint->getSwordApikey(),
 			'depositPoints' => $collections,
-		));
+		]);
 	}
 
 	/**

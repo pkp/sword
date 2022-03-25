@@ -76,13 +76,13 @@ class SwordDepositPointForm extends Form {
 	 */
 	public function readInputData($request = null) {
 		$this->readUserVars(
-			array(
+			[
 				'swordUrl',
 				'swordUsername',
 				'swordPassword',
 				'swordApikey',
 				'depositPointType'
-			)
+			]
 		);
 		$this->setData('name', $request->getUserVar('name'));
 	}

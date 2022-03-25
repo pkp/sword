@@ -100,7 +100,7 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 				$settingUrl = $dispatcher->url(
 					$request, ROUTE_PAGE,
 					null, 'management', 'settings', 'website',
-					array(),
+					[],
 					'swordSettings'
 				);
 
@@ -153,27 +153,27 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 				$depositEditorial = $request->getUserVar('depositEditorial');
 				$depositGalleys = $request->getUserVar('depositGalleys');
 				$username = $request->getUserVar('swordUsername');
-				$depositIds = array();
+				$depositIds = [];
 
 				$backLink = $request->url(
 					null, null, null,
-					array('plugin', $this->getName()),
-					array(
+					['plugin', $this->getName()],
+					[
 						'selectedDepositPoint' => $depositPointId,
 						'depositEditorial' => $depositEditorial,
 						'depositGalleys' => $depositGalleys,
-					)
+					]
 				);
 
-				$errors = array();
+				$errors = [];
 
 				$submissionIds = $request->getUserVar('selectedSubmissions');
 				// select at least one submission
 				if (empty($submissionIds)) {
-					$errors[] = array(
+					$errors[] = [
 						'title' => __('plugins.importexport.sword.requiredFieldErrorTitle'),
 						'message' => __('plugins.importexport.sword.requiredFieldErrorMessage'),
-					);
+					];
 				}
 				else {
 					foreach ($submissionIds as $submissionId) {
@@ -212,10 +212,10 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 							$depositIds[] = $response->sac_id;
 						}
 						catch (Exception $e) {
-							$errors[] = array(
+							$errors[] = [
 								'title' => $submission->getLocalizedTitle(),
 								'message' => $e->getMessage(),
-							);
+							];
 						}
 					}
 				}
@@ -227,20 +227,20 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 						$errorMessage .= "<dd>" . htmlentities($error['message']) . "</dd>";
 					}
 					$errorMessage .= '</dl>';
-					$templateMgr->assign(array(
+					$templateMgr->assign([
 						'title' => __('plugins.importexport.sword.depositFailed'),
 						'messageTranslated' => $errorMessage,
 						'backLink' => $backLink,
 						'backLinkLabel' => 'common.back'
-					));
+					]);
 				}
 				else {
-					$templateMgr->assign(array(
+					$templateMgr->assign([
 						'title' => __('plugins.importexport.sword.depositSuccessful'),
 						'message' => 'plugins.importexport.sword.depositSuccessfulDescription',
 						'backLink' => $backLink,
 						'backLinkLabel' => 'common.continue'
-					));
+					]);
 				}
 				$messageTemplateFile = $this->getSwordPlugin()->getTemplateResource('message.tpl');
 				$output = $templateMgr->fetch($messageTemplateFile);

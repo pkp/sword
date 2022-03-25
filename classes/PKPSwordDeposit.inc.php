@@ -121,12 +121,12 @@ class PKPSwordDeposit {
 	 * @return boolean true iff a file was successfully added to the package
 	 */
 	public function addEditorial() {
-		$fileStages = array(
+		$fileStages = [
 			SUBMISSION_FILE_PRODUCTION_READY,
 			SUBMISSION_FILE_COPYEDIT,
 			SUBMISSION_FILE_REVIEW_FILE,
 			SUBMISSION_FILE_SUBMISSION
-		);
+		];
 		$submissionFiles = iterator_to_array(Services::get('submissionFile')->getMany([
 			'submissionIds' => [$this->_submission->getId()],
 			'fileStages' => $fileStages,

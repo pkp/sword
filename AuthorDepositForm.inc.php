@@ -49,12 +49,12 @@ class AuthorDepositForm extends Form {
 	 * @copydoc Form::readInputData()
 	 */
 	public function readInputData() {
-		$this->readUserVars(array(
+		$this->readUserVars([
 			'authorDepositUrl',
 			'authorDepositUsername',
 			'authorDepositPassword',
 			'depositPoint',
-		));
+		]);
 	}
 
 	/**
@@ -64,12 +64,12 @@ class AuthorDepositForm extends Form {
 		$request = Application::getRequest();
 		$templateMgr = TemplateManager::getManager($request);
 		$depositPoints = $this->_getDepositableDepositPoints($this->_context);
-		$templateMgr->assign(array(
+		$templateMgr->assign([
 			'depositPoints' 	=> $depositPoints,
 			'submission'		=> $this->_submission,
 			'allowAuthorSpecify' 	=> $this->getSwordPlugin()->getSetting($this->_context->getId(), 'allowAuthorSpecify'),
 			'pluginJavaScriptURL' 	=> $this->_plugin->getJsUrl($request),
-		));
+		]);
 		parent::display();
 	}
 
@@ -96,14 +96,14 @@ class AuthorDepositForm extends Form {
 					$this->getData('authorDepositUsername'),
 					$this->getData('authorDepositPassword')
 				);
-				$params = array(
+				$params = [
 					'itemTitle' => $this->_submission->getLocalizedTitle(), 
 					'repositoryName' => $this->getData('authorDepositUrl')
-				);
+				];
 				$notificationManager->createTrivialNotification(
 					$user->getId(), 
 					NOTIFICATION_TYPE_SUCCESS, 
-					array('contents' => __('plugins.generic.sword.depositComplete', $params))
+					['contents' => __('plugins.generic.sword.depositComplete', $params)]
 				);
 			}
 			catch(Exception $e) {
@@ -111,7 +111,7 @@ class AuthorDepositForm extends Form {
 				$notificationManager->createTrivialNotification(
 					$user->getId(),
 					NOTIFICATION_TYPE_ERROR,
-					array('contents' => $contents)
+					['contents' => $contents]
 				);
 				error_log($e->getTraceAsString());
 			}
@@ -136,14 +136,14 @@ class AuthorDepositForm extends Form {
 					$depositPoint['password'],
 					$depositPoint['apikey']
 				);
-				$params = array(
+				$params = [
 					'itemTitle' => $this->_submission->getLocalizedTitle(), 
 					'repositoryName' => $depositPoint['name']
-				);
+				];
 				$notificationManager->createTrivialNotification(
 					$user->getId(), 
 					NOTIFICATION_TYPE_SUCCESS,
-					array('contents' => __('plugins.generic.sword.depositComplete', $params))
+					['contents' => __('plugins.generic.sword.depositComplete', $params)]
 				);
 			}
 			catch(Exception $e) {
@@ -151,7 +151,7 @@ class AuthorDepositForm extends Form {
 				$notificationManager->createTrivialNotification(
 					$user->getId(),
 					NOTIFICATION_TYPE_ERROR,
-					array('contents' => $contents)
+					['contents' => $contents]
 				);
 				error_log($e->getTraceAsString());
 			}
@@ -165,13 +165,13 @@ class AuthorDepositForm extends Form {
 	 * @return array
 	 */
 	protected function _getDepositableDepositPoints($context) {
-		$list = array();
+		$list = [];
 		$this->getSwordPlugin()->import('classes.DepositPoint');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$this->getSwordPlugin()->import('classes.DepositPointsHelper');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		foreach ($depositPoints as $depositPoint) {
-			if (!in_array($depositPoint->getType(), array(SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION, SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED)))
+			if (!in_array($depositPoint->getType(), [SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION, SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED]))
 				continue;
 
 			$list[$depositPoint->getId()]['name'] = $depositPoint->getLocalizedName();
