@@ -121,7 +121,17 @@ class SwordDepositPointForm extends Form {
 		$depositPoint->setContextId($this->_contextId);
 		$depositPoint->setName($this->getData('name'));
 		$depositPoint->setType($this->getData('depositPointType'));
-		$depositPoint->setSwordUrl($this->getData('swordUrl'));
+		switch ($depositPoint->getType()) {
+			case SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION:
+			case SWORD_DEPOSIT_TYPE_MANAGER:
+				// This deposit point specifies a service document URL.
+				// Allow resolution of the actual URL using the SWORD auto-discovery mechanism.
+				$this->_plugin->import('classes.DepositPointsHelper');
+				$depositPoint->setSwordUrl(DepositPointsHelper::resolveServiceDocumentUrl($this->getData('swordUrl')));
+				break;
+			default:
+				$depositPoint->setSwordUrl($this->getData('swordUrl')); 
+		}
 		$depositPoint->setSwordUsername($this->getData('swordUsername'));
 		$depositPoint->setSwordApikey($this->getData('swordApikey'));
 		$swordPassword = $this->getData('swordPassword');

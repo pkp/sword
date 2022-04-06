@@ -95,7 +95,7 @@ class SwordHandler extends Handler {
 		$submissionId = (int) array_shift($args);
 		$save = array_shift($args) == 'save';
 
-		$submissionDao = Application::getSubmissionDAO();
+		$submissionDao = DAORegistry::getDAO('SubmissionDAO');
 		$submission = $submissionDao->getById($submissionId);
 
 		if (!$submission || !$user || !$context ||
@@ -113,7 +113,7 @@ class SwordHandler extends Handler {
 			}
 		}
 
-		if (!userCanDeposit) {
+		if (!$userCanDeposit) {
 			$request->redirect(null, 'index');
 		}
 
@@ -129,6 +129,6 @@ class SwordHandler extends Handler {
 			}
 		}
 		$authorDepositForm->initData();
-		$authorDepositForm->display();
+		$authorDepositForm->display($request);
 	}
 }

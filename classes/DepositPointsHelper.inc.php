@@ -14,8 +14,24 @@
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 
 class DepositPointsHelper {
+	public static function resolveServiceDocumentUrl($url) {
+		try {
+			$client = Application::get()->getHttpClient();
+			$response = $client->request('GET', $url);
+			$matches = null;
+			// Attempt to match one of the service point auto-discovery link forms specified at:
+			// http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html#autodiscovery
+			if (preg_match('/<html:link\s+rel="(sword|http:\/\/purl.org\/net\/sword\/discovery\/service-document)"\s+href="([^"]+)"\s*[\/]?>/i', $response->getBody(), $matches)) {error_log('SUCCESSFULLY RESOLVED ' . $matches[2]);
+				return $matches[2];
+			}
+		} catch (Throwable $e) {
+			// In case of any error, just return the provided URL.
+			return $url;
+		}
+	}
+
 	/**
-	 * Connects to a DSpace server and return a list of deposit points
+	 * Connects to a SWORD server and return a list of deposit points
 	 * @param $url string
 	 * @param $username string
 	 * @param $password string

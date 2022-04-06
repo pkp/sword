@@ -60,8 +60,7 @@ class AuthorDepositForm extends Form {
 	/**
 	 * @copydoc Form::display()
 	 */
-	public function display() {
-		$request = Application::getRequest();
+	public function display($request = null, $template = null) {
 		$templateMgr = TemplateManager::getManager($request);
 		$depositPoints = $this->_getDepositableDepositPoints($this->_context);
 		$templateMgr->assign([
@@ -70,14 +69,16 @@ class AuthorDepositForm extends Form {
 			'allowAuthorSpecify' 	=> $this->getSwordPlugin()->getSetting($this->_context->getId(), 'allowAuthorSpecify'),
 			'pluginJavaScriptURL' 	=> $this->_plugin->getJsUrl($request),
 		]);
-		parent::display();
+		parent::display($request, $template);
 	}
 
 	/**
 	 * Save form.
 	 * @param $request PKPRequest
 	 */
-	public function execute($request) {
+	public function execute(...$functionArgs) {
+		parent::execute(...$functionArgs);
+		$request = $functionArgs[0];
 		$user = $request->getUser();
 		$notificationManager = new NotificationManager();
 		$this->getSwordPlugin()->import('classes.PKPSwordDeposit');
