@@ -10,51 +10,64 @@
 
 {include file="frontend/components/header.tpl" pageTitle="user.register"}
 
-<form id="authDepositForm" class="pkp_form" method="post" action="{url path="index" path=$submission->getId()|to_array:"save"}">
+<form id="authDepositForm" class="cmp_form" method="post" action="{url path="index" path=$submission->getId()|to_array:"save"}">
 	{csrf}
 
 	{if !empty($depositPoints)}
 		{translate key="plugins.generic.sword.authorDepositDescription" submissionTitle=$submission->getLocalizedTitle()}
-		{fbvFormArea id="authorDepositPoints"}
-			{foreach from=$depositPoints item=depositPoint key=depositPointKey name="depositPoints"}
-				{fbvFormSection}
-					{fbvElement
-						type="checkbox"
-						name="depositPoint[$depositPointKey][enabled]"
-						id="depositPoint-$depositPointKey-enabled"
-						label=$depositPoint.name
-						translate=false
-						inline=true}
-					{if $depositPoint.type == $smarty.const.SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION}
-						{fbvElement
-							type="select"
-							id="depositPoint"
-							from=$depositPoint.depositPoints
-							translate=false
-							name="depositPoint[$depositPointKey][depositPoint]"
-							id="depositPoint-$depositPointKey-depositPoint"
-							inline=true}
-					{/if}
-				{/fbvFormSection}
-			{/foreach}
-		{/fbvFormArea}
+		<fieldset id="authorDepositPoints">
+			<ul class="prefabDepositPoints" style="list-style: none;">
+				{foreach from=$depositPoints item=depositPoint key=depositPointKey name="depositPoints"}
+					<li>
+						<label>
+							<input type="checkbox" name="depositPoint[{$depositPointKey|escape}][enabled]" id="depositPoint-{$depositPointKey|escape}-enabled" label="{$depositPoint.name|escape}">
+							{$depositPoint.name|escape}
+						</label>
+						{if $depositPoint.type == $smarty.const.SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION}
+							<label>
+								{translate key="plugins.importexport.sword.depositPoint"}
+								<select id="depositPoint-{$depositPointKey|escape}-depositPoint" name="depositPoint[{$depositPointKey|escape}][depositPoint]">
+									{foreach from=$depositPoint.depositPoints key=depositPointKey item=depositPointValue}
+										<option value="{$depositPointKey|escape}">{$depositPointValue|escape}</option>
+									{/foreach}
+								</select>
+							</label>
+						{/if}
+					</li>
+				{/foreach}
+			</ul>
+		</fieldset>
 	{/if}{* !empty($depositPoints) *}
-	&nbsp;
+
 	{if $allowAuthorSpecify}
 		{translate key="plugins.generic.sword.authorCustomDepositDescription" submissionTitle=$submission->getLocalizedTitle()}
-		{fbvFormSection for="authorDepositUrl" title="plugins.importexport.sword.depositUrl"}
-			{fbvElement type="text" id="authorDepositUrl" value=$authorDepositUrl}
-		{/fbvFormSection}
-		{fbvFormSection for="authorDepositUsername" title="user.username"}
-			{fbvElement type="text" id="authorDepositUsername" value=$authorDepositUsername}
-		{/fbvFormSection}
-		{fbvFormSection for="authorDepositPassword" title="user.password"}
-			{fbvElement type="text" password="true" id="authorDepositPassword"}
-		{/fbvFormSection}
+		<fieldset class="authorSelfDeposit">
+			<div class="fields">
+				<div class="section">
+					<label>
+						<span class="label">{translate key="plugins.importexport.sword.depositUrl"}</span>
+						<input type="text" name="authorDepositUrl" id="authorDepositUrl" value="{$authorDepositUrl|escape}" maxlength="255">
+					</label>
+				</div>
+
+				<div class="section">
+					<label>
+						<span class="label">{translate key="user.username"}</span>
+						<input type="text" id="authorDepositUsername" name="authorDepositUsername" value="{$authorDepositUsername|escape}" />
+					</label>
+				</div>
+
+				<div class="section">
+					<label>
+						<span class="label">{translate key="user.password"}</span>
+						<input type="text" id="authorDepositPassword" name="authorDepositPassword" />
+					</label>
+				</div>
+			</div>
+		</fieldset>
 	{/if}{* $allowAuthorSpecify *}
 
-	<br/>
-	{fbvElement type="submit" label="plugins.importexport.sword.deposit" id="depositBtn" inline=true}
+	<button id="depositButton" class="pkp_button" type="submit">{translate key="plugins.importexport.sword.deposit"}</button>
 </form>
 
 {include file="frontend/components/footer.tpl"}
