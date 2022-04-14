@@ -157,13 +157,13 @@ class SwordPlugin extends GenericPlugin {
 				$mail->setFrom($contactEmail, $contactName);
 				$mail->addRecipient($submittingUser->getEmail(), $submittingUser->getFullName());
 
-				$mail->assignParams(array(
-					'contextName' => $context->getLocalizedName(),
-					'submissionTitle' => $submission->getLocalizedTitle(),
+				$mail->assignParams([
+					'contextName' => htmlspecialchars($context->getLocalizedName()),
+					'submissionTitle' => htmlspecialchars($submission->getLocalizedTitle()),
 					'swordDepositUrl' => $dispatcher->url(
 						$request, ROUTE_PAGE, null, 'sword', 'index', $submission->getId()
 					)
-				));
+				]);
 
 				$mail->send($request);
 			}
