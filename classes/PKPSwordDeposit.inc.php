@@ -121,6 +121,7 @@ class PKPSwordDeposit {
 	 * @return boolean true iff a file was successfully added to the package
 	 */
 	public function addEditorial() {
+		import('lib.pkp.classes.submission.SubmissionFile');
 		$fileStages = [
 			SUBMISSION_FILE_PRODUCTION_READY,
 			SUBMISSION_FILE_COPYEDIT,

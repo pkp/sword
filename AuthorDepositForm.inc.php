@@ -133,8 +133,8 @@ class AuthorDepositForm extends Form {
 			try {
 				$deposit->deposit(
 					$url,
-					$depositPoint['username'],
-					$depositPoint['password'],
+					$depositPoint['username'] ?: $depositPoints[$key]['username'],
+					$depositPoint['password'] ?: $depositPoints[$key]['password'],
 					$depositPoint['apikey']
 				);
 				$params = [
