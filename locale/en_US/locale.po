@@ -41,6 +41,9 @@ msgstr "Edit Deposit Point"
 msgid "plugins.generic.sword.depositPoints.apikey"
 msgstr "API Key"
 
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "If this field is left blank, it will be requested when the deposit is made."
+
 msgid "plugins.generic.sword.depositPoints.type.automatic"
 msgstr "Automatic"
 
@@ -101,6 +104,9 @@ msgstr "Deposit Point URL"
 msgid "plugins.importexport.sword.depositPoint"
 msgstr "Deposit Point"
 
+msgid "plugins.importexport.sword.reload"
+msgstr "Reload"
+
 msgid "plugins.importexport.sword.depositPoint.addRemove"
 msgstr "Add/Remove"
 
@@ -130,15 +136,6 @@ msgstr "Settings saved!"
 
 msgid "plugins.generic.sword.manager.noneCreated"
 msgstr "No deposit points have been created."
-
-msgid "plugins.generic.sword.formErrors.username"
-msgstr "Username required if password is present or api key is empty."
-
-msgid "plugins.generic.sword.formErrors.password"
-msgstr " Password required if username is present or api key is empty."
-
-msgid "plugins.generic.sword.formErrors.apikey"
-msgstr "Api key required unless username and password are present."
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Please check the url of the deposit point."

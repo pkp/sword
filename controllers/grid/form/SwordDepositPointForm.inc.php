@@ -42,13 +42,6 @@ class SwordDepositPointForm extends Form {
 		$this->addCheck(new FormValidatorPost($this));
 		$this->addCheck(new FormValidatorCSRF($this));
 		$this->addCheck(new FormValidatorLocale($this, 'name', 'required', 'plugins.generic.sword.depositPoints.required.field'));
-		$this->addCheck(new FormValidatorCustom($this, 'swordApikey', 'required_if', 'plugins.generic.sword.depositPoints.required.field', function($apiKey) {
-			if (empty($apiKey) and (empty($this->getData('swordUsername')) or empty($this->getData('swordPassword')))) {
-				return false;
-			}
-			return true;
-		}
-		));
 		$this->addCheck(new FormValidator($this, 'depositPointType', 'required', 'plugins.generic.sword.depositPoints.required.field'));
 		$this->addCheck(new FormValidatorUrl($this, 'swordUrl', 'required', 'plugins.generic.sword.depositPoints.required.field'));
 	}

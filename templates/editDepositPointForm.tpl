@@ -8,15 +8,11 @@
  * Form for editing a deposit point
  *}
 
-<script src="{$pluginJavaScriptURL}/SwordEditDepositPointsFormHandler.js"></script>
- <script type="text/javascript">
+<script type="text/javascript">
 	$(function() {ldelim}
 		// Attach the form handler.
 		$('#depositPointForm').pkpHandler(
 			'$.pkp.controllers.form.AjaxFormHandler'
-		);
-		$('#depositPointForm').pkpHandler(
-			'$.pkp.plugins.sword.js.SwordEditDepositPointsFormHandler'
 		);
 	{rdelim});
 </script>
@@ -40,15 +36,17 @@
 		{/fbvFormSection}
 
 		{fbvFormSection for="swordUsername" title="user.username"}
-			{fbvElement type="text" id="swordUsername" value=$swordUsername data-error="{translate key='plugins.generic.sword.formErrors.username'}"}
+			{fbvElement type="text" id="swordUsername" value=$swordUsername}
+			<div>{translate key="plugins.generic.sword.depositPoints.leaveBlank"}</div>
 		{/fbvFormSection}
 
 		{fbvFormSection for="swordPassword" title="user.password"}
-			{fbvElement type="text" password="true" id="swordPassword" value=$swordPassword data-error="{translate key='plugins.generic.sword.formErrors.password'}"}
+			{fbvElement type="text" password="true" id="swordPassword" value=$swordPassword}
+			<div>{translate key="plugins.generic.sword.depositPoints.leaveBlank"}</div>
 		{/fbvFormSection}
 
 		{fbvFormSection for="swordApikey" title="plugins.generic.sword.depositPoints.apikey"}
-			{fbvElement type="text" id="swordApikey" value=$swordApikey data-error="{translate key='plugins.generic.sword.formErrors.apikey'}"}
+			{fbvElement type="text" id="swordApikey" value=$swordApikey}
 		{/fbvFormSection}
 
 		{fbvFormSection title="common.type"}

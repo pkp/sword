@@ -25,11 +25,11 @@ class SwordHandler extends Handler {
 		$this->_parentPlugin = PluginRegistry::getPlugin('generic', 'swordplugin');
 		$this->addRoleAssignment(
 			[ROLE_ID_MANAGER],
-			['depositPoints','performManagerOnlyDeposit']
+			['performManagerOnlyDeposit']
 		);
 		$this->addRoleAssignment(
 			[ROLE_ID_MANAGER, ROLE_ID_AUTHOR],
-			['index']
+			['index', 'depositPoints']
 		);
 	}
 
@@ -67,17 +67,22 @@ class SwordHandler extends Handler {
 			return new JSONMessage(false);
 		}
 
+		$isManager = Validation::isAuthorized(ROLE_ID_MANAGER, $context->getId());
+		if (!$isManager && $depositPoint->getType() != SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION) {
+			return new JSONMessage(false);
+		}
+
 		$this->getSwordPlugin()->import('classes.DepositPointsHelper');
 		$collections = DepositPointsHelper::loadCollectionsFromServer(
 			$depositPoint->getSwordUrl(),
-			$depositPoint->getSwordUsername(),
-			$depositPoint->getSwordPassword(),
+			$depositPoint->getSwordUsername() ?: $request->getUserVar('username'),
+			$depositPoint->getSwordPassword() ?: $request->getUserVar('password'),
 			$depositPoint->getSwordApikey()
 		);
 		return new JSONMessage(true, [
-			'username' => $depositPoint->getSwordUsername(),
+			'username' => $isManager ? $depositPoint->getSwordUsername() : null,
 			'password' => SWORD_PASSWORD_SLUG,
-			'apikey' => $depositPoint->getSwordApikey(),
+			'apikey' => $isManager ? $depositPoint->getSwordApikey() : null,
 			'depositPoints' => $collections,
 		]);
 	}

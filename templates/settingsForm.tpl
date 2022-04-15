@@ -7,7 +7,7 @@
  *
  * SWORD plugin settings
  *}
- 
+
 <script type="text/javascript">
 	$(function() {ldelim}
 		$('#swordSettingsForm').pkpHandler(
@@ -18,9 +18,9 @@
 
 <form class="pkp_form" id="swordSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_PAGE op="swordSettings" save=true}">
 	{csrf}
-	
+
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="swordSettingsFormNotification"}
-	
+
 	{fbvFormArea id="swordSettings"}
 		{fbvFormSection description="plugins.generic.sword.description" class="notice"}{/fbvFormSection}
 		{fbvFormSection for="allowAuthorSpecify" list=true description="plugins.generic.sword.settings"}
