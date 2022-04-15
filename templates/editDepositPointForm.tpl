@@ -31,6 +31,10 @@
 			{fbvElement type="text" id="name" name="name" value=$name multilingual=true}
 		{/fbvFormSection}
 
+		{fbvFormSection for="name" title="plugins.generic.sword.depositPoints.description"}
+			{fbvElement type="textarea" multilingual=true id="description" value=$description rich=true}
+		{/fbvFormSection}
+
 		{fbvFormSection for="swordUrl" title="plugins.importexport.sword.depositUrl"}
 			{fbvElement type="text" id="swordUrl" value=$swordUrl}
 		{/fbvFormSection}

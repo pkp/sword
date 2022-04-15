@@ -52,7 +52,8 @@
 							<input onclick="updateCheckboxDisplay(this);" type="checkbox" name="depositPoint[{$depositPointKey|escape}][enabled]" id="depositPoint-{$depositPointKey|escape}-enabled" label="{$depositPoint.name|escape}">
 							{$depositPoint.name|escape}
 						</label>
-						<div class="depositPointDetails" style="display: none; padding: 1em 1em;">
+						<div class="depositPointDetails" style="display: none; padding: 0em 1em 2em 0em;">
+							<div class="depositPointdescription">{$depositPoint.description}</div>
 							{if empty($depositPoint.username)}
 								<div class="section">
 									<label>

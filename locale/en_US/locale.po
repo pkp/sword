@@ -71,6 +71,9 @@ msgstr "If you do not specify a password here, you and/or the author will be pro
 msgid "plugins.generic.sword.depositPoints.name"
 msgstr "Name"
 
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Description"
+
 msgid "plugins.generic.sword.automaticDepositComplete"
 msgstr "The item \"{$itemTitle}\" was automatically deposited into the repository \"{$repositoryName}\"."
 

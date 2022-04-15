@@ -175,12 +175,15 @@ class AuthorDepositForm extends Form {
 			if (!in_array($depositPoint->getType(), [SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION, SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED]))
 				continue;
 
-			$list[$depositPoint->getId()]['name'] = $depositPoint->getLocalizedName();
-			$list[$depositPoint->getId()]['url'] = $depositPoint->getSwordUrl();
-			$list[$depositPoint->getId()]['type'] = $depositPoint->getType();
-			$list[$depositPoint->getId()]['username'] = $depositPoint->getSwordUsername();
-			$list[$depositPoint->getId()]['password'] = $depositPoint->getSwordPassword();
-			$list[$depositPoint->getId()]['apikey'] = $depositPoint->getSwordApikey();
+			$list[$depositPoint->getId()] = [
+				'name' => $depositPoint->getLocalizedName(),
+				'description' => $depositPoint->getLocalizedDescription(),
+				'url' => $depositPoint->getSwordUrl(),
+				'type' => $depositPoint->getType(),
+				'username' => $depositPoint->getSwordUsername(),
+				'password' => $depositPoint->getSwordPassword(),
+				'apikey' => $depositPoint->getSwordApikey(),
+			];
 			if ($depositPoint->getType() == SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION) {
 				$collections = DepositPointsHelper::loadCollectionsFromServer(
 					$depositPoint->getSwordUrl(),

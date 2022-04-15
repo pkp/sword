@@ -118,7 +118,7 @@ class DepositPointDAO extends DAO {
 	 * @return array
 	 */
 	public function getLocaleFieldNames() {
-		return ['name'];
+		return ['name', 'description'];
 	}
 
 	/**

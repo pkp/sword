@@ -71,6 +71,32 @@ class DepositPoint extends DataObject {
 	}
 
 	/**
+	 * Get the localized description
+	 * @return string
+	 */
+	public function getLocalizedDescription() {
+		return $this->getLocalizedData('description');
+	}
+
+	/**
+	 * Get deposit point description
+	 * @param $locale string
+	 * @return string
+	 */
+	public function getDescription($locale) {
+		return $this->getData('description', $locale);
+	}
+
+	/**
+	 * Set deposit point description
+	 * @param $title string
+	 * @param $locale string?
+	 */
+	public function setDescription($description, $locale = null) {
+		return $this->setData('description', $description, $locale);
+	}
+
+	/**
 	 * Get SWORD username
 	 * @return string
 	 */

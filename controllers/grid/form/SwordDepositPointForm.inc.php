@@ -55,6 +55,7 @@ class SwordDepositPointForm extends Form {
 			$depositPoint = $depositPointDao->getById($this->_depositPointId, $this->_contextId);
 			$this->setData('swordUrl', $depositPoint->getSwordUrl());
 			$this->setData('name', $depositPoint->getName(null));
+			$this->setData('description', $depositPoint->getDescription(null));
 			$this->selectedType = $depositPoint->getType();
 			$this->setData('type', $this->selectedType);
 			$this->setData('swordUsername', $depositPoint->getSwordUsername());
@@ -78,6 +79,7 @@ class SwordDepositPointForm extends Form {
 			]
 		);
 		$this->setData('name', $request->getUserVar('name'));
+		$this->setData('description', $request->getUserVar('description'));
 	}
 
 	/**
@@ -113,6 +115,7 @@ class SwordDepositPointForm extends Form {
 
 		$depositPoint->setContextId($this->_contextId);
 		$depositPoint->setName($this->getData('name'));
+		$depositPoint->setDescription($this->getData('description'));
 		$depositPoint->setType($this->getData('depositPointType'));
 		switch ($depositPoint->getType()) {
 			case SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION:
