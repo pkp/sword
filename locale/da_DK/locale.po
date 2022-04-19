@@ -1,10 +1,11 @@
+# Alexandra Fogtmann-Schulz <alfo@kb.dk>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-08-28 08:48+0000\n"
-"Last-Translator: Niels Erik Frederiksen <nef@kb.dk>\n"
+"PO-Revision-Date: 2022-04-20 06:57+0000\n"
+"Last-Translator: Alexandra Fogtmann-Schulz <alfo@kb.dk>\n"
 "Language-Team: Danish <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/da_DK/>\n"
 "Language: da_DK\n"
@@ -157,3 +158,14 @@ msgstr "API-nøgle"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Tjek indbetalingspunktets URL."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Genindlæs"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Beskrivelse"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Hvis dette felt efterlades tomt, vil det blive efterspurgt, når deponeringen "
+"foretages."
