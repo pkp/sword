@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2022-03-27 04:56+0000\n"
+"PO-Revision-Date: 2022-04-30 05:58+0000\n"
 "Last-Translator: M. Ali <vorteem@gmail.com>\n"
 "Language-Team: Arabic <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/ar_IQ/>\n"
@@ -166,3 +166,12 @@ msgstr "مفتاح API"
 
 msgid "plugins.generic.sword.depositPoints.apikey"
 msgstr "مفتاح API"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "إعادة التحميل"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "الوصف"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "إذا تُرك هذا الحقل فارغًا، ستتم المطالبة به عند إجراء الإيداع."
