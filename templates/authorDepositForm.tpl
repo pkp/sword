@@ -26,7 +26,9 @@
 			password = $('#depositPoint-' + depositPointId + '-password').val(),
 			$depositPointList = $('#depositPoint-' + depositPointId + '-depositPoint');
 
+		$('#depositPoint-' + depositPointId + '-spinner').show();
 		$.post("{/literal}{url op="depositPoints" depositPointId="DEPOSIT_POINT_ID_SLUG"}{literal}".replace('DEPOSIT_POINT_ID_SLUG', depositPointId), {"username": username, "password": password}, function(data) {
+			$('#depositPoint-' + depositPointId + '-spinner').hide();
 			$depositPointList.empty();
 			$.each(data.content.depositPoints, function(url, label) {
 				$depositPointList.append($('<option>', {
@@ -67,7 +69,9 @@
 								<div class="section">
 									<label>
 										<span class="label">{translate key="user.password"}</span>
-										<input type="password" id="depositPoint-{$depositPointKey|escape}-password" name="depositPoint[{$depositPointKey|escape}][password]" />
+										<input type="password" id="depositPoint-{$depositPointKey|escape}-password" name="depositPoint[{$depositPointKey|escape}][password]"
+											{if $depositPoint.type == $smarty.const.SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION}onfocusout="refreshDepositPoint('{$depositPointKey|escape:"quotes"}');"{/if}
+										 />
 									</label>
 								</div>
 							{/if}
@@ -80,6 +84,7 @@
 										{/foreach}
 									</select>
 									<button onclick="refreshDepositPoint('{$depositPointKey|escape:"quotes"}'); return false;" class="pkp_button">{translate key="plugins.importexport.sword.reload"}</button>
+									<span id="depositPoint-{$depositPointKey|escape}-spinner" class="pkp_spinner" style="display: none;"></span>
 								</label>
 							{/if}
 						</div>
