@@ -60,7 +60,9 @@
 								<div class="section">
 									<label>
 										<span class="label">{translate key="user.username"}</span>
-										<input type="text" id="depositPoint-{$depositPointKey|escape}-username" name="depositPoint[{$depositPointKey|escape}][username]" />
+										<input type="text" id="depositPoint-{$depositPointKey|escape}-username" name="depositPoint[{$depositPointKey|escape}][username]"
+											{if $depositPoint.type == $smarty.const.SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION}onfocusout="refreshDepositPoint('{$depositPointKey|escape:"quotes"}');"{/if}
+										/>
 									</label>
 								</div>
 							{/if}
