@@ -1,6 +1,7 @@
+# Primož Svetek <primoz.svetek@gmail.com>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-02-13 15:53+0000\n"
+"PO-Revision-Date: 2022-05-05 23:32+0000\n"
 "Last-Translator: Primož Svetek <primoz.svetek@gmail.com>\n"
 "Language-Team: Slovenian <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/sl_SI/>\n"
@@ -175,3 +176,13 @@ msgstr ""
 
 msgid "plugins.generic.sword.displayName"
 msgstr "SWORD vtičnik"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Ponovno naloži"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Opis"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Če pustite polje prazno, ga boste morali izpolniti v trenutku deponiranja."
