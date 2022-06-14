@@ -1,9 +1,10 @@
+# Carla Marques <carla.marques@usdb.uminho.pt>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-02-13 15:53+0000\n"
+"PO-Revision-Date: 2022-06-15 16:07+0000\n"
 "Last-Translator: Carla Marques <carla.marques@usdb.uminho.pt>\n"
 "Language-Team: Portuguese (Portugal) <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/pt_PT/>\n"
@@ -155,3 +156,14 @@ msgstr "Chave da API"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Verifique o URL do ponto de depósito."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Recarregar"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Descrição"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Se o campo for deixado em branco, será solicitado quando o depósito for "
+"feito."
