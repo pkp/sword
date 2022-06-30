@@ -1,9 +1,10 @@
+# Jordi LC <jordi.lacruz@uab.cat>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-03-05 18:54+0000\n"
+"PO-Revision-Date: 2022-07-01 05:31+0000\n"
 "Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
 "Language-Team: Catalan <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/ca_ES/>\n"
@@ -172,3 +173,13 @@ msgstr "Clau API"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Comproveu l'URL del punt de dipòsit."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Recarregar"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Descripció"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Si aquest camp es deixa en blanc, quan es faci el dipòsit se us demanarà."
