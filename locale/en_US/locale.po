@@ -12,7 +12,7 @@ msgstr ""
 "Language: \n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "SWORD Plugin"
+msgstr "SWORD Client Plugin"
 
 msgid "plugins.generic.sword.description"
 msgstr "Allow Managers and (optionally) Authors to deposit submissions via the SWORD protocol"
