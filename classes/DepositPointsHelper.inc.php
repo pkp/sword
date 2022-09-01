@@ -43,7 +43,7 @@ class DepositPointsHelper {
 		$client = new SWORDAPPClient($clientOpts);
 		$doc = $client->servicedocument($url, $username, $password, '');
 		if ($doc->sac_status != 200) {
-			return ['#' => 'Service Document Unreachable'];
+			return ['#' => __('plugins.generic.sword.accessDenied')];
 		}
 		if (is_array($doc->sac_workspaces)) {
 			foreach ($doc->sac_workspaces as $workspace) {
