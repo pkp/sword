@@ -155,7 +155,7 @@ class SwordHandler extends Handler {
 					$templateMgr->assign('results', $results);
 					$templateMgr->display($this->_parentPlugin->getTemplateResource('results.tpl'));
 					return;
-				} catch (Exception $e) {error_log('EXCEPT');
+				} catch (Exception $e) {
 					$notificationManager = new NotificationManager();
 					$notificationManager->createTrivialNotification(
 						$user->getId(),
@@ -165,7 +165,7 @@ class SwordHandler extends Handler {
 					error_log($e->getTraceAsString());
 				}
 			}
-		} else {error_log('NOT VALID');
+		} else {
 			$authorDepositForm->initData();
 		}
 		$authorDepositForm->display($request);
