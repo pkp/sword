@@ -38,6 +38,7 @@ class SwordSettingsForm extends Form {
 	 */
 	public function initData() {
 		$this->setData('allowAuthorSpecify', $this->_plugin->getSetting($this->_context->getId(), 'allowAuthorSpecify'));
+		$this->setData('showDepositButton', $this->_plugin->getSetting($this->_context->getId(), 'showDepositButton'));
 	}
 
 	/**
@@ -46,7 +47,7 @@ class SwordSettingsForm extends Form {
 	 * @return void
 	 */
 	public function readInputData() {
-		$this->readUserVars(['allowAuthorSpecify']);
+		$this->readUserVars(['allowAuthorSpecify', 'showDepositButton']);
 	}
 
 	/**
@@ -64,6 +65,10 @@ class SwordSettingsForm extends Form {
 	public function execute(...$functionArgs) {
 		$allowAuthorSpecify = intval($this->getData('allowAuthorSpecify'));
 		$this->_plugin->updateSetting($this->_context->getId(), 'allowAuthorSpecify', $allowAuthorSpecify);
+
+		$showDepositButton = intval($this->getData('showDepositButton'));
+		$this->_plugin->updateSetting($this->_context->getId(), 'showDepositButton', $showDepositButton);
+
 		parent::execute(...$functionArgs);
 	}
 }

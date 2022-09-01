@@ -32,6 +32,8 @@ class SwordPlugin extends GenericPlugin {
 				$depositPointDao = new DepositPointDAO($this);
 				DAORegistry::registerDAO('DepositPointDAO', $depositPointDao);
 
+				HookRegistry::register('TemplateManager::display', [$this, 'callbackDisplayTemplate']);
+
 				HookRegistry::register('LoadHandler', array($this, 'callbackSwordLoadHandler'));
 				HookRegistry::register('Template::Settings::website', array($this, 'callbackSettingsTab'));
 				HookRegistry::register('LoadComponentHandler', array($this, 'setupGridHandler'));
@@ -42,6 +44,30 @@ class SwordPlugin extends GenericPlugin {
 			return true;
 		}
 		return false;
+	}
+
+	public function callbackDisplayTemplate($hookName, $args) {
+		$templateMgr = $args[0];
+		$template = $args[1];
+		if ($template == 'authorDashboard/authorDashboard.tpl') {
+			$request = Application::get()->getRequest();
+	                $journal = $request->getJournal();
+			if ($this->getSetting($journal->getId(), 'showDepositButton')) {
+				$templateMgr->registerFilter("output", [$this, 'authorDashboardFilter']);
+			}
+		}
+
+		return false;
+	}
+
+	public function authorDashboardFilter($output, $templateMgr) {
+		if ($index = strrpos($output, '</pkp-header>')) {
+			$request =& Registry::get('request');
+			$headerAddition = '<form action="' . $request->url(null, 'sword', 'index', $request->getRequestedArgs()) . '"><button class="pkpButton">' . __('plugins.importexport.sword.deposit') . '</button></form>';
+			$output = substr($output, 0, $index) . $headerAddition . substr($output, $index);
+			$templateMgr->unregisterFilter('output', [$this, 'authorDashboardFilter']);
+		}
+		return $output;
 	}
 
 	/**

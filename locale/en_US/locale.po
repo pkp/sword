@@ -29,6 +29,9 @@ msgstr "Settings"
 msgid "plugins.generic.sword.settings.allowAuthorSpecify"
 msgstr "Allow the author to specify a deposit point"
 
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Present authors with a \"Deposit\" button on their submission"
+
 msgid "plugins.generic.sword.settings.depositPoints"
 msgstr "Deposit Points"
 

@@ -25,6 +25,7 @@
 		{fbvFormSection description="plugins.generic.sword.description" class="notice"}{/fbvFormSection}
 		{fbvFormSection for="allowAuthorSpecify" list=true description="plugins.generic.sword.settings"}
 			{fbvElement type="checkbox" id="allowAuthorSpecify" value="1" checked=$allowAuthorSpecify label="plugins.generic.sword.settings.allowAuthorSpecify"}
+			{fbvElement type="checkbox" id="showDepositButton" value="1" checked=$showDepositButton label="plugins.generic.sword.settings.showDepositButton"}
 		{/fbvFormSection}
 	{/fbvFormArea}
 
