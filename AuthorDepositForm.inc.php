@@ -75,47 +75,29 @@ class AuthorDepositForm extends Form {
 	/**
 	 * Save form.
 	 * @param $request PKPRequest
+	 * @return array Set of SWORDAPPEntry responses
 	 */
 	public function execute(...$functionArgs) {
 		parent::execute(...$functionArgs);
 		$request = $functionArgs[0];
-		$user = $request->getUser();
-		$notificationManager = new NotificationManager();
 		$this->getSwordPlugin()->import('classes.PKPSwordDeposit');
 		
 		$deposit = new PKPSwordDeposit($this->_submission);
 		$deposit->setMetadata($request);
 		$deposit->addEditorial();
 		$deposit->createPackage();
-		
+
+		$responses = [];
+
 		$allowAuthorSpecify = $this->getSwordPlugin()->getSetting($this->_context->getId(), 'allowAuthorSpecify');
 		$authorDepositUrl = $this->getData('authorDepositUrl');
 		if (($allowAuthorSpecify) && ($authorDepositUrl != '')) {
-			try {
-				$deposit->deposit(
-					$this->getData('authorDepositUrl'),
-					$this->getData('authorDepositUsername'),
-					$this->getData('authorDepositPassword')
-				);
-				$params = [
-					'itemTitle' => $this->_submission->getLocalizedTitle(), 
-					'repositoryName' => $this->getData('authorDepositUrl')
-				];
-				$notificationManager->createTrivialNotification(
-					$user->getId(), 
-					NOTIFICATION_TYPE_SUCCESS, 
-					['contents' => __('plugins.generic.sword.depositComplete', $params)]
-				);
-			}
-			catch(Exception $e) {
-				$contents = __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage();
-				$notificationManager->createTrivialNotification(
-					$user->getId(),
-					NOTIFICATION_TYPE_ERROR,
-					['contents' => $contents]
-				);
-				error_log($e->getTraceAsString());
-			}
+			$responses[$this->getData('authorDepositUrl')] = $deposit->deposit(
+				$this->getData('authorDepositUrl'),
+				$this->getData('authorDepositUsername'),
+				$this->getData('authorDepositPassword')
+			);
+			$deposit->cleanup();
 		}
 		
 		$url = '';
@@ -130,34 +112,15 @@ class AuthorDepositForm extends Form {
 			} else { // SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED
 				$url = $depositPoint['url'];
 			}
-			try {
-				$deposit->deposit(
-					$url,
-					$depositPoint['username'] ?: $depositPoints[$key]['username'],
-					$depositPoint['password'] ?: $depositPoints[$key]['password'],
-					$depositPoint['apikey']
-				);
-				$params = [
-					'itemTitle' => $this->_submission->getLocalizedTitle(), 
-					'repositoryName' => $depositPoint['name']
-				];
-				$notificationManager->createTrivialNotification(
-					$user->getId(), 
-					NOTIFICATION_TYPE_SUCCESS,
-					['contents' => __('plugins.generic.sword.depositComplete', $params)]
-				);
-			}
-			catch(Exception $e) {
-				$contents = __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage();
-				$notificationManager->createTrivialNotification(
-					$user->getId(),
-					NOTIFICATION_TYPE_ERROR,
-					['contents' => $contents]
-				);
-				error_log($e->getTraceAsString());
-			}
+			$responses[$depositPoint['url']] = $deposit->deposit(
+				$url,
+				$depositPoint['username'] ?: $depositPoints[$key]['username'],
+				$depositPoint['password'] ?: $depositPoints[$key]['password'],
+				$depositPoint['apikey']
+			);
+			$deposit->cleanup();
 		}
-		$deposit->cleanup();
+		return $responses;
 	}
 
 	/**

@@ -86,6 +86,9 @@ msgstr "The item \"{$itemTitle}\" was automatically deposited into the repositor
 msgid "plugins.generic.sword.depositComplete"
 msgstr "The item \"{$itemTitle}\" was deposited into the repository \"{$repositoryName}\"."
 
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "The following deposit(s) were successfully completed:"
+
 msgid "plugins.generic.sword.authorDepositDescription"
 msgstr "<p>You may optionally use the following form to deposit your submission, \"{$submissionTitle}\", in one of the repositories listed. Use the checkboxes down the left-hand column to select which repositories you wish to deposit your submission into; each repository may also allow you to specify a collection from a pull-down list.</p>"
 

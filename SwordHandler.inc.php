@@ -129,11 +129,45 @@ class SwordHandler extends Handler {
 		if ($save) {
 			$authorDepositForm->readInputData();
 			if ($authorDepositForm->validate()) {
-				$authorDepositForm->execute($request);
-				$request->redirect(null, 'submissions');
+				try {
+					$responses = $authorDepositForm->execute($request);
+					$templateMgr = TemplateManager::getManager($request);
+					$results = [];
+					$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
+					$this->getSwordPlugin()->import('classes.DepositPointsHelper');
+					$depositPoints = iterator_to_array($depositPointDao->getByContextId($context->getId()));
+					foreach ($responses as $url => $response) {
+						// Identify the deposit point this result relates to
+						$depositPoint = null;
+						foreach ($depositPoints as $candidateDepositPoint) {
+							if ($candidateDepositPoint->getSwordUrl() == $url) $depositPoint = $candidateDepositPoint;
+						}
+
+						// Add the result to the list
+						$results[] = [
+							'url' => $url,
+							'depositPoint' => $depositPoint,
+							'itemTitle' => $response->sac_title,
+							'treatment' => $response->sac_treatment,
+							'alternateLink' => $this->_parentPlugin->getAlternateLink($response->sac_xml),
+						];
+					}
+					$templateMgr->assign('results', $results);
+					$templateMgr->display($this->_parentPlugin->getTemplateResource('results.tpl'));
+					return;
+				} catch (Exception $e) {error_log('EXCEPT');
+					$notificationManager = new NotificationManager();
+					$notificationManager->createTrivialNotification(
+						$user->getId(),
+						NOTIFICATION_TYPE_ERROR,
+						['contents' => __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage()]
+					);
+					error_log($e->getTraceAsString());
+				}
 			}
+		} else {error_log('NOT VALID');
+			$authorDepositForm->initData();
 		}
-		$authorDepositForm->initData();
 		$authorDepositForm->display($request);
 	}
 }

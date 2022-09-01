@@ -117,7 +117,7 @@
 				<div class="section">
 					<label>
 						<span class="label">{translate key="user.password"}</span>
-						<input type="text" id="authorDepositPassword" name="authorDepositPassword" />
+						<input type="password" id="authorDepositPassword" name="authorDepositPassword" />
 					</label>
 				</div>
 			</div>

@@ -101,11 +101,10 @@ class SwordPlugin extends GenericPlugin {
 
 	/**
 	 * Performs automatic deposits and mails authors
-	 * @param $submission Submission
 	 */
 	function performAutomaticDeposits(Submission $submission) {
 		// Perform Automatic deposits
-		$request =& Registry::get('request');
+		$request = Registry::get('request');
 		$user = $request->getUser();
 		$context = $request->getContext();
 		$dispatcher = $request->getDispatcher();
@@ -113,6 +112,7 @@ class SwordPlugin extends GenericPlugin {
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		$sendDepositNotification = $this->getSetting($context->getId(), 'allowAuthorSpecify') ? true : false;
+		$notificationMgr = new NotificationManager();
 		foreach ($depositPoints as $depositPoint) {
 			$depositType = $depositPoint->getType();
 			if (($depositType == SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION)
@@ -134,29 +134,25 @@ class SwordPlugin extends GenericPlugin {
 					$depositPoint->getSwordApikey()
 				);
 				$deposit->cleanup();
-			}
-			catch (Exception $e) {
-				$contents = __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage();
-				$notificationMgr = new NotificationManager();
+
+				$notificationMgr->createTrivialNotification(
+					$user->getId(),
+					NOTIFICATION_TYPE_SUCCESS,
+					[
+						'contents' => __('plugins.generic.sword.automaticDepositComplete', [
+							'itemTitle' => $submission->getLocalizedTitle(),
+							'repositoryName' => $depositPoint->getLocalizedName()
+						])
+					]
+				);
+			} catch (Exception $e) {
 				$notificationMgr->createTrivialNotification(
 					$user->getId(),
 					NOTIFICATION_TYPE_ERROR,
-					array('contents' => $contents)
+					['contents' => __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage()]
 				);
 				error_log($e->getTraceAsString());
 			}
-
-			$user = $request->getUser();
-			$params = array(
-				'itemTitle' => $submission->getLocalizedTitle(),
-				'repositoryName' => $depositPoint->getLocalizedName()
-			);
-			$notificationMgr = new NotificationManager();
-			$notificationMgr->createTrivialNotification(
-				$user->getId(),
-				NOTIFICATION_TYPE_SUCCESS,
-				array('contents' => __('plugins.generic.sword.automaticDepositComplete', $params))
-			);
 		}
 
 		if ($sendDepositNotification) {
@@ -353,5 +349,21 @@ class SwordPlugin extends GenericPlugin {
 	 */
 	function getInstallEmailTemplatesFile() {
 		return ($this->getPluginPath() . '/emailTemplates.xml');
+	}
+
+	/**
+	 * Given SWORD deposit receipt XML, find the atom:link@rel="alternate" and return its value.
+	 * @return ?string
+	 */
+	public function getAlternateLink($xml) {
+		$doc = new DOMDocument();
+		$doc->loadXML($xml);
+		$xpath = new DOMXpath($doc);
+		$xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');
+		$elements = $xpath->query('//atom:link[@rel="alternate"]/@href');
+		foreach ($elements as $element) {
+			return $element->value;
+		}
+		return null;
 	}
 }
