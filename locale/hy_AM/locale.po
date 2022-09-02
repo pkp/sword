@@ -2,7 +2,7 @@
 # Tigran Zargaryan <tigran@flib.sci.am>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-09-01 19:59+0000\n"
+"PO-Revision-Date: 2022-09-03 06:50+0000\n"
 "Last-Translator: Tigran Zargaryan <tigran@flib.sci.am>\n"
 "Language-Team: Armenian <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/hy_AM/>\n"
@@ -174,7 +174,7 @@ msgstr ""
 "ներկայացումները SWORD համաձայնագրի միջոցով"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "SWORD պլագին"
+msgstr "SWORD հաճախորդի պլագին"
 
 msgid "plugins.generic.sword.settings.showDepositButton"
 msgstr ""
@@ -182,3 +182,6 @@ msgstr ""
 
 msgid "plugins.generic.sword.accessDenied"
 msgstr "(Մուտքն արգելված է)"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Հետևյալ ավանդադրում(ներ)ը հաջողությամբ ավարտվել են:"
