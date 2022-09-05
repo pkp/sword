@@ -1,7 +1,7 @@
 # Cyril Kamburov <cc@intermedia.bg>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-04-22 07:58+0000\n"
+"PO-Revision-Date: 2022-09-07 02:10+0000\n"
 "Last-Translator: Cyril Kamburov <cc@intermedia.bg>\n"
 "Language-Team: Bulgarian <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/bg_BG/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Моля, проверете URL адреса на точката за депозит."
@@ -178,7 +178,7 @@ msgstr ""
 "чрез протокола SWORD"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "SWORD Plugin (плъгин)"
+msgstr "SWORD клиентска добавка (плъгин)"
 
 msgid "plugins.importexport.sword.reload"
 msgstr "Презареждане"
@@ -190,3 +190,12 @@ msgid "plugins.generic.sword.depositPoints.leaveBlank"
 msgstr ""
 "Ако това поле е оставено празно, то ще бъде поискано при извършване на "
 "депозита."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Отказан достъп)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Показване на авторите на бутон „Депозит“ при изпращане на материали"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Следния/ите депозит/и бяха успешно завършени:"
