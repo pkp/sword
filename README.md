@@ -1,4 +1,4 @@
-# SWORD
+# SWORD Client Plugin
 
 Allow Journal Managers and (optionally) Authors to deposit articles via the SWORD protocol
 
@@ -6,7 +6,7 @@ Allow Journal Managers and (optionally) Authors to deposit articles via the SWOR
 
 This plugin is best installed using the Plugin Gallery from within Open Journal Systems.
 Log in as Administrator, navigate to `Settings` > `Website` > `Plugins`, and open the "Plugin Gallery"
-tab. Find the Sword plugin listed there and use the `Install` button to install it.
+tab. Find the Sword client plugin listed there and use the `Install` button to install it.
 
 ## Configuration
 
