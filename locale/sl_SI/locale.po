@@ -1,7 +1,7 @@
 # Primož Svetek <primoz.svetek@gmail.com>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-05-05 23:32+0000\n"
+"PO-Revision-Date: 2022-09-25 17:01+0000\n"
 "Last-Translator: Primož Svetek <primoz.svetek@gmail.com>\n"
 "Language-Team: Slovenian <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/sl_SI/>\n"
@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Prosimo preverite URL točke za shranjevanje."
@@ -175,7 +175,7 @@ msgstr ""
 "prispevke s pomočjo SWORD protokola"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "SWORD vtičnik"
+msgstr "SWORD klient vtičnik"
 
 msgid "plugins.importexport.sword.reload"
 msgstr "Ponovno naloži"
@@ -186,3 +186,12 @@ msgstr "Opis"
 msgid "plugins.generic.sword.depositPoints.leaveBlank"
 msgstr ""
 "Če pustite polje prazno, ga boste morali izpolniti v trenutku deponiranja."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Zavrnjen dostop)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Avtorjem ob oddaji prispevka prikaži gumb \"Shrani\""
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Naslednja shranjevanja so bila uspešno končana:"
