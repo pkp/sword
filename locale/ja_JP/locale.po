@@ -1,21 +1,26 @@
+# TAKASHI IMAGIRE <imagire@gmail.com>, 2021.
+# Bjorn-Ole Kamm <pkp_trans@b-ok.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2022-10-25 10:06+0000\n"
+"Last-Translator: Bjorn-Ole Kamm <pkp_trans@b-ok.de>\n"
+"Language-Team: Japanese <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ja_JP/>\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "SWORD プラグイン"
+msgstr "SWORD クライアント プラグイン"
 
 msgid "plugins.generic.sword.description"
-msgstr "雑誌管理者が著者(選択)にSWORDプロトコルを通じた論文のデポジットを許可します。"
+msgstr "管理者と著者(オプション)にSWORDプロトコルを通じて投稿を預けることを許可します"
 
 msgid "plugins.generic.sword.enabled"
 msgstr "SWORD プラグインは有効です。"
@@ -53,13 +58,20 @@ msgstr "管理者のみ"
 msgid "plugins.generic.sword.depositPoints.type.description"
 msgstr ""
 "<h4>デポジットポイント種別:</h4>\n"
-"<p><strong>自動</strong>: デポジットは自動的に行われます。 完全なSWORDデポジットポイントを指定します。ユーザ名とパスワードが入力されていなければなりません。著者への承認通知の後，デポジットがおこなわれます。<br/>\n"
-"<strong>オプション; 選択可</strong>: 著者がデポジットするかどうか選択できます。サービスドキュメントを示すURLが表示され，そのドキュメントからデポジットポイントを選択することができます。著者への承認通知の後，デポジットがおこなわれます。<br/>\n"
-"<strong>オプション; 固定</strong>: 著者がデポジットするかどうか選択できます。特定のSWORD デポジットポイントのURLが表示されます。 著者への承認通知の後，デポジットがおこなわれます。<br/>\n"
-"<strong>管理者のみ</strong>: 雑誌管理者のみがデポジットポイントを使用できます。サービスドキュメントのURLが表示されます。雑誌管理者が雑誌管理のインポート/エクスポートインタフェースを使用して手動でデポジットをおこないます。</p>"
+"<p><strong>自動</strong>: デポジットは自動的に行われます。 "
+"完全なSWORDデポジットポイントを指定します。ユーザ名とパスワードが入力されていなければなりません。著者への承認通知の後，デポジットがおこなわれます。<"
+"br/>\n"
+"<strong>オプション; 選択可</strong>: 著者がデポジットするかどうか選択できます。サービスドキュメントを示すURLが表示され，そのドキュ"
+"メントからデポジットポイントを選択することができます。著者への承認通知の後，デポジットがおこなわれます。<br/>\n"
+"<strong>オプション; 固定</strong>: 著者がデポジットするかどうか選択できます。特定のSWORD "
+"デポジットポイントのURLが表示されます。 著者への承認通知の後，デポジットがおこなわれます。<br/>\n"
+"<strong>管理者のみ</strong>: 管理者のみがデポジットポイントを使用できます。サービスドキュメントのURLが表示されます。管理者がインポー"
+"ト/エクスポートインタフェースを使用して手動でデポジットをおこないます。</p>"
 
 msgid "plugins.generic.sword.depositPoints.password.description"
-msgstr "ここでパスワードを指定しない場合は，デポジットが発生した際にプロンプト画面が表示されます。このパスワードはすべての雑誌管理者から見える，データベースに暗号化されない状態で入力されることに注意して下さい。"
+msgstr ""
+"ここでパスワードを指定しない場合は、デポジットが発生した際にプロンプト画面が表示されます。このパスワードはすべての管理者から見えるデータベースに暗号化され"
+"ない状態で入力されることに注意して下さい。"
 
 msgid "plugins.generic.sword.depositPoints.name"
 msgstr "名称"
@@ -80,7 +92,7 @@ msgid "plugins.importexport.sword.displayName"
 msgstr "SWORD インポート/エクスポート デポジットプラグイン"
 
 msgid "plugins.importexport.sword.description"
-msgstr "SWORDデポジットプロトコルを使用して遠隔のリポジトリに論文をデポジットする"
+msgstr "SWORDデポジットプロトコルを使用して遠隔のリポジトリに投稿を預ける"
 
 msgid "plugins.importexport.sword.deposit"
 msgstr "デポジット"
@@ -111,3 +123,41 @@ msgstr "選択されたアイテムはデポジットされました。"
 
 msgid "plugins.importexport.sword.depositFailed"
 msgstr "デポジット失敗"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "預け先のURLをご確認ください。"
+
+msgid "plugins.generic.sword.formErrors.apikey"
+msgstr "ユーザー名とパスワードが存在しない場合は、Apiキーが必要です。"
+
+msgid "plugins.generic.sword.formErrors.password"
+msgstr " ユーザー名が存在するか、apiキーが空の場合はパスワードが必要です。"
+
+msgid "plugins.generic.sword.formErrors.username"
+msgstr "パスワードが存在するか、apiキーが空の場合、ユーザー名が必要です。"
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "デポジットポイントは発生していません。"
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "設定が保存されました！"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "預ける作品を1つ以上選んでください。"
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "投稿が必要"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "APIキー"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "APIキー"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"管理者と（オプションで）著者がSWORDプロトコルで投稿作品を預けることができます。なお、このプラグインにはZipエクステンションが必要ですが、現在はイン"
+"ストールされていません。"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "（アクセス拒否）"

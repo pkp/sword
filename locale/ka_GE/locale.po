@@ -1,6 +1,7 @@
+# Dimitri Gogelia <dimitri.gogelia@iliauni.edu.ge>, 2022.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-02 09:13+0000\n"
+"PO-Revision-Date: 2022-04-22 07:58+0000\n"
 "Last-Translator: Dimitri Gogelia <dimitri.gogelia@iliauni.edu.ge>\n"
 "Language-Team: Georgian <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/ka_GE/>\n"
@@ -169,3 +170,12 @@ msgstr "საჭიროა Api გასაღები, თუ არ არ
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "გთხოვთ, შეამოწმოთ დეპოზიტის პუნქტის url."
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "თუ ეს ველი ცარიელი დარჩა, ის მოითხოვება დეპოზიტის განხორციელებისას."
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "აღწერა"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "გადატვირთვა"

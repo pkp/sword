@@ -1,9 +1,10 @@
+# Jiří Dlouhý <jiri.dlouhy@czp.cuni.cz>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-02-11 22:53+0000\n"
+"PO-Revision-Date: 2022-09-03 06:50+0000\n"
 "Last-Translator: Jiří Dlouhý <jiri.dlouhy@czp.cuni.cz>\n"
 "Language-Team: Czech <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/cs_CZ/>\n"
@@ -12,10 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "Plugin SWORD"
+msgstr "Plugin SWORD klient"
 
 msgid "plugins.generic.sword.description"
 msgstr ""
@@ -167,3 +168,21 @@ msgstr "Klíč API"
 
 msgid "plugins.generic.sword.depositPoints.apikey"
 msgstr "Klíč API"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Znovu načíst"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Popis"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "Pokud toto pole zůstane prázdné, bude požadováno při provedení vkladu."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Přístup zakázán)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Prezentovat autorům tlačítko „Deposit (zálohovat)“ pro jejich příspěvek"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Úspěšně byl/y dokončen/y následující vklad/y:"

@@ -1,9 +1,10 @@
+# Jordi LC <jordi.lacruz@uab.cat>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-03-05 18:54+0000\n"
+"PO-Revision-Date: 2022-09-24 14:38+0000\n"
 "Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
 "Language-Team: Catalan <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/ca_ES/>\n"
@@ -12,10 +13,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "Mòdul SWORD"
+msgstr "Mòdul de client SWORD"
 
 msgid "plugins.generic.sword.description"
 msgstr ""
@@ -172,3 +173,19 @@ msgstr "Clau API"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Comproveu l'URL del punt de dipòsit."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Recarregar"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Descripció"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Si aquest camp es deixa en blanc, quan es faci el dipòsit se us demanarà."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Accés denegat)"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "S'han completat correctament els següents dipòsits:"

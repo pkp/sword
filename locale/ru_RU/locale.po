@@ -1,22 +1,23 @@
+# Pavel Pisklakov <ppv1979@mail.ru>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-06-04 15:39+0000\n"
+"PO-Revision-Date: 2022-11-05 04:07+0000\n"
 "Last-Translator: Pavel Pisklakov <ppv1979@mail.ru>\n"
 "Language-Team: Russian <http://translate.pkp.sfu.ca/projects/"
-"sword-deposit-plugin/locale-keys/ru/>\n"
+"sword-deposit-plugin/locale-keys/ru_RU/>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "Плагин «SWORD»"
+msgstr "Плагин «Клиент SWORD»"
 
 msgid "plugins.generic.sword.description"
 msgstr "Этот плагин позволяет управляющим журналами и (при необходимости) авторам передавать на хранение статьи по протоколу SWORD"
@@ -133,7 +134,7 @@ msgid "plugins.generic.sword.settings.saved"
 msgstr "Настройки сохранены!"
 
 msgid "plugins.importexport.sword.requiredFieldErrorMessage"
-msgstr "Выберите хотя бы один материал (подачу)  для размещения."
+msgstr "Выберите хотя бы один материал (подачу) для размещения."
 
 msgid "plugins.importexport.sword.requiredFieldErrorTitle"
 msgstr "Требуется материал (подача)"
@@ -146,3 +147,23 @@ msgstr "Ключ API"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Пожалуйста проверьте URL точки хранения."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Доступ запрещён)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Показать авторам кнопку «Депонировать» в их материалах"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Следующие депонирования были успешно выполнены:"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Описание"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Если это поле оставить пустым, то будет запрашиваться информация о том, "
+"когда делать депонирование."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Перезагрузить"

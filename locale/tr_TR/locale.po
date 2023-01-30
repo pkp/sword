@@ -1,10 +1,11 @@
+# Hüseyin Körpeoğlu <yoruyenturk@hotmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-02-15 20:54+0000\n"
-"Last-Translator: Uğur Koçak <drugurkocak@icloud.com>\n"
+"PO-Revision-Date: 2022-04-16 11:57+0000\n"
+"Last-Translator: Hüseyin Körpeoğlu <yoruyenturk@hotmail.com>\n"
 "Language-Team: Turkish <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/tr_TR/>\n"
 "Language: tr_TR\n"
@@ -177,3 +178,12 @@ msgstr "Hiçbir saklama noktası oluşturulmadı."
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Lütfen saklama noktasının URL'sini kontrol edin."
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Tekrar yükle"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Açıklama"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "Bu alan boş bırakılırsa depozito yapıldığında talep edilecektir."

@@ -1,9 +1,10 @@
+# M. Ali <vorteem@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-02-13 15:53+0000\n"
+"PO-Revision-Date: 2022-10-23 03:01+0000\n"
 "Last-Translator: M. Ali <vorteem@gmail.com>\n"
 "Language-Team: Arabic <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/ar_IQ/>\n"
@@ -13,10 +14,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "إضافة SWORD"
+msgstr "إضافة عميل SWORD"
 
 msgid "plugins.generic.sword.description"
 msgstr ""
@@ -142,7 +143,7 @@ msgstr "لا بد من توفير مفتاح API ما لم يكن اسم الم�
 
 msgid "plugins.generic.sword.formErrors.password"
 msgstr ""
-"لا بد من توفير كلمة المرور  عند وجود اسم المستخدم أو كان مفتاح API فارغاً."
+" لا بد من توفير كلمة المرور  عند وجود اسم المستخدم أو كان مفتاح API فارغاً."
 
 msgid "plugins.generic.sword.formErrors.username"
 msgstr ""
@@ -165,3 +166,21 @@ msgstr "مفتاح API"
 
 msgid "plugins.generic.sword.depositPoints.apikey"
 msgstr "مفتاح API"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "إعادة التحميل"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "الوصف"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "إذا تُرك هذا الحقل فارغًا، ستتم المطالبة به عند إجراء الإيداع."
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "توفير زر \"الإيداع\" للمؤلفين عند طلب تقديمهم"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(الوصول ممنوع)"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "الإيداعات الآتية اكتملت بنجاح:"

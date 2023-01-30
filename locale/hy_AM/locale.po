@@ -1,0 +1,187 @@
+# Artashes Mirzoyan <amirzoyan@sci.am>, 2022.
+# Tigran Zargaryan <tigran@flib.sci.am>, 2022.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-09-03 06:50+0000\n"
+"Last-Translator: Tigran Zargaryan <tigran@flib.sci.am>\n"
+"Language-Team: Armenian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/hy_AM/>\n"
+"Language: hy_AM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.13.1\n"
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Խնդրում ենք ստուգել ավանդադրման կետի url-ը:"
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Ավանդադրման կետեր չեն ստեղծվել:"
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Կարգավորումները պահված են:"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Խնդրում ենք ընտրել առնվազն մեկ ներկայացում ավանդադրման համար:"
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Պահանջվում է ներկայացնել նյութ"
+
+msgid "plugins.importexport.sword.depositFailed"
+msgstr "Ավանդադրումը ձախողվեց"
+
+msgid "plugins.importexport.sword.depositSuccessfulDescription"
+msgstr "Ընտրված նյութ(եր)ը ավանդադրվել են:"
+
+msgid "plugins.importexport.sword.depositSuccessful"
+msgstr "Ավանդադրվել է հաջողությամբ"
+
+msgid "plugins.importexport.sword.depositEditorial"
+msgstr "Ավանդադրեք ամենավերջին խմբագրական նիշքը"
+
+msgid "plugins.importexport.sword.depositGalleys"
+msgstr "Ավանդադրման շարվածքներ"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "Ավելացնել/Հեռացնել"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Վերաբեռնել"
+
+msgid "plugins.importexport.sword.depositPoint"
+msgstr "Ավանդադրման կետ"
+
+msgid "plugins.importexport.sword.depositUrl"
+msgstr "Ավանդադրման կետի URL -ը"
+
+msgid "plugins.importexport.sword.serviceDocUrl"
+msgstr "Ծառայողական փաստաթղթի URL -ը"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "API բանալի"
+
+msgid "plugins.importexport.sword.deposit"
+msgstr "Ավանդ դնել"
+
+msgid "plugins.importexport.sword.description"
+msgstr ""
+"Ավանդադրեք ներկայացումները հեռավոր պահոցներում՝ օգտագործելով SWORD ավանդային "
+"արձանագրությունը"
+
+msgid "plugins.importexport.sword.displayName"
+msgstr "SWORD Ներմուծման/Արտահանման Ավանդադրման հավելված"
+
+msgid "plugins.generic.sword.authorCustomDepositDescription"
+msgstr ""
+"<p>Դուք կարող եք կամայականորեն նշել SWORD-ին համապատասխանող ավանդային կետ "
+"հետևյալ ձևով: Ցանկության դեպքում նշեք SWORD URL, օգտանուն և գաղտնաբառ ձեր "
+"պահոցում, և ներկայացումը կպահվի:</p>"
+
+msgid "plugins.generic.sword.authorDepositDescription"
+msgstr ""
+"<p>Դուք կարող եք կամայականորեն օգտագործել հետևյալ ձևը` ձեր \""
+"{$submissionTitle}\" ներկայացումը պահելու համար նշված պահոցներից մեկում: "
+"Օգտագործեք ձախակողմյան սյունակի ներքևի վանդակները՝ ընտրելու համար, թե որ "
+"պահոցներում եք ցանկանում ներդնել ձեր ներկայացումը. Յուրաքանչյուր պահոց կարող "
+"է նաև թույլ տալ ձեզ նշելու ավանդադրման կետը բացվող ցուցակից:</p>"
+
+msgid "plugins.generic.sword.depositComplete"
+msgstr "\"{$itemTitle}\" տարրը պահվել է \"{$repositoryName}\" պահոցում:"
+
+msgid "plugins.generic.sword.automaticDepositComplete"
+msgstr ""
+"\"{$itemTitle}\" տարրը ինքնաշխատ կերպով պահվեց \"{$repositoryName}\" "
+"պահոցում:"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Նկարագրություն"
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "Անուն"
+
+msgid "plugins.generic.sword.depositPoints.password.description"
+msgstr ""
+"Եթե այստեղ գաղտնաբառ չնշեք, ապա ձեզ և/կամ հեղինակին կառաջարկվի գաղտնաբառ, "
+"երբ ավանդադրումը կատարվի: Նկատի ունեցեք, որ այս գաղտնաբառը տեսանելի կլինի "
+"բոլոր Կառավարիչներին և կպահվի տվյալների շտեմարանում չգաղտնագրված:"
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>Ավանդադրման կետի տեսակներ:</h4>\n"
+"<p><strong>Ինքնաշխատ</strong>: Ավանդադրումը կատարվում է ինքնաշխատ կերպով: "
+"Նշված է SWORD ավանդի ամբողջական կետը: Պետք է նշվեն օգտվողի անունը և "
+"գաղտնաբառը: Ավանդադրումը կատարվում է ընդունման մասին հեղինակին ծանուցելուց "
+"հետո:<br/>\n"
+"<strong>Կամընտրական; Ճկուն</strong>: Հեղինակը կարող է ընտրել՝ ավանդադրում "
+"կատարել, թե ոչ: Նշված URL-ը ցույց է տալիս սպասարկման փաստաթուղթը, և հեղինակը "
+"կարող է ընտրել, թե կոնկրետ որ ավանդային կետն օգտագործի այդ փաստաթղթից: "
+"Ավանդադրումը կատարվում է ընդունման մասին հեղինակին ծանուցելուց հետո:<br/>\n"
+"<strong>Կամընտրական; Սևեռված</strong>: Հեղինակը կարող է ընտրել՝ ավանդադրում "
+"կատարել, թե ոչ: URL-ը նշում է SWORD ավանդի կոնկրետ կետը: Ավանդադրումը "
+"կատարվում է ընդունման մասին հեղինակին ծանուցելուց հետո:<br/>\n"
+"<strong>Միայն կառավարիչ</strong>: Միայն Կառավարիչը կարող է օգտագործել "
+"ավանդադրման այս կետը: URL-ը ցույց է տալիս սպասարկման փաստաթուղթը: "
+"Ավանդադրումը կատարվում է կառավարիչի կողմից ձեռքով` օգտագործելով Ներմուծման/"
+"Արտահանման միջերեսը:\n"
+"</p>"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "Միայն կառավարիչը"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "Ընտրովի; Սևեռված"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "Ընտրովի; Ճկուն"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Ինքնաշխատ"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "Եթե այս դաշտը դատարկ է թողնվել, այն կպահանջվի ավանդադրում կատարելիս:"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "API բանալի"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "Խմբագրել Ավանդադրման կետը"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "Ստեղծել Ավանդադրման կետ"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "Ավանդադրման կետեր"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "Թույլ տվեք հեղինակին նշել ավանդադրման կետը"
+
+msgid "plugins.generic.sword.settings"
+msgstr "Կարգաբերումներ"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "SWORD հավելվածը միացված է:"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Թույլատրել կառավարիչներին և (ըստ ցանկության) հեղինակներին ավանդադրել "
+"ներկայացումները SWORD համաձայնագրի միջոցով: Նկատի ունեցեք, որ այս փլագինը "
+"պահանջում է Zip ընդլայնում, որը ներկայումս ՉԻ տեղադրված:"
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"Թույլատրել կառավարիչներին և (ըստ ցանկության) հեղինակներին ավանդադրել "
+"ներկայացումները SWORD համաձայնագրի միջոցով"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "SWORD հաճախորդի պլագին"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr ""
+"Ներկայացրեք հեղինակներին նրանց հոդվածի ուղարկման վրայի «Ավանդադրում» կոճակով"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Մուտքն արգելված է)"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Հետևյալ ավանդադրում(ներ)ը հաջողությամբ ավարտվել են:"
