@@ -1,19 +1,20 @@
 # Jordi LC <jordi.lacruz@uab.cat>, 2021.
+# Marc Bria <marc.bria@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-08-04 09:04+0000\n"
-"Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
+"PO-Revision-Date: 2023-04-21 09:49+0000\n"
+"Last-Translator: Marc Bria <marc.bria@gmail.com>\n"
 "Language-Team: Spanish <http://translate.pkp.sfu.ca/projects/"
-"sword-deposit-plugin/locale-keys/es_ES/>\n"
-"Language: es_ES\n"
+"sword-deposit-plugin/locale-keys/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "Módulo SWORD"
@@ -174,3 +175,9 @@ msgstr "Clave API"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Compruebe la URL del punto de depósito."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Acceso denegado)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Mostrar a los autores un botón para \"Depositar\" durante el envío"
