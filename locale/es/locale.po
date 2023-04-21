@@ -1,12 +1,12 @@
-# Jordi LC <jordi.lacruz@uab.cat>, 2021.
+# Jordi LC <jordi.lacruz@uab.cat>, 2021, 2023.
 # Marc Bria <marc.bria@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2023-04-21 09:49+0000\n"
-"Last-Translator: Marc Bria <marc.bria@gmail.com>\n"
+"PO-Revision-Date: 2023-04-22 14:49+0000\n"
+"Last-Translator: Jordi LC <jordi.lacruz@uab.cat>\n"
 "Language-Team: Spanish <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/es/>\n"
 "Language: es\n"
@@ -181,3 +181,15 @@ msgstr "(Acceso denegado)"
 
 msgid "plugins.generic.sword.settings.showDepositButton"
 msgstr "Mostrar a los autores un botón para \"Depositar\" durante el envío"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "Si deja este campo en blanco se le solicitará cuando haga el depósito."
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Descripción"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Los siguientes depósitos se completaron con éxito:"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Recargar"
