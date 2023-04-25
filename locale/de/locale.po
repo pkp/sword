@@ -1,19 +1,19 @@
-# Pia Piontkowitz <pia.piontkowitz@rub.de>, 2021.
+# Pia Piontkowitz <pia.piontkowitz@rub.de>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2021-10-21 11:07+0000\n"
+"PO-Revision-Date: 2023-04-26 13:49+0000\n"
 "Last-Translator: Pia Piontkowitz <pia.piontkowitz@rub.de>\n"
 "Language-Team: German <http://translate.pkp.sfu.ca/projects/"
-"sword-deposit-plugin/locale-keys/de_DE/>\n"
-"Language: de_DE\n"
+"sword-deposit-plugin/locale-keys/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "SWORD-Plug-In"
@@ -69,7 +69,7 @@ msgstr ""
 "<strong>Optional; flexibel</strong>: Der/die Autor/in kann auswählen, ob "
 "archiviert werden soll. Der angegebene URL gibt ein Servicedokument an, und "
 "der/die Autor/in kann aus dem Dokument entscheiden, welcher spezifische "
-"Ablageort genutzt werden soll.  Die Ablage geschieht nach der "
+"Ablageort genutzt werden soll. Die Ablage geschieht nach der "
 "Benachrichtigung des Autors/der Autorin über die Annahme.<br />\n"
 "<strong>Optional; fest</strong>: Der/die Autor/in kann auswählen, ob "
 "archiviert werden soll. Der URL gibt den genauen SWORD-Ablageort an. Die "
@@ -176,3 +176,24 @@ msgstr "Einreichung erforderlich"
 
 msgid "plugins.generic.sword.depositPoints.apikey"
 msgstr "API Key"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Zugriff verweigert)"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Beschreibung"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Neu laden"
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Wenn dieses Feld leer bleibt, wird es angefragt werden, sobald etwas "
+"archiviert wird."
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr ""
+"Autor/innen einen \"Archivieren\" Knopf bei ihren Einreichungen anbieten"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Die folgenden Objekte wurden erfolgreich archiviert:"
