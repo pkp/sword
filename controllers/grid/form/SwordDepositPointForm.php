@@ -11,7 +11,21 @@
  * @brief Form to create and modify deposit points
  */
 
-import('lib.pkp.classes.form.Form');
+namespace APP\plugins\generic\sword\controllers\grid\form;
+
+use PKP\form\Form;
+use PKP\db\DAORegistry;
+use PKP\form\validation\FormValidatorPost;
+use PKP\form\validation\FormValidatorCSRF;
+use PKP\form\validation\FormValidatorLocale;
+use PKP\form\validation\FormValidator;
+use PKP\form\validation\FormValidatorUrl;
+
+use APP\template\TemplateManager;
+
+use APP\plugins\generic\sword\SwordPlugin;
+use APP\plugins\generic\sword\classes\DepositPoint;
+use APP\plugins\generic\sword\classes\DepositPointsHelper;
 
 class SwordDepositPointForm extends Form {
 	/** @var int Context ID */
@@ -103,7 +117,6 @@ class SwordDepositPointForm extends Form {
 		$plugin = $this->_plugin;
 
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
-		$plugin->import('classes.DepositPoint');
 
 		$depositPoint = null;
 		if (isset($this->_depositPointId)) {
@@ -122,7 +135,6 @@ class SwordDepositPointForm extends Form {
 			case SWORD_DEPOSIT_TYPE_MANAGER:
 				// This deposit point specifies a service document URL.
 				// Allow resolution of the actual URL using the SWORD auto-discovery mechanism.
-				$this->_plugin->import('classes.DepositPointsHelper');
 				$depositPoint->setSwordUrl(DepositPointsHelper::resolveServiceDocumentUrl($this->getData('swordUrl')));
 				break;
 			default:

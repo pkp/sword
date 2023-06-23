@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/DepositPointDAO.inc.php
+ * @file classes/DepositPointDAO.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,12 @@
  * @brief Operations for retrieving and modifying DepositPoint objects.
  */
 
-import('lib.pkp.classes.db.DAO');
+namespace APP\plugins\generic\sword\classes;
+
+use APP\plugins\generic\sword\classes\DepositPoint;
+use APP\plugins\generic\sword\SwordPlugin;
+
+use PKP\db\DAO;
 
 class DepositPointDAO extends DAO {
 	/** @var SwordPlugin reference to SWORD plugin */
@@ -31,7 +36,6 @@ class DepositPointDAO extends DAO {
 	 * @return DepositPoint
 	 */
 	public function newDataObject() {
-		$this->_plugin->import('classes.DepositPoint');
 		return new DepositPoint();
 	}
 
@@ -256,7 +260,8 @@ class DepositPointDAO extends DAO {
 	 * Get the ID of the last inserted deposit point.
 	 * @return int
 	 */
-	public function getInsertId() {
+	protected function getInsertId(): int
+	{
 		return $this->_getInsertId('deposit_points', 'deposit_point_id');
 	}
 }

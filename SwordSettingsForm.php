@@ -1,7 +1,7 @@
 <?php
 
 /**
-* @file SwordSettingsForm.inc.php
+* @file SwordSettingsForm.php
 *
 * Copyright (c) 2003-2021 Simon Fraser University
 * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,15 @@
 * @brief Form for SWORD plugin settings
 */
 
-import('lib.pkp.classes.form.Form');
+namespace APP\plugins\generic\sword;
+
+use PKP\form\Form;
+use PKP\context\Context;
+
+use APP\template\TemplateManager;
+
+use APP\plugins\generic\sword\SwordPlugin;
+
 
 class SwordSettingsForm extends Form {
 	/** @var $_context Context */

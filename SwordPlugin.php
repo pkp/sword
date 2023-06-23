@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file SwordPlugin.inc.php
+ * @file SwordPlugin.php
  *
  * Copyright (c) 2013-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,24 @@
  * @brief SWORD deposit plugin class
  */
 
-import('lib.pkp.classes.plugins.GenericPlugin');
+namespace APP\plugins\generic\sword;
+
+use PKP\mail\SubmissionMailTemplate;
+use PKP\plugins\GenericPlugin;
+use PKP\linkAction\request\RedirectAction;
+use PKP\plugins\Hook;
+use PKP\db\DAORegistry;
+use PKP\linkAction\LinkAction;
+use PKP\core\Registry;
+
+use APP\template\TemplateManager;
+
+use APP\plugins\generic\sword\classes\DepositPointDAO;
+use APP\plugins\generic\sword\classes\PKPSwordDeposit;
+use APP\plugins\generic\sword\SwordImportExportPlugin;
+use APP\plugins\generic\sword\classes\SwordSchemaMigration;
+use APP\plugins\generic\sword\controllers\grid\SwordDepositPointsGridHandler;
+use APP\plugins\generic\sword\controllers\grid\SubmissionListGridHandler;
 
 define('SWORD_DEPOSIT_TYPE_AUTOMATIC',		1);
 define('SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION',	2);
@@ -26,20 +43,31 @@ class SwordPlugin extends GenericPlugin {
 	 */
 	public function register($category, $path, $mainContextId = null) {
 		if (parent::register($category, $path, $mainContextId)) {
-			HookRegistry::register('PluginRegistry::loadCategory', array(&$this, 'callbackLoadCategory'));
+			Hook::add('PluginRegistry::loadCategory', array(&$this, 'callbackLoadCategory'));
 			if ($this->getEnabled()) {
-				$this->import('classes.DepositPointDAO');
 				$depositPointDao = new DepositPointDAO($this);
-				DAORegistry::registerDAO('DepositPointDAO', $depositPointDao);
+				DAORegistry::registerDao('DepositPointDAO', $depositPointDao);
 
-				HookRegistry::register('TemplateManager::display', [$this, 'callbackDisplayTemplate']);
+				Hook::add('TemplateManager::display', [$this, 'callbackDisplayTemplate']);
 
-				HookRegistry::register('LoadHandler', array($this, 'callbackSwordLoadHandler'));
-				HookRegistry::register('Template::Settings::website', array($this, 'callbackSettingsTab'));
-				HookRegistry::register('LoadComponentHandler', array($this, 'setupGridHandler'));
-				HookRegistry::register('EditorAction::recordDecision', array($this, 'callbackAuthorDeposits'));
+				Hook::add('LoadHandler', array($this, 'callbackSwordLoadHandler'));
+				Hook::add('Template::Settings::website', array($this, 'callbackSettingsTab'));
+				Hook::add('LoadComponentHandler', array($this, 'setupGridHandler'));
+				Hook::add('EditorAction::recordDecision', array($this, 'callbackAuthorDeposits'));
+
 				// Preprints
-				HookRegistry::register('Publication::publish', array($this, 'callbackPublish'));
+				Hook::add('Publication::publish', array($this, 'callbackPublish'));
+
+				// Extend the submission schema to include the SWORD statement IRI
+				Hook::add('Schema::get::submission', function ($hookName, $args) {
+					$schema = &$args[0];
+
+					$schema->properties->swordStatementIri = (object)[
+						'type' => 'string',
+						'apiSummary' => false,
+						'validation' => ['nullable']
+					];
+				});
 			}
 			return true;
 		}
@@ -51,7 +79,7 @@ class SwordPlugin extends GenericPlugin {
 		$template = $args[1];
 		if ($template == 'authorDashboard/authorDashboard.tpl') {
 			$request = Application::get()->getRequest();
-	                $journal = $request->getJournal();
+			$journal = $request->getJournal();
 			if ($this->getSetting($journal->getId(), 'showDepositButton')) {
 				$templateMgr->registerFilter("output", [$this, 'authorDashboardFilter']);
 			}
@@ -108,7 +136,6 @@ class SwordPlugin extends GenericPlugin {
 		$user = $request->getUser();
 		$context = $request->getContext();
 		$dispatcher = $request->getDispatcher();
-		$this->import('classes.PKPSwordDeposit');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		$sendDepositNotification = $this->getSetting($context->getId(), 'allowAuthorSpecify') ? true : false;
@@ -145,7 +172,7 @@ class SwordPlugin extends GenericPlugin {
 						])
 					]
 				);
-			} catch (Exception $e) {
+			} catch (\Exception $e) {
 				$notificationMgr->createTrivialNotification(
 					$user->getId(),
 					NOTIFICATION_TYPE_ERROR,
@@ -173,7 +200,6 @@ class SwordPlugin extends GenericPlugin {
 				$contactName = $context->getSetting('contactName');
 				$contactEmail = $context->getSetting('contactEmail');
 
-				import('lib.pkp.classes.mail.SubmissionMailTemplate');
 				$mail = new SubmissionMailTemplate($submission, 'SWORD_DEPOSIT_NOTIFICATION', null, $context, true);
 
 				$mail->setFrom($contactEmail, $contactName);
@@ -202,7 +228,6 @@ class SwordPlugin extends GenericPlugin {
 		$plugins =& $args[1];
 		switch ($category) {
 			case 'importexport':
-				$this->import('SwordImportExportPlugin');
 				$importExportPlugin = new SwordImportExportPlugin($this);
 				$plugins[$importExportPlugin->getSeq()][$importExportPlugin->getPluginPath()] =& $importExportPlugin;
 				break;
@@ -216,27 +241,17 @@ class SwordPlugin extends GenericPlugin {
 	public function callbackSwordLoadHandler($hookName, $args) {
 		// Check the page.
 		$page = $args[0];
-		if ($page !== 'sword') return;
-
-		// Check the operation.
 		$op = $args[1];
+		$handler =& $args[3];
 
-		if ($op == 'swordSettings') { // settings tab
-			define('HANDLER_CLASS', 'SwordSettingsTabHandler');
-			$args[2] = $this->getPluginPath() . '/' . 'SwordSettingsTabHandler.inc.php';
+		if ($page === 'sword' && $op == 'swordSettings') { // settings tab
+			$handler = new SwordSettingsTabHandler($this);
+			return true;
+		} elseif ($page === 'sword' && in_array($op, ['depositPoints', 'performManagerOnlyDeposit', 'index'])) {
+			$handler = new SwordHandler($this);
+			return true;
 		}
-		else {
-			$publicOps = array(
-				'depositPoints',
-				'performManagerOnlyDeposit',
-				'index',
-			);
-
-			if (!in_array($op, $publicOps)) return;
-
-			define('HANDLER_CLASS', 'SwordHandler');
-			$args[2] = $this->getPluginPath() . '/' . 'SwordHandler.inc.php';
-		}
+		return false;
 	}
 
 	/**
@@ -263,14 +278,14 @@ class SwordPlugin extends GenericPlugin {
 	 */
 	public function setupGridHandler($hookName, $params) {
 		$component = $params[0];
+		$componentInstance =& $params[2];
 		if ($component == 'plugins.generic.sword.controllers.grid.SwordDepositPointsGridHandler') {
 			import($component);
-			SwordDepositPointsGridHandler::setPlugin($this);
+			$componentInstance = new SwordDepositPointsGridHandler($this);
 			return true;
 		}
 		if ($component == 'plugins.generic.sword.controllers.grid.SubmissionListGridHandler') {
-			import($component);
-			SubmissionListGridHandler::setPlugin($this);
+			$componentInstance = new SubmissionListGridHandler($this);
 			return true;
 		}
 		return false;
@@ -298,7 +313,6 @@ class SwordPlugin extends GenericPlugin {
 	public function getActions($request, $verb) {
 		$router = $request->getRouter();
 		$dispatcher = $request->getDispatcher();
-		import('lib.pkp.classes.linkAction.request.RedirectAction');
 		return array_merge(
 			// Settings
 			$this->getEnabled()?array(
@@ -340,7 +354,6 @@ class SwordPlugin extends GenericPlugin {
 	 * @copydoc PKPPlugin::getInstallMigration()
 	 */
 	function getInstallMigration() {
-		$this->import('classes.SwordSchemaMigration');
 		return new SwordSchemaMigration();
 	}
 

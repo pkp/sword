@@ -1,7 +1,7 @@
 <?php
 
 /**
-* @file AuthorDepositForm.inc.php
+* @file AuthorDepositForm.php
 *
 * Copyright (c) 2003-2021 Simon Fraser University
 * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,13 @@
 * @brief Form to perform an author's SWORD deposit(s)
 */
 
-import('lib.pkp.classes.form.Form');
+namespace APP\plugins\generic\sword;
+
+use PKP\form\Form;
+
+use APP\plugins\generic\sword\PKPSwordDeposit;
+use APP\plugins\generic\sword\classes\DepositPoint;
+use APP\plugins\generic\sword\classes\DepositPointsHelper;
 
 class AuthorDepositForm extends Form {
 	/** @var $_context Context */
@@ -80,7 +86,6 @@ class AuthorDepositForm extends Form {
 	public function execute(...$functionArgs) {
 		parent::execute(...$functionArgs);
 		$request = $functionArgs[0];
-		$this->getSwordPlugin()->import('classes.PKPSwordDeposit');
 		
 		$deposit = new PKPSwordDeposit($this->_submission);
 		$deposit->setMetadata($request);
@@ -101,7 +106,6 @@ class AuthorDepositForm extends Form {
 		}
 		
 		$url = '';
-		$this->getSwordPlugin()->import('classes.DepositPoint');
 		$depositPoints = $this->getData('depositPoint');
 		$depositableDepositPoints = $this->_getDepositableDepositPoints($this->_context);
 		foreach ($depositableDepositPoints as $key => $depositPoint) {
@@ -130,9 +134,7 @@ class AuthorDepositForm extends Form {
 	 */
 	protected function _getDepositableDepositPoints($context) {
 		$list = [];
-		$this->getSwordPlugin()->import('classes.DepositPoint');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
-		$this->getSwordPlugin()->import('classes.DepositPointsHelper');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		foreach ($depositPoints as $depositPoint) {
 			if (!in_array($depositPoint->getType(), [SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION, SWORD_DEPOSIT_TYPE_OPTIONAL_FIXED]))

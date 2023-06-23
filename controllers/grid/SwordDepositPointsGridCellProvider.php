@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file controllers/grid/SwordDepositPointsGridCellProvider.inc.php
+ * @file controllers/grid/SwordDepositPointsGridCellProvider.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2000-2021 John Willinsky
@@ -11,8 +11,10 @@
  * @brief Class for a cell provider to display information about deposit point
  */
 
-import('lib.pkp.classes.controllers.grid.GridCellProvider');
-import('lib.pkp.classes.linkAction.request.RedirectAction');
+namespace APP\plugins\generic\sword\controllers\grid;
+
+use PKP\controllers\grid\GridCellProvider;
+use PKP\linkAction\request\RedirectAction;
 
 class SwordDepositPointsGridCellProvider extends GridCellProvider {
 	/**

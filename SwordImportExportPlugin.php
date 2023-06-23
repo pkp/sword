@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file SwordImportExportPlugin.inc.php
+ * @file SwordImportExportPlugin.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,17 @@
  * @brief Sword deposit plugin
  */
 
-import('lib.pkp.classes.plugins.ImportExportPlugin');
+namespace APP\plugins\generic\sword;
+
+use PKP\plugins\ImportExportPlugin;
+use PKP\core\JSONMessage;
+use PKP\db\DAORegistry;
+
+use APP\template\TemplateManager;
+use APP\facades\Repo;
+
+use APP\plugins\generic\sword\classes\DepositPoint;
+use APP\plugins\generic\sword\classes\PKPSwordDeposit;
 
 class SwordImportExportPlugin extends ImportExportPlugin {
 	/** @var SwordPlugin Parent plugin */
@@ -89,7 +99,6 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 		switch (array_shift($args)) {
 			case 'index':
 			case '':
-				$this->getSwordPlugin()->import('classes.DepositPoint');
 				$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 				$depositPoints = $depositPointDao->getByContextId($context->getId(), SWORD_DEPOSIT_TYPE_MANAGER);
 				$depositPointsData = ['' => __('common.select')];
@@ -111,7 +120,7 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 					[
 						'apiUrl' => $apiUrl,
 						'count' => 100,
-						'getParams' => new stdClass(),
+						'getParams' => new \stdClass(),
 						'lazyLoad' => true,
 					]
 				);
@@ -137,8 +146,7 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 
 			case 'deposit':
 				$context = $request->getContext();
-				$submissionDao = DAORegistry::getDAO('SubmissionDAO');
-				$this->getSwordPlugin()->import('classes.PKPSwordDeposit');
+
 				$depositPointId = $request->getUserVar('depositPoint');
 				$password = $request->getUserVar('swordPassword');
 				if ($password == SWORD_PASSWORD_SLUG) {
@@ -177,8 +185,8 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 				}
 				else {
 					foreach ($submissionIds as $submissionId) {
-						$submission = $submissionDao->getById($submissionId);
-						if ($submission->getContextId() != $request->getContext()->getId()) {
+						$submission = Repo::submission()->get($submissionId, $request->getContext()->getId());
+						if (!$submission) {
 							continue;
 						}
 						try {
@@ -202,16 +210,14 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 							$data = $submission->getAllData();
 							$ssi = [];
 							if (isset($data['swordStatementIri'])) {
-								$ssi = unserialize($data['swordStatementIri'], true);
+								$ssi = unserialize($data['swordStatementIri']);
 							}
 							$ssi[$depositPointId] = $statementHref;
-							$submission->setData('swordStatementIri', serialize($ssi));
-							$submissionDao->updateDataObjectSettings(
-								'submission_settings', $submission, ['submission_id' => $submissionId]);
+							Repo::submission()->edit($submission, ['swordStatementIri' => serialize($ssi)]);
 							$deposit->cleanup();
 							$depositIds[] = $response->sac_id;
 						}
-						catch (Exception $e) {
+						catch (\Exception $e) {
 							$errors[] = [
 								'title' => $submission->getLocalizedTitle(),
 								'message' => $e->getMessage(),

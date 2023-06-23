@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/sword/PKPSwordDeposit.inc.php
+ * @file classes/sword/PKPSwordDeposit.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -13,9 +13,20 @@
  * @brief Class providing a SWORD deposit wrapper for submissions
  */
 
+namespace APP\plugins\generic\sword\classes;
+
+use PKP\submissionFile\SubmissionFile;
+use PKP\file\FileManager;
+use PKP\db\DAORegistry;
+
+use APP\facades\Repo;
+use APP\core\Application;
+use APP\core\Services;
+
+use APP\plugins\generic\sword\classes\PKPPackagerMetsSwap;
+
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappentry.php';
-require_once dirname(__FILE__) . '/PKPPackagerMetsSwap.php';
 
 class PKPSwordDeposit {
 	/** @var SWORD deposit METS package */
@@ -58,15 +69,15 @@ class PKPSwordDeposit {
 			'deposit.zip'
 		);
 
-		$journalDao = DAORegistry::getDAO('JournalDAO');
-		$this->_context = $journalDao->getById($submission->getContextId());
+		$application = Application::get();
+		$publication = $submission->getCurrentPublication();
 
-		$sectionDao = DAORegistry::getDAO('SectionDAO');
-		$this->_section = $sectionDao->getById($submission->getSectionId());
+		$this->_context = $application->getContextDao()->getById($submission->getContextId());
 
-		if (method_exists($submission, 'getIssueId')) {
-			$issueDao = DAORegistry::getDAO('IssueDAO');
-			$this->_issue = $issueDao->getById($submission->getIssueId());
+		$this->_section = Repo::section()->get($publication->getData('sectionId'));
+
+		if ($application->getName() === 'ojs2') {
+			$this->_issue = Repo::issue()->get($publication->getData('issueId'));
 		}
 	}
 
@@ -121,17 +132,17 @@ class PKPSwordDeposit {
 	 * @return boolean true iff a file was successfully added to the package
 	 */
 	public function addEditorial() {
-		import('lib.pkp.classes.submission.SubmissionFile');
 		$fileStages = [
-			SUBMISSION_FILE_PRODUCTION_READY,
-			SUBMISSION_FILE_COPYEDIT,
-			SUBMISSION_FILE_REVIEW_FILE,
-			SUBMISSION_FILE_SUBMISSION
+			SubmissionFile::SUBMISSION_FILE_PRODUCTION_READY,
+			SubmissionFile::SUBMISSION_FILE_COPYEDIT,
+			SubmissionFile::SUBMISSION_FILE_REVIEW_FILE,
+			SubmissionFile::SUBMISSION_FILE_SUBMISSION
 		];
-		$submissionFiles = iterator_to_array(Services::get('submissionFile')->getMany([
-			'submissionIds' => [$this->_submission->getId()],
-			'fileStages' => $fileStages,
-		]));
+		$submissionFiles = iterator_to_array(Repo::submissionFile()->getCollector()
+			->filterBySubmissionIds([$this->_submission->getId()])
+			->filterByFileStages($fileStages)
+			->getMany()
+		);
 		// getBySubmission orders results by id ASC, let's reverse the array to have recent files first
 		$submissionFiles = array_reverse($submissionFiles, true);
 		$files = [];
@@ -172,8 +183,7 @@ class PKPSwordDeposit {
 			throw new Exception(__('plugins.generic.sword.badDepositPointUrl'));
 		}
 		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
-		$client = new SWORDAPPClient($clientOpts);
-
+		$client = new \SWORDAPPClient($clientOpts);
 		$response = $client->deposit(
 			$url, $username, $password,
 			'',
@@ -181,7 +191,6 @@ class PKPSwordDeposit {
 			'http://purl.org/net/sword/package/METSDSpaceSIP',
 			'application/zip', false, true
 		);
-
 		if ($response->sac_status > 299)
 			throw new Exception("Status: $response->sac_status , summary: $response->sac_summary");
 
@@ -192,7 +201,6 @@ class PKPSwordDeposit {
 	 * Clean up after a deposit, i.e. removing all created files.
 	 */
 	public function cleanup() {
-		import('lib.pkp.classes.file.FileManager');
 		$fileManager = new FileManager();
 		$fileManager->rmtree($this->_outPath);
 	}

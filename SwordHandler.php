@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file SwordHandler.inc.php
+ * @file SwordHandler.php
  *
  * Copyright (c) 2003-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,21 @@
  * @brief Handles request for sword plugin.
  */
 
-import('classes.handler.Handler');
+namespace APP\plugins\generic\sword;
+
+use PKP\security\authorization\ContextAccessPolicy;
+use PKP\core\JSONMessage;
+use PKP\plugins\PluginRegistry;
+use PKP\security\Role;
+use PKP\db\DAORegistry;
+use PKP\security\Validation;
+
+use APP\handler\Handler;
+
+use APP\plugins\generic\sword\classes\DepositPoint;
+use APP\plugins\generic\sword\classes\DepositPointsHelper;
+use APP\plugins\generic\sword\DepositPointForm;
+
 class SwordHandler extends Handler {
 	/** @var SwordPlugin Sword plugin */
 	protected $_parentPlugin = null;
@@ -24,11 +38,11 @@ class SwordHandler extends Handler {
 		// set reference to markup plugin
 		$this->_parentPlugin = PluginRegistry::getPlugin('generic', 'swordplugin');
 		$this->addRoleAssignment(
-			[ROLE_ID_MANAGER],
+			[Role::ROLE_ID_MANAGER],
 			['performManagerOnlyDeposit']
 		);
 		$this->addRoleAssignment(
-			[ROLE_ID_MANAGER, ROLE_ID_AUTHOR],
+			[Role::ROLE_ID_MANAGER, Role::ROLE_ID_AUTHOR],
 			['index', 'depositPoints']
 		);
 	}
@@ -37,7 +51,6 @@ class SwordHandler extends Handler {
 	 * @copydoc PKPHandler::authorize()
 	 */
 	function authorize($request, &$args, $roleAssignments) {
-		import('lib.pkp.classes.security.authorization.ContextAccessPolicy');
 		$this->addPolicy(new ContextAccessPolicy($request, $roleAssignments));
 		return parent::authorize($request, $args, $roleAssignments);
 	}
@@ -60,7 +73,6 @@ class SwordHandler extends Handler {
 	public function depositPoints($args, $request) {
 		$context = $request->getContext();
 		$depositPointId = $request->getUserVar('depositPointId');
-		$this->getSwordPlugin()->import('classes.DepositPoint');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoint = $depositPointDao->getById($depositPointId, $context->getId());
 		if (!$depositPoint) {
@@ -72,7 +84,6 @@ class SwordHandler extends Handler {
 			return new JSONMessage(false);
 		}
 
-		$this->getSwordPlugin()->import('classes.DepositPointsHelper');
 		$collections = DepositPointsHelper::loadCollectionsFromServer(
 			$depositPoint->getSwordUrl(),
 			$depositPoint->getSwordUsername() ?: $request->getUserVar('username'),
@@ -123,7 +134,6 @@ class SwordHandler extends Handler {
 		}
 
 		$swordPlugin = $this->getSwordPlugin();
-		$swordPlugin->import('AuthorDepositForm');
 		$authorDepositForm = new AuthorDepositForm($swordPlugin, $context, $submission);
 
 		if ($save) {
@@ -134,7 +144,6 @@ class SwordHandler extends Handler {
 					$templateMgr = TemplateManager::getManager($request);
 					$results = [];
 					$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
-					$this->getSwordPlugin()->import('classes.DepositPointsHelper');
 					$depositPoints = iterator_to_array($depositPointDao->getByContextId($context->getId()));
 					foreach ($responses as $url => $response) {
 						// Identify the deposit point this result relates to
@@ -155,7 +164,7 @@ class SwordHandler extends Handler {
 					$templateMgr->assign('results', $results);
 					$templateMgr->display($this->_parentPlugin->getTemplateResource('results.tpl'));
 					return;
-				} catch (Exception $e) {
+				} catch (\Exception $e) {
 					$notificationManager = new NotificationManager();
 					$notificationManager->createTrivialNotification(
 						$user->getId(),

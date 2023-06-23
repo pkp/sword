@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/migration/SwordSchemaMigration.inc.php
+ * @file classes/SwordSchemaMigration.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2000-2021 John Willinsky
@@ -10,6 +10,8 @@
  * @class SwordSchemaMigration
  * @brief Describe database table structures.
  */
+
+namespace APP\plugins\generic\sword\classes;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;

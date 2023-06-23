@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/DepositPoint.inc.php
+ * @file classes/DepositPoint.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -10,6 +10,10 @@
  * @class DepositPoint
  * @brief Deposit point entity.
  */
+
+namespace APP\plugins\generic\sword\classes;
+
+use PKP\core\DataObject;
 
 class DepositPoint extends DataObject {
 	/**

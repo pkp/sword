@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file SwordSettingsTabHandler.inc.php
+ * @file SwordSettingsTabHandler.php
  *
  * Copyright (c) 2003-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,20 @@
  * @brief Responds to requests for SWORD settings page
  */
 
-import('classes.handler.Handler');
+namespace APP\plugins\generic\sword;
+
+use PKP\security\authorization\ContextAccessPolicy;
+use PKP\db\DAORegistry;
+use PKP\plugins\PluginRegistry;
+use PKP\security\Role;
+use PKP\i18n\Locale;
+use PKP\core\JSONMessage;
+
+use APP\handler\Handler;
+use APP\template\TemplateManager;
+
+use APP\plugins\generic\sword\SwordSettingsForm;
+use APP\plugins\generic\sword\SwordPlugin;
 
 class SwordSettingsTabHandler extends Handler {
 	/** @var SwordPlugin Reference to SWORD plugin */
@@ -20,14 +33,14 @@ class SwordSettingsTabHandler extends Handler {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct(SwordPlugin $plugin) {
 		parent::__construct();
 
-		$this->_plugin = PluginRegistry::getPlugin('generic', 'swordplugin');
+		$this->_plugin = $plugin;
 
 		$this->addRoleAssignment(
-			array(ROLE_ID_MANAGER),
-			array('swordSettings')
+			[Role::ROLE_ID_MANAGER],
+			['swordSettings']
 		);
 	}
 
@@ -35,7 +48,6 @@ class SwordSettingsTabHandler extends Handler {
 	 * @copydoc PKPHandler::authorize()
 	 */
 	function authorize($request, &$args, $roleAssignments) {
-		import('lib.pkp.classes.security.authorization.ContextAccessPolicy');
 		$this->addPolicy(new ContextAccessPolicy($request, $roleAssignments));
 		return parent::authorize($request, $args, $roleAssignments);
 	}
@@ -49,10 +61,8 @@ class SwordSettingsTabHandler extends Handler {
 	 */
 	public function swordSettings($args, $request) {
 		$context = $request->getContext();
-		AppLocale::requireComponents(LOCALE_COMPONENT_APP_COMMON,  LOCALE_COMPONENT_PKP_MANAGER);
 		$templateMgr = TemplateManager::getManager($request);
 
-		$this->_plugin->import('SwordSettingsForm');
 		$form = new SwordSettingsForm($this->_plugin, $context);
 		if ($request->getUserVar('save')) {
 			$form->readInputData();

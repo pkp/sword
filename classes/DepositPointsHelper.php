@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/DepositPointsHelper.inc.php
+ * @file classes/DepositPointsHelper.php
  *
  * Copyright (c) 2003-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -10,6 +10,10 @@
  * @class DepositPointsHelper
  * @brief Deposit points Helper class
  */
+
+namespace APP\plugins\generic\sword\classes;
+
+use APP\core\Application;
 
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 
@@ -24,7 +28,7 @@ class DepositPointsHelper {
 			if (preg_match('/<html:link\s+rel="(sword|http:\/\/purl.org\/net\/sword\/discovery\/service-document)"\s+href="([^"]+)"\s*[\/]?>/i', $response->getBody(), $matches)) {error_log('SUCCESSFULLY RESOLVED ' . $matches[2]);
 				return $matches[2];
 			}
-		} catch (Throwable $e) {
+		} catch (\Throwable $e) {
 			// In case of any error, just return the provided URL.
 			return $url;
 		}
@@ -40,7 +44,7 @@ class DepositPointsHelper {
 	public static function loadCollectionsFromServer($url, $username, $password, $apikey = null) {
 		$depositPoints = [];
 		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
-		$client = new SWORDAPPClient($clientOpts);
+		$client = new \SWORDAPPClient($clientOpts);
 		$doc = $client->servicedocument($url, $username, $password, '');
 		if ($doc->sac_status != 200) {
 			return ['#' => __('plugins.generic.sword.accessDenied')];

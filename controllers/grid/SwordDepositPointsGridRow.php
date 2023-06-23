@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file controllers/grid/SwordDepositPointsGridRow.inc.php
+ * @file controllers/grid/SwordDepositPointsGridRow.php
  *
  * Copyright (c) 2014-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,7 +11,12 @@
  * @brief Handle custom blocks grid row requests.
  */
 
-import('lib.pkp.classes.controllers.grid.GridRow');
+namespace APP\plugins\generic\sword\controllers\grid;
+
+use PKP\controllers\grid\GridRow;
+use PKP\linkAction\request\AjaxModal;
+use PKP\linkAction\request\RemoteActionConfirmationModal;
+use PKP\linkAction\LinkAction;
 
 class SwordDepositPointsGridRow extends GridRow {
 	/**
@@ -25,7 +30,6 @@ class SwordDepositPointsGridRow extends GridRow {
 			$router = $request->getRouter();
 
 			// edit action
-			import('lib.pkp.classes.linkAction.request.AjaxModal');
 			$this->addAction(
 				new LinkAction(
 					'editDepositPoint',
@@ -40,7 +44,6 @@ class SwordDepositPointsGridRow extends GridRow {
 			);
 
 			// delete action
-			import('lib.pkp.classes.linkAction.request.RemoteActionConfirmationModal');
 			$this->addAction(
 				new LinkAction(
 					'delete',

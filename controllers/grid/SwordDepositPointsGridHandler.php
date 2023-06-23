@@ -11,29 +11,34 @@
  * @brief Handle sword deposit points grid requests.
  */
 
-import('lib.pkp.classes.controllers.grid.GridHandler');
-import('plugins.generic.sword.controllers.grid.SwordDepositPointsGridRow');
-import('plugins.generic.sword.controllers.grid.SwordDepositPointsGridCellProvider');
+namespace APP\plugins\generic\sword\controllers\grid;
+
+use PKP\core\JSONMessage;
+use PKP\security\authorization\ContextAccessPolicy;
+use PKP\controllers\grid\GridHandler;
+use PKP\linkAction\request\AjaxModal;
+use PKP\security\Role;
+use PKP\db\DAORegistry;
+use PKP\linkAction\LinkAction;
+use PKP\controllers\grid\GridColumn;
+use PKP\db\DAO;
+
+use APP\plugins\generic\sword\SwordPlugin;
+use APP\plugins\generic\sword\controllers\grid\form\SwordDepositPointForm;
+use APP\plugins\generic\sword\classes\DepositPoint;
 
 class SwordDepositPointsGridHandler extends GridHandler {
 	/** @var SwordPlugin The SWORD plugin */
-	public static $plugin;
-	
-	/**
-	 * Set SWORD plugin.
-	 * @param $plugin SwordPlugin
-	 */
-	static public function setPlugin($plugin) {
-		self::$plugin = $plugin;
-	}
+	public SwordPlugin $_plugin;
 	
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	public function __construct(SwordPlugin $plugin) {
 		parent::__construct();
+		$this->_plugin = $plugin;
 		$this->addRoleAssignment(
-			[ROLE_ID_MANAGER],
+			[Role::ROLE_ID_MANAGER],
 			['index', 'fetchGrid', 'fetchRow', 'addDepositPoint', 'editDepositPoint', 'updateDepositPoint', 'delete']
 		);
 	}
@@ -42,7 +47,6 @@ class SwordDepositPointsGridHandler extends GridHandler {
 	 * @copydoc PKPHandler::authorize()
 	 */
 	function authorize($request, &$args, $roleAssignments) {
-		import('lib.pkp.classes.security.authorization.ContextAccessPolicy');
 		$this->addPolicy(new ContextAccessPolicy($request, $roleAssignments));
 		return parent::authorize($request, $args, $roleAssignments);
 	}
@@ -59,14 +63,12 @@ class SwordDepositPointsGridHandler extends GridHandler {
 		$this->setEmptyRowText('plugins.generic.sword.manager.noneCreated');
 		
 		// Get the pages and add the data to the grid
-		self::$plugin->import('classes.DepositPoint');
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		$this->setGridDataElements($depositPoints);
 
 		// Add grid-level actions
 		$router = $request->getRouter();
-		import('lib.pkp.classes.linkAction.request.AjaxModal');
 		$this->addAction(
 			new LinkAction(
 				'addDepositPoint',
@@ -149,8 +151,7 @@ class SwordDepositPointsGridHandler extends GridHandler {
 		$depositPointId = $request->getUserVar('depositPointId');
 		$context = $request->getContext();
 		$this->setupTemplate($request);
-		self::$plugin->import('controllers.grid.form.SwordDepositPointForm');
-		$swordDepositPointForm = new SwordDepositPointForm(self::$plugin, $context->getId(), $depositPointId);
+		$swordDepositPointForm = new SwordDepositPointForm($this->_plugin, $context->getId(), $depositPointId);
 		$swordDepositPointForm->initData();
 		return new JSONMessage(true, $swordDepositPointForm->fetch($request));
 	}
@@ -166,8 +167,7 @@ class SwordDepositPointsGridHandler extends GridHandler {
 		$context = $request->getContext();
 		$this->setupTemplate($request);
 
-		self::$plugin->import('controllers.grid.form.SwordDepositPointForm');
-		$swordDepositPointForm = new SwordDepositPointForm(self::$plugin, $context->getId(), $depositPointId);
+		$swordDepositPointForm = new SwordDepositPointForm($this->_plugin, $context->getId(), $depositPointId);
 		$swordDepositPointForm->readInputData($request);
 
 		if ($swordDepositPointForm->validate()) {

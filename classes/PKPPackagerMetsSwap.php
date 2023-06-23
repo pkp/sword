@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file classes/PKPPackagerMetsSwap.inc.php
+ * @file classes/PKPPackagerMetsSwap.php
  *
  * Copyright (c) 2013-2021 Simon Fraser University
  * Copyright (c) 2003-2021 John Willinsky
@@ -11,9 +11,11 @@
  * @brief Extends the SwordApp client library's PackagerMetsSwap class
  */
 
+namespace APP\plugins\generic\sword\classes;
+
 require_once dirname(__FILE__) . '/../libs/swordappv2/packager_mets_swap.php';
 
-class PKPPackagerMetsSwap extends PackagerMetsSwap{
+class PKPPackagerMetsSwap extends \PackagerMetsSwap {
 
 	public $sac_name_records = [];
 
