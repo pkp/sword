@@ -3,8 +3,8 @@
 /**
  * @file classes/DepositPointDAO.php
  *
- * Copyright (c) 2014-2021 Simon Fraser University
- * Copyright (c) 2003-2021 John Willinsky
+ * Copyright (c) 2014-2024 Simon Fraser University
+ * Copyright (c) 2003-2024 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class DepositPointDAO
@@ -254,14 +254,5 @@ class DepositPointDAO extends DAO {
 			);
 			$i++;
 		}
-	}
-
-	/**
-	 * Get the ID of the last inserted deposit point.
-	 * @return int
-	 */
-	protected function getInsertId(): int
-	{
-		return $this->_getInsertId('deposit_points', 'deposit_point_id');
 	}
 }
