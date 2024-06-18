@@ -1,0 +1,192 @@
+# Mahmut  VURAL <mahmut.vural@outlook.com>, 2024.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2024-01-05 14:39+0000\n"
+"Last-Translator: Mahmut  VURAL <mahmut.vural@outlook.com>\n"
+"Language-Team: Kyrgyz <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/ky/>\n"
+"Language: ky\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18.2\n"
+
+msgid "plugins.generic.sword.displayName"
+msgstr "Модуль «Клиент SWORD»"
+
+msgid "plugins.generic.sword.description"
+msgstr ""
+"Журналдын жетекчилерине жана (зарыл болсо) авторлорго SWORD протоколун "
+"колдонуу менен макалаларды сактоого мүмкүндүк берет"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"Журналдын жетекчилерине жана (зарыл болсо) авторлорго SWORD протоколун "
+"колдонуу менен макалаларды сактоого мүмкүндүк берет. Сураныч, бул модуль Zip "
+"PHP кеңейтүүсүн талап кыларын эске алыңыз, ал учурда орнотулбаган."
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Бул талаа бош калтырылса, депозитти качан салуу керектиги жөнүндө маалымат "
+"суралат."
+
+msgid "plugins.generic.sword.depositPoints.type.description"
+msgstr ""
+"<h4>Сактоо чекиттеринин түрлөрү:</h4>\n"
+"<p><strong>Автоматтык</strong>: Сактагычка өткөрүү автоматтык түрдө ишке "
+"ашырылат. Толук SWORD сактоо чекити көрсөтүлгөн. Колдонуучунун аты жана "
+"сырсөз берилиши керек. Сактоого өткөрүп берүү авторго материалды жарыялоого "
+"кабыл алынгандыгы жөнүндө кабарлоодон кийин жүргүзүлөт.<br/>\n"
+"<strong>Милдеттүү эмес (ийкемдүү)</strong>: Автор депозитке салууну же "
+"салбоону тандай алат. Көрсөтүлгөн дарек (URL) кызматтык документти көрсөтөт "
+"жана автор бул документтен кайсы сактагычты колдонууну тандай алат. Сактоого "
+"өткөрүп берүү авторго материалды жарыялоого кабыл алынгандыгы жөнүндө "
+"кабарлоодон кийин жүргүзүлөт.<br/>\n"
+"<strong>Милдеттүү эмес (туруктуу)</strong>: Автор депозитке салууну же "
+"салбоону тандай алат. Дарек (URL) атайын SWORD сактагычын көрсөтөт. Сактоого "
+"өткөрүп берүү авторго материалды жарыялоого кабыл алынгандыгы жөнүндө "
+"кабарлоодон кийин жүргүзүлөт.<br/>\n"
+"<strong>Менеджер гана</strong>: Бул сактагычты журналдын менеджери гана "
+"колдоно алат. Дарек (URL) кызматтык документти көрсөтөт. Сактагычка которуу "
+"журнал менеджери тарабынан кол менен “Журналдарды башкаруу” бөлүмүндөгү "
+"импорт/экспорт интерфейсин колдонуу менен ишке ашырылат.\n"
+"</p>"
+
+msgid "plugins.generic.sword.authorDepositDescription"
+msgstr ""
+"<p>Керек болсо, төмөнкү форманы колдонуп, \"{$submissionTitle}\" "
+"материалыңызды тизмеленген репозиторийлердин бирине тапшырсаңыз болот. "
+"Макалаңызды тапшыргыңыз келген репозиторийлерди тандоо үчүн сол тилкедеги "
+"кутучаларды колдонуңуз; Ар бир репозиторий сизге сактагычты ылдый түшүүчү "
+"тизмеден тандоо менен көрсөтүү мүмкүнчүлүгүн да бериши мүмкүн.</p>"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Кирүү четке кагылды)"
+
+msgid "plugins.generic.sword.enabled"
+msgstr "\"SWORD\" модулу иштетилди."
+
+msgid "plugins.generic.sword.settings"
+msgstr "Орнотуулар"
+
+msgid "plugins.generic.sword.settings.allowAuthorSpecify"
+msgstr "Авторлорго сактагычты коюуга уруксат бериңиз"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Авторлорго алардын тапшырууларында \"Депозит\" баскычын көрсөтүү"
+
+msgid "plugins.generic.sword.settings.depositPoints"
+msgstr "Сактоо пункттары"
+
+msgid "plugins.generic.sword.depositPoints.create"
+msgstr "Сактоо пунктун түзүү"
+
+msgid "plugins.generic.sword.depositPoints.edit"
+msgstr "Сактоо түйүнүн түзөтүү"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "API ачкычы"
+
+msgid "plugins.generic.sword.depositPoints.type.automatic"
+msgstr "Автоматтык"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
+msgstr "Кошумча (ийкемдүү)"
+
+msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
+msgstr "Кошумча (туруктуу)"
+
+msgid "plugins.generic.sword.depositPoints.type.manager"
+msgstr "Менеджер гана"
+
+msgid "plugins.generic.sword.depositPoints.password.description"
+msgstr ""
+"Эгер сиз бул жерде сырсөздү бербесеңиз, сиз жана/же автор тапшыргандан кийин "
+"аны киргизүүнү суранган билдирүү аласыз. Бул сырсөз бардык журнал "
+"башкаруучуларына көрүнүп, маалымат базасында шифрленбеген бойдон сакталаарын "
+"эске алыңыз."
+
+msgid "plugins.generic.sword.depositPoints.name"
+msgstr "Аты"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Түшүндүрмө"
+
+msgid "plugins.generic.sword.automaticDepositComplete"
+msgstr ""
+"\"{$itemTitle}\" материалы автоматтык түрдө \"{$repositoryName}\" "
+"репозиторийине сакталган."
+
+msgid "plugins.generic.sword.depositComplete"
+msgstr ""
+"\"{$itemTitle}\" материалы \"{$repositoryName}\" репозиторийине сакталган."
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Төмөнкү депозиттер ийгиликтүү аяктады:"
+
+msgid "plugins.generic.sword.authorCustomDepositDescription"
+msgstr ""
+"<p>Эгер зарыл болсо, сиз төмөнкү формада SWORD менен шайкеш сактагычты "
+"белгилесеңиз болот. Кааласаңыз, репозиторийиңиздин SWORD дарегин (URL), "
+"колдонуучунун атын жана сырсөзүн бериңиз жана материал ошол жерге сактоо "
+"үчүн өткөрүлүп берилет.</p>"
+
+msgid "plugins.importexport.sword.displayName"
+msgstr "Модул “Сактагычка өткөрүү SWORD: Импорт/Экспорт”"
+
+msgid "plugins.importexport.sword.description"
+msgstr ""
+"SWORD сактагыч өткөрүү протоколун колдонуп, алыскы репозиторийлерге сактоо "
+"үчүн макалаларды өткөрөт"
+
+msgid "plugins.importexport.sword.deposit"
+msgstr "Сактоо үчүн өткөрүп берүү"
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "API ачкычы"
+
+msgid "plugins.importexport.sword.serviceDocUrl"
+msgstr "Тейлөө документинин дареги (URL)."
+
+msgid "plugins.importexport.sword.depositUrl"
+msgstr "Сактоо түйүнүнүн дареги (URL)."
+
+msgid "plugins.importexport.sword.depositPoint"
+msgstr "Сактоо түйүнү"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "Кайра жүктөө"
+
+msgid "plugins.importexport.sword.depositPoint.addRemove"
+msgstr "Кошуу/алып салуу"
+
+msgid "plugins.importexport.sword.depositGalleys"
+msgstr "Сактоо үчүн далилдерди өткөрүп берүү"
+
+msgid "plugins.importexport.sword.depositEditorial"
+msgstr "Эң акыркы редакциялык файлды тапшырыңыз"
+
+msgid "plugins.importexport.sword.depositSuccessful"
+msgstr "Сактагычка өткөрүү: ийгиликтүү"
+
+msgid "plugins.importexport.sword.depositSuccessfulDescription"
+msgstr "Тандалган нерселер сактоого өткөрүлүп берилди."
+
+msgid "plugins.importexport.sword.depositFailed"
+msgstr "Сактагычка өткөрүү: ката"
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "Керектүү материал (ток)"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "Жарыялоо үчүн жок дегенде бир материалды (берүү) тандаңыз."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "Орнотуулар сакталды!"
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "Эч кандай сактоо пункттары түзүлгөн жок."
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "Сураныч, сактагычтын URL дарегин текшериңиз."

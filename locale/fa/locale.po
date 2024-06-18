@@ -1,24 +1,30 @@
+# Kamdin Parsakia <kamdinparsakia@iranmehr.ac.ir>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
+"PO-Revision-Date: 2023-09-10 23:58+0000\n"
+"Last-Translator: Kamdin Parsakia <kamdinparsakia@iranmehr.ac.ir>\n"
+"Language-Team: Persian <http://translate.pkp.sfu.ca/projects/"
+"sword-deposit-plugin/locale-keys/fa/>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2020-02-13T22:46:13+00:00\n"
-"Language: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.13.1\n"
 
 msgid "plugins.generic.sword.displayName"
-msgstr "افزونه سورد"
+msgstr "افزونه SWORD"
 
 msgid "plugins.generic.sword.description"
-msgstr "مدیران مجله و بصورت اختیاری نویسندگان اجازه داشته باشند تا از طریق پروتوکل سورد مقاله ارسال کنند."
+msgstr ""
+"مدیران مجله و نویسندگان (اختیاری) اجازه داشته باشند تا از طریق پروتکل SWORD "
+"مقاله ارسال کنند."
 
 msgid "plugins.generic.sword.enabled"
-msgstr "اقزونه سورد فعال شد."
+msgstr "اقزونه SWORD فعال شد."
 
 msgid "plugins.generic.sword.disable"
 msgstr "اقزونه سورد غیر فعال شد."
@@ -27,25 +33,25 @@ msgid "plugins.generic.sword.settings"
 msgstr "تنظیمات"
 
 msgid "plugins.generic.sword.settings.allowAuthorSpecify"
-msgstr "اجازه بده که نویسنده نقطه دپوزیت داشته باشد"
+msgstr "اجازه بده که نویسنده محلی برای سپرده مشخص کند"
 
 msgid "plugins.generic.sword.settings.depositPoints"
-msgstr "نقاط دپوزیت"
+msgstr "نقاط سپرده‌گذاری"
 
 msgid "plugins.generic.sword.depositPoints.create"
-msgstr "ایجاد نقطه دپوزیت"
+msgstr "ایجاد محل سپرده"
 
 msgid "plugins.generic.sword.depositPoints.edit"
-msgstr "ویرایش نقطه دپوزیت"
+msgstr "ویرایش محل سپرده"
 
 msgid "plugins.generic.sword.depositPoints.type.automatic"
 msgstr "خودکار"
 
 msgid "plugins.generic.sword.depositPoints.type.optionalSelection"
-msgstr "Optional; Flexible"
+msgstr "اختیاری؛ منعطف"
 
 msgid "plugins.generic.sword.depositPoints.type.optionalFixed"
-msgstr "اختیاری، فیکس"
+msgstr "اختیاری؛ ثابت"
 
 msgid "plugins.generic.sword.depositPoints.type.manager"
 msgstr "فقط مدیران"
@@ -66,49 +72,100 @@ msgid "plugins.generic.sword.depositPoints.name"
 msgstr "نام"
 
 msgid "plugins.generic.sword.automaticDepositComplete"
-msgstr "The item \"{$itemTitle}\" was automatically deposited into the repository \"{$repositoryName}\"."
+msgstr ""
+"آیتم \"$itemTitle}\" به طور اتوماتیک در مخزن \"{$repositoryName}\" ذخیره شد."
 
 msgid "plugins.generic.sword.depositComplete"
-msgstr "The item \"{$itemTitle}\" was deposited into the repository \"{$repositoryName}\"."
+msgstr "آیتم \"{$itemTitle}\" در مخزن \"{$repositoryName}\" ذخیره شد."
 
 msgid "plugins.generic.sword.authorDepositDescription"
-msgstr "<p>You may optionally use the following form to deposit your submission, \"{$submissionTitle}\", in one of the repositories listed. Use the checkboxes down the left-hand column to select which repositories you wish to deposit your submission into; each repository may also allow you to specify a deposit point from a pull-down list.</p>"
+msgstr ""
+"شما می‌تواند به صورت اختیاری از فرم زیر جهت سپردن مقاله خود در یکی از مخزن‌"
+"های ذکر شده استفاده کنید."
 
 msgid "plugins.generic.sword.authorCustomDepositDescription"
-msgstr "<p>You may optionally specify a SWORD-compliant deposit point in the following form. If desired, please specify a SWORD URL, username and password to your repository and the submission will be deposited.</p>"
+msgstr ""
+"شما در فرم زیر می‌توانید به طور اختیاری یک محل سپرده سازگاری با SWORD مشخص "
+"کنید. در صورت تمایل لطفاً لینک SWORD، نام کاربری و کلمه عبور مخزن مورد نظر "
+"برای سپرده را مشخص کنید."
 
 msgid "plugins.importexport.sword.displayName"
-msgstr "افزونه ایمپورت اکسپورت دپوزیت سورد"
+msgstr "افزونه Import/export سپرده SWORD"
 
 msgid "plugins.importexport.sword.description"
-msgstr "دپوزیت مقالات در مخازن ری موت با استفاده از پورتوکول دپوزیت سورد"
+msgstr "سپردن مقالات ارسالی در مخازن مجازی با استفاده از پروتکل SWORD"
 
 msgid "plugins.importexport.sword.deposit"
-msgstr "دپوزیت"
+msgstr "سپردن"
 
 msgid "plugins.importexport.sword.serviceDocUrl"
-msgstr "آدرس سرویس سند"
+msgstr "لینک سرویس مستندات"
 
 msgid "plugins.importexport.sword.depositUrl"
-msgstr "آدرس نقطه دپوزیت"
+msgstr "لینک محل سپرده"
 
 msgid "plugins.importexport.sword.depositPoint"
-msgstr "نقطه دپوزیت"
+msgstr "محل سپرده"
 
 msgid "plugins.importexport.sword.depositPoint.addRemove"
 msgstr "اضافه / حذف"
 
 msgid "plugins.importexport.sword.depositGalleys"
-msgstr "گالی های دپوزیت"
+msgstr "نمایه‌های چاپی سپرده"
 
 msgid "plugins.importexport.sword.depositEditorial"
-msgstr "دپوزیت آخرین فایل ادیتوریال"
+msgstr "سپره آخرین فایل دبیر"
 
 msgid "plugins.importexport.sword.depositSuccessful"
-msgstr "دپوزیت با موفقیت انجام شد"
+msgstr "عملیات سپرده با موفقیت انجام شد"
 
 msgid "plugins.importexport.sword.depositSuccessfulDescription"
-msgstr "آیتم مورد نظر دپوزیت شد"
+msgstr "آیتم‌(های) مورد نظر سپرده شد."
 
 msgid "plugins.importexport.sword.depositFailed"
-msgstr "شکست در دپوزیت"
+msgstr "عملیات سپرده با شکست مواجه شد"
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(غیرقابل دسترسی)"
+
+msgid "plugins.generic.sword.depositPoints.apikey"
+msgstr "کلید API"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "نمایش گزینه «سپرده» در قسمت ارسال مقاله"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "توضیحات"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "سپرده‌(های) زیر با موفقیت تکمیل شد:"
+
+msgid "plugins.importexport.sword.reload"
+msgstr "بارگیری مجدد"
+
+msgid "plugins.importexport.sword.requiredFieldErrorTitle"
+msgstr "نیازمند مقاله ارسالی"
+
+msgid "plugins.importexport.sword.requiredFieldErrorMessage"
+msgstr "لطفاً حداقل یک مقاله ارسالی برای سپردن انتخاب کنید."
+
+msgid "plugins.generic.sword.settings.saved"
+msgstr "تنظیمات ذخیره شد!"
+
+msgid "plugins.generic.sword.descriptionUnsupported"
+msgstr ""
+"مدیران و نویسندگان (اختیاری) اجازه داشته باشند که از طریق پروتکل SWORD مقاله "
+"ارسال کنند. لازم به ذکر است که این افزونه نیازمند بسته الحاقی Zip می‌باشد که "
+"در حال حاضر نصب نشده است."
+
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr "اگر این قسمت را خالی بگذارید، هنگام ایجاد سپرده درخواست ارسال می‌شود."
+
+msgid "plugins.generic.sword.badDepositPointUrl"
+msgstr "لطفاً لینک محل سپرده را چک کنید."
+
+msgid "plugins.importexport.sword.apikey"
+msgstr "کلید API"
+
+msgid "plugins.generic.sword.manager.noneCreated"
+msgstr "هیچ محل سپرده‌ای ایجاد نشده است."
