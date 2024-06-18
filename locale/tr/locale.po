@@ -1,19 +1,20 @@
 # Hüseyin Körpeoğlu <yoruyenturk@hotmail.com>, 2022.
+# Mahmut  VURAL <mahmut.vural@outlook.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-13T22:46:13+00:00\n"
-"PO-Revision-Date: 2022-04-16 11:57+0000\n"
-"Last-Translator: Hüseyin Körpeoğlu <yoruyenturk@hotmail.com>\n"
+"PO-Revision-Date: 2024-01-05 14:39+0000\n"
+"Last-Translator: Mahmut  VURAL <mahmut.vural@outlook.com>\n"
 "Language-Team: Turkish <http://translate.pkp.sfu.ca/projects/"
-"sword-deposit-plugin/locale-keys/tr_TR/>\n"
-"Language: tr_TR\n"
+"sword-deposit-plugin/locale-keys/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.18.2\n"
 
 msgid "plugins.generic.sword.displayName"
 msgstr "SWORD Eklentisi"
@@ -187,3 +188,12 @@ msgstr "Açıklama"
 
 msgid "plugins.generic.sword.depositPoints.leaveBlank"
 msgstr "Bu alan boş bırakılırsa depozito yapıldığında talep edilecektir."
+
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Erişim engellendi)"
+
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Yazarlara gönderimlerinde \"Para Yatır\" butonunu sunun"
+
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Aşağıdaki para yatırma(lar) başarıyla tamamlandı:"
