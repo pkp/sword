@@ -1,15 +1,16 @@
+# Johanna Skaug <johanna.skaug@ub.uio.no>, 2024.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-01-29 12:53+0000\n"
-"Last-Translator: Tormod Strømme <tormod.stromme@uib.no>\n"
+"PO-Revision-Date: 2024-06-26 09:40+0000\n"
+"Last-Translator: Johanna Skaug <johanna.skaug@ub.uio.no>\n"
 "Language-Team: Norwegian Bokmål <http://translate.pkp.sfu.ca/projects/"
 "sword-deposit-plugin/locale-keys/nb_NO/>\n"
-"Language: nb_NO\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 4.18.2\n"
 
 msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Sjekk URL til deponeringsstedet."
@@ -166,7 +167,7 @@ msgstr "SWORD-programtillegget har blitt aktivert."
 
 msgid "plugins.generic.sword.descriptionUnsupported"
 msgstr ""
-"La redaktører og (eventuelt) forfattere  deponere artikler via SWORD-"
+"La redaktører og (eventuelt) forfattere deponere artikler via SWORD-"
 "protokollen. Merk at dette programtillegget krever et zip-programtillegg som "
 "for øyeblikket IKKE er installert."
 
@@ -177,3 +178,27 @@ msgstr ""
 
 msgid "plugins.generic.sword.displayName"
 msgstr "SWORD-programtillegg"
+
+#, fuzzy
+msgid "plugins.generic.sword.accessDenied"
+msgstr "(Tilgang nektet)"
+
+#, fuzzy
+msgid "plugins.generic.sword.settings.showDepositButton"
+msgstr "Gi forfattere en \"Deponer\"-knapp på innleveringen deres"
+
+#, fuzzy
+msgid "plugins.generic.sword.depositsComplete"
+msgstr "Følgende deponering(er) ble gjennomført med suksess:"
+
+msgid "plugins.generic.sword.depositPoints.description"
+msgstr "Beskrivelse"
+
+#, fuzzy
+msgid "plugins.generic.sword.depositPoints.leaveBlank"
+msgstr ""
+"Hvis dette feltet står tomt, vil det bli forespurt når deponeringen gjøres."
+
+#, fuzzy
+msgid "plugins.importexport.sword.reload"
+msgstr "Oppdater"
