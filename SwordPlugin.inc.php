@@ -157,7 +157,7 @@ class SwordPlugin extends GenericPlugin {
 
 		if ($sendDepositNotification) {
 			$submissionAuthors = [];
-			$dao = new StageAssignmentDAO();
+			$dao = DAORegistry::getDAO('StageAssignmentDAO');
 			$daoResult = $dao->getBySubmissionAndRoleId($submission->getId(), ROLE_ID_AUTHOR);
 			while ($record = $daoResult->next()) {
 				$userId = $record->getData('userId');
