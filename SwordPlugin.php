@@ -167,7 +167,7 @@ class SwordPlugin extends GenericPlugin {
 					NOTIFICATION_TYPE_SUCCESS,
 					[
 						'contents' => __('plugins.generic.sword.automaticDepositComplete', [
-							'itemTitle' => $submission->getLocalizedTitle(),
+							'itemTitle' => $submission->getCurrentPublication()->getLocalizedTitle(),
 							'repositoryName' => $depositPoint->getLocalizedName()
 						])
 					]
@@ -207,7 +207,7 @@ class SwordPlugin extends GenericPlugin {
 
 				$mail->assignParams([
 					'contextName' => htmlspecialchars($context->getLocalizedName()),
-					'submissionTitle' => htmlspecialchars($submission->getLocalizedTitle()),
+					'submissionTitle' => htmlspecialchars($submission->getCurrentPublication()->getLocalizedTitle()),
 					'swordDepositUrl' => $dispatcher->url(
 						$request, ROUTE_PAGE, null, 'sword', 'index', $submission->getId()
 					)

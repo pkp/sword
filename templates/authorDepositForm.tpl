@@ -45,7 +45,7 @@
 	{csrf}
 
 	{if !empty($depositPoints)}
-		{translate key="plugins.generic.sword.authorDepositDescription" submissionTitle=$submission->getLocalizedTitle()}
+		{translate key="plugins.generic.sword.authorDepositDescription" submissionTitle=$submission->getCurrentPublication()->getLocalizedTitle()}
 		<fieldset id="authorDepositPoints">
 			<ul class="prefabDepositPoints" style="list-style: none;">
 				{foreach from=$depositPoints item=depositPoint key=depositPointKey name="depositPoints"}
@@ -97,7 +97,7 @@
 	{/if}{* !empty($depositPoints) *}
 
 	{if $allowAuthorSpecify}
-		{translate key="plugins.generic.sword.authorCustomDepositDescription" submissionTitle=$submission->getLocalizedTitle()}
+		{translate key="plugins.generic.sword.authorCustomDepositDescription" submissionTitle=$submission->getCurrentPublication()->getLocalizedTitle()}
 		<fieldset class="authorSelfDeposit">
 			<div class="fields">
 				<div class="section">

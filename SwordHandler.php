@@ -115,7 +115,7 @@ class SwordHandler extends Handler {
 		$submission = $submissionDao->getById($submissionId);
 
 		if (!$submission || !$user || !$context ||
-			($submission->getContextId() != $context->getId())) {
+			($submission->getData('contextId') != $context->getId())) {
 				$request->redirect(null, 'index');
 		}
 
