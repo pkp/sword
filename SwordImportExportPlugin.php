@@ -219,7 +219,7 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 						}
 						catch (\Exception $e) {
 							$errors[] = [
-								'title' => $submission->getLocalizedTitle(),
+								'title' => $submission->getCurrentPublication()->getLocalizedTitle(),
 								'message' => $e->getMessage(),
 							];
 						}

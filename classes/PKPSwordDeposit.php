@@ -17,7 +17,6 @@ namespace APP\plugins\generic\sword\classes;
 
 use PKP\submissionFile\SubmissionFile;
 use PKP\file\FileManager;
-use PKP\db\DAORegistry;
 
 use APP\facades\Repo;
 use APP\core\Application;
@@ -29,10 +28,10 @@ require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappentry.php';
 
 class PKPSwordDeposit {
-	/** @var SWORD deposit METS package */
+	/** @var PKPPackagerMetsSwap SWORD deposit METS package */
 	protected $_package = null;
 
-	/** @var Complete path and directory name to use for package creation files */
+	/** @var string Complete path and directory name to use for package creation files */
 	protected $_outPath = null;
 
 	/** @var Journal */
@@ -45,7 +44,7 @@ class PKPSwordDeposit {
 	protected $_issue = null;
 
 	/** @var Article */
-	protected $_article = null;
+	protected $_submission = null;
 
 	/**
 	 * Constructor.
@@ -72,7 +71,7 @@ class PKPSwordDeposit {
 		$application = Application::get();
 		$publication = $submission->getCurrentPublication();
 
-		$this->_context = $application->getContextDao()->getById($submission->getContextId());
+		$this->_context = $application->getContextDao()->getById($submission->getData('contextId'));
 
 		$this->_section = Repo::section()->get($publication->getData('sectionId'));
 
@@ -86,11 +85,11 @@ class PKPSwordDeposit {
 	 * @param $request PKPRequest
 	 */
 	public function setMetadata($request) {
-		$this->_package->setCustodian($this->_context->getContactName());
-		$this->_package->setTitle(html_entity_decode($this->_submission->getLocalizedTitle(), ENT_QUOTES, 'UTF-8'));
-		$this->_package->setAbstract(html_entity_decode(strip_tags($this->_submission->getLocalizedAbstract()), ENT_QUOTES, 'UTF-8'));
-		$this->_package->setType($this->_section->getLocalizedIdentifyType());
 		$publication = $this->_submission->getCurrentPublication();
+		$this->_package->setCustodian($this->_context->getContactName());
+		$this->_package->setTitle(html_entity_decode($publication->getLocalizedTitle(), ENT_QUOTES, 'UTF-8'));
+		$this->_package->setAbstract(html_entity_decode(strip_tags($publication->getLocalizedData('abstract')), ENT_QUOTES, 'UTF-8'));
+		$this->_package->setType($this->_section->getLocalizedIdentifyType());
 		foreach ($publication->getData('authors') as $author) {
 			$creator = $author->getFullName(true);
 			$affiliation = $author->getLocalizedAffiliation();
@@ -122,7 +121,7 @@ class PKPSwordDeposit {
 	 * Add all article galleys to the deposit package.
 	 */
 	public function addGalleys() {
-		foreach ($this->_submission->getGalleys() as $galley) {
+		foreach ($this->_submission->getCurrentPublication()->getData('galleys') as $galley) {
 			$this->_addFile($galley->getFile());
 		}
 	}
