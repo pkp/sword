@@ -15,24 +15,21 @@
 
 namespace APP\plugins\generic\sword\classes;
 
-use PKP\submissionFile\SubmissionFile;
-use PKP\file\FileManager;
-use PKP\db\DAORegistry;
-
-use APP\facades\Repo;
 use APP\core\Application;
-use APP\core\Services;
-
+use APP\facades\Repo;
 use APP\plugins\generic\sword\classes\PKPPackagerMetsSwap;
+use Exception;
+use PKP\file\FileManager;
+use PKP\submissionFile\SubmissionFile;
 
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappentry.php';
 
 class PKPSwordDeposit {
-	/** @var SWORD deposit METS package */
+	/** @var PKPPackagerMetsSwap SWORD deposit METS package */
 	protected $_package = null;
 
-	/** @var Complete path and directory name to use for package creation files */
+	/** @var string Complete path and directory name to use for package creation files */
 	protected $_outPath = null;
 
 	/** @var Journal */
@@ -44,8 +41,8 @@ class PKPSwordDeposit {
 	/** @var Issue */
 	protected $_issue = null;
 
-	/** @var Article */
-	protected $_article = null;
+	/** @var Submission */
+	protected $_submission = null;
 
 	/**
 	 * Constructor.
@@ -72,7 +69,7 @@ class PKPSwordDeposit {
 		$application = Application::get();
 		$publication = $submission->getCurrentPublication();
 
-		$this->_context = $application->getContextDao()->getById($submission->getContextId());
+		$this->_context = $application->getContextDao()->getById($submission->getData('contextId'));
 
 		$this->_section = Repo::section()->get($publication->getData('sectionId'));
 
@@ -87,11 +84,11 @@ class PKPSwordDeposit {
 	 * @param $request PKPRequest
 	 */
 	public function setMetadata($request) {
-		$this->_package->setCustodian($this->_context->getContactName());
-		$this->_package->setTitle(html_entity_decode($this->_submission->getLocalizedTitle(), ENT_QUOTES, 'UTF-8'));
-		$this->_package->setAbstract(html_entity_decode(strip_tags($this->_submission->getLocalizedAbstract()), ENT_QUOTES, 'UTF-8'));
-		$this->_package->setType($this->_section->getLocalizedIdentifyType());
 		$publication = $this->_submission->getCurrentPublication();
+		$this->_package->setCustodian($this->_context->getContactName());
+		$this->_package->setTitle(html_entity_decode($publication->getLocalizedTitle(), ENT_QUOTES, 'UTF-8'));
+		$this->_package->setAbstract(html_entity_decode(strip_tags($publication->getLocalizedData('abstract')), ENT_QUOTES, 'UTF-8'));
+		$this->_package->setType($this->_section->getLocalizedIdentifyType());
 		foreach ($publication->getData('authors') as $author) {
 			$creator = $author->getFullName(true);
 			$affiliation = $author->getLocalizedAffiliation();
@@ -111,11 +108,10 @@ class PKPSwordDeposit {
 	 * @param $submissionFile SubmissionFile
 	 */
 	public function _addFile($submissionFile) {
-		$fileService = Services::get('file');
-		$file = $fileService->get($submissionFile->getData('fileId'));
+		$file = app()->get('file')->get($submissionFile->getData('fileId'));
 		$targetFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $submissionFile->getLocalizedData('name'));
 		$targetFilePath = $this->_outPath . '/files/' . $targetFilename;
-		file_put_contents($targetFilePath, $fileService->fs->read($file->path));
+		file_put_contents($targetFilePath, app()->get('file')->fs->read($file->path));
 		$this->_package->addFile($targetFilename, $file->mimetype);
 	}
 
@@ -123,7 +119,7 @@ class PKPSwordDeposit {
 	 * Add all article galleys to the deposit package.
 	 */
 	public function addGalleys() {
-		foreach ($this->_submission->getGalleys() as $galley) {
+		foreach ($this->_submission->getCurrentPublication()->getData('galleys') as $galley) {
 			$this->_addFile($galley->getFile());
 		}
 	}
