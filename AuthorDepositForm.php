@@ -15,31 +15,29 @@ namespace APP\plugins\generic\sword;
 
 use PKP\form\Form;
 
-use APP\plugins\generic\sword\PKPSwordDeposit;
 use APP\plugins\generic\sword\classes\DepositPoint;
 use APP\plugins\generic\sword\classes\DepositPointsHelper;
+use APP\plugins\generic\sword\classes\PKPSwordDeposit;
+use APP\submission\Submission;
+use APP\template\TemplateManager;
+use PKP\context\Context;
+use PKP\db\DAORegistry;
 
 class AuthorDepositForm extends Form {
-	/** @var $_context Context */
+	/** @var Context $_context */
 	protected $_context = null;
 
-	/** @var $_plugin SwordPlugin */
+	/** @var SwordPlugin $_plugin */
 	protected $_plugin = null;
 
-	/** @var $_submission Submission */
+	/** @var Submission $_submission */
 	protected $_submission = null;
 
-	/**
-	 * Constructor
-	 * @param $plugin SwordPlugin
-	 * @param $context Context
-	 * @param $submission Submission
-	 */
+
 	public function __construct(SwordPlugin $plugin, Context $context, Submission $submission) {
 		$this->_plugin = $plugin;
 		$this->_context = $context;
 		$this->_submission = $submission;
-		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_USER);
 		parent::__construct($plugin->getTemplateResource('authorDepositForm.tpl'));
 	}
 
@@ -86,7 +84,7 @@ class AuthorDepositForm extends Form {
 	public function execute(...$functionArgs) {
 		parent::execute(...$functionArgs);
 		$request = $functionArgs[0];
-		
+
 		$deposit = new PKPSwordDeposit($this->_submission);
 		$deposit->setMetadata($request);
 		$deposit->addEditorial();
@@ -104,7 +102,7 @@ class AuthorDepositForm extends Form {
 			);
 			$deposit->cleanup();
 		}
-		
+
 		$url = '';
 		$depositPoints = $this->getData('depositPoint');
 		$depositableDepositPoints = $this->_getDepositableDepositPoints($this->_context);
@@ -134,6 +132,7 @@ class AuthorDepositForm extends Form {
 	 */
 	protected function _getDepositableDepositPoints($context) {
 		$list = [];
+		/** @var DepositPointDAO $depositPointDao */
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoints = $depositPointDao->getByContextId($context->getId());
 		foreach ($depositPoints as $depositPoint) {

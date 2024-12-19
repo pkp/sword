@@ -15,14 +15,12 @@
 
 namespace APP\plugins\generic\sword\classes;
 
-use PKP\submissionFile\SubmissionFile;
-use PKP\file\FileManager;
-
-use APP\facades\Repo;
 use APP\core\Application;
-use APP\core\Services;
-
+use APP\facades\Repo;
 use APP\plugins\generic\sword\classes\PKPPackagerMetsSwap;
+use Exception;
+use PKP\file\FileManager;
+use PKP\submissionFile\SubmissionFile;
 
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappclient.php';
 require_once dirname(__FILE__) . '/../libs/swordappv2/swordappentry.php';
@@ -43,7 +41,7 @@ class PKPSwordDeposit {
 	/** @var Issue */
 	protected $_issue = null;
 
-	/** @var Article */
+	/** @var Submission */
 	protected $_submission = null;
 
 	/**
@@ -110,11 +108,10 @@ class PKPSwordDeposit {
 	 * @param $submissionFile SubmissionFile
 	 */
 	public function _addFile($submissionFile) {
-		$fileService = Services::get('file');
-		$file = $fileService->get($submissionFile->getData('fileId'));
+		$file = app()->get('file')->get($submissionFile->getData('fileId'));
 		$targetFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $submissionFile->getLocalizedData('name'));
 		$targetFilePath = $this->_outPath . '/files/' . $targetFilename;
-		file_put_contents($targetFilePath, $fileService->fs->read($file->path));
+		file_put_contents($targetFilePath, app()->get('file')->fs->read($file->path));
 		$this->_package->addFile($targetFilename, $file->mimetype);
 	}
 
