@@ -22,10 +22,7 @@ class DepositPointDAO extends DAO {
 	/** @var SwordPlugin reference to SWORD plugin */
 	protected $_plugin = null;
 
-	/**
-	 * Constructor
-	 * @param $parentPlugin SwordPlugin
-	 */
+
 	public function __construct(SwordPlugin $parentPlugin) {
 		$this->_plugin = $parentPlugin;
 		parent::__construct();
@@ -48,7 +45,7 @@ class DepositPointDAO extends DAO {
 	public function getById($depositPointId, $contextId = null) {
 		$params = [(int) $depositPointId];
 		if ($contextId) $params[] = (int) $contextId;
-		
+
 		$result = $this->retrieve(
 			'SELECT * FROM deposit_points WHERE deposit_point_id = ? ' . ($contextId?' AND context_id = ?':''),
 			$params
@@ -72,14 +69,14 @@ class DepositPointDAO extends DAO {
 		$depositPoint->setSwordUsername($row['sword_username']);
 		$depositPoint->setSwordPassword($row['sword_password']);
 		$depositPoint->setSwordApikey($row['sword_apikey']);
-		
+
 		$this->getDataObjectSettings(
 			'deposit_point_settings',
 			'deposit_point_id',
 			$row['deposit_point_id'],
 			$depositPoint
 		);
-		
+
 		return $depositPoint;
 	}
 
@@ -111,9 +108,9 @@ class DepositPointDAO extends DAO {
 			]
 		);
 		$depositPoint->setId($this->getInsertId());
-		
+
 		$this->updateLocaleFields($depositPoint);
-		
+
 		return $depositPoint->getId();
 	}
 
@@ -121,7 +118,8 @@ class DepositPointDAO extends DAO {
 	 * Get a list of fields for which localized data is supported
 	 * @return array
 	 */
-	public function getLocaleFieldNames() {
+	public function getLocaleFieldNames(): array
+	{
 		return ['name', 'description'];
 	}
 
@@ -164,7 +162,7 @@ class DepositPointDAO extends DAO {
 				$depositPoint->getId()
 			]
 		);
-		
+
 		$this->updateLocaleFields($depositPoint);
 	}
 

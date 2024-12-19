@@ -13,6 +13,7 @@
 
 namespace APP\plugins\generic\sword;
 
+use APP\facades\Repo;
 use PKP\security\authorization\ContextAccessPolicy;
 use PKP\core\JSONMessage;
 use PKP\plugins\PluginRegistry;
@@ -21,10 +22,12 @@ use PKP\db\DAORegistry;
 use PKP\security\Validation;
 
 use APP\handler\Handler;
-
+use APP\notification\Notification;
+use APP\notification\NotificationManager;
 use APP\plugins\generic\sword\classes\DepositPoint;
 use APP\plugins\generic\sword\classes\DepositPointsHelper;
 use APP\plugins\generic\sword\DepositPointForm;
+use APP\template\TemplateManager;
 
 class SwordHandler extends Handler {
 	/** @var SwordPlugin Sword plugin */
@@ -73,13 +76,14 @@ class SwordHandler extends Handler {
 	public function depositPoints($args, $request) {
 		$context = $request->getContext();
 		$depositPointId = $request->getUserVar('depositPointId');
+		/** @var DepositPointDAO $depositPointDao */
 		$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 		$depositPoint = $depositPointDao->getById($depositPointId, $context->getId());
 		if (!$depositPoint) {
 			return new JSONMessage(false);
 		}
 
-		$isManager = Validation::isAuthorized(ROLE_ID_MANAGER, $context->getId());
+		$isManager = Validation::isAuthorized(Role::ROLE_ID_MANAGER, $context->getId());
 		if (!$isManager && $depositPoint->getType() != SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION) {
 			return new JSONMessage(false);
 		}
@@ -111,8 +115,7 @@ class SwordHandler extends Handler {
 		$submissionId = (int) array_shift($args);
 		$save = array_shift($args) == 'save';
 
-		$submissionDao = DAORegistry::getDAO('SubmissionDAO');
-		$submission = $submissionDao->getById($submissionId);
+		$submission = Repo::submission()->get($submissionId);
 
 		if (!$submission || !$user || !$context ||
 			($submission->getData('contextId') != $context->getId())) {
@@ -120,8 +123,9 @@ class SwordHandler extends Handler {
 		}
 
 		$userCanDeposit = false;
+		/** @var StageAssignmentDAO $stageAssignmentDao */
 		$stageAssignmentDao = DAORegistry::getDAO('StageAssignmentDAO');
-		$daoResult = $stageAssignmentDao->getBySubmissionAndRoleId($submission->getId(), ROLE_ID_AUTHOR);
+		$daoResult = $stageAssignmentDao->getBySubmissionAndRoleId($submission->getId(), Role::ROLE_ID_AUTHOR);
 		while ($record = $daoResult->next()) {
 			if($user->getId() == $record->getData('userId')) {
 				$userCanDeposit = true;
@@ -143,6 +147,7 @@ class SwordHandler extends Handler {
 					$responses = $authorDepositForm->execute($request);
 					$templateMgr = TemplateManager::getManager($request);
 					$results = [];
+					/** @var DepositPointDAO $depositPointDao */
 					$depositPointDao = DAORegistry::getDAO('DepositPointDAO');
 					$depositPoints = iterator_to_array($depositPointDao->getByContextId($context->getId()));
 					foreach ($responses as $url => $response) {
@@ -168,7 +173,7 @@ class SwordHandler extends Handler {
 					$notificationManager = new NotificationManager();
 					$notificationManager->createTrivialNotification(
 						$user->getId(),
-						NOTIFICATION_TYPE_ERROR,
+						Notification::NOTIFICATION_TYPE_ERROR,
 						['contents' => __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage()]
 					);
 					error_log($e->getTraceAsString());
