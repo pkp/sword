@@ -16,7 +16,7 @@ namespace APP\plugins\generic\sword\classes;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\Schema;
 
 class SwordSchemaMigration extends Migration {
         /**
@@ -25,7 +25,7 @@ class SwordSchemaMigration extends Migration {
          */
         public function up() {
 		// Deposit points.
-		Capsule::schema()->create('deposit_points', function (Blueprint $table) {
+		Schema::create('deposit_points', function (Blueprint $table) {
 			$table->bigInteger('deposit_point_id')->autoIncrement();
 			$table->bigInteger('context_id');
 			$table->string('url', 2047);
@@ -38,7 +38,7 @@ class SwordSchemaMigration extends Migration {
 		});
 
 		// Locale-specific deposit point data
-		Capsule::schema()->create('deposit_point_settings', function (Blueprint $table) {
+		Schema::create('deposit_point_settings', function (Blueprint $table) {
 			$table->bigInteger('deposit_point_id');
 			$table->string('locale', 5)->default('');
 			$table->string('setting_name', 255);
