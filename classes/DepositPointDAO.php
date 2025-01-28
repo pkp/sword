@@ -255,13 +255,4 @@ class DepositPointDAO extends DAO {
 			$i++;
 		}
 	}
-
-	/**
-	 * Get the ID of the last inserted deposit point.
-	 * @return int
-	 */
-	protected function getInsertId(): int
-	{
-		return $this->_getInsertId('deposit_points', 'deposit_point_id');
-	}
 }
