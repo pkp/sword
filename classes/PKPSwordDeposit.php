@@ -74,7 +74,8 @@ class PKPSwordDeposit {
 		$this->_section = Repo::section()->get($publication->getData('sectionId'));
 
 		if ($application->getName() === 'ojs2') {
-			$this->_issue = Repo::issue()->get($publication->getData('issueId'));
+			$issueId = $publication->getData('issueId');
+			if ($issueId) $this->_issue = Repo::issue()->get($issueId);
 		}
 	}
 
