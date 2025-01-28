@@ -19,7 +19,7 @@ use PKP\plugins\PluginRegistry;
 use PKP\security\Role;
 use PKP\i18n\Locale;
 use PKP\core\JSONMessage;
-
+use APP\notification\NotificationManager;
 use APP\handler\Handler;
 use APP\template\TemplateManager;
 
