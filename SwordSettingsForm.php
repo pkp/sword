@@ -1,15 +1,15 @@
 <?php
 
 /**
-* @file SwordSettingsForm.php
-*
-* Copyright (c) 2003-2021 Simon Fraser University
-* Copyright (c) 2003-2021 John Willinsky
-* Distributed under the GNU GPL v3. For full terms see the file LICENSE.
-*
-* @class SwordSettingsForm
-* @brief Form for SWORD plugin settings
-*/
+ * @file SwordSettingsForm.php
+ *
+ * Copyright (c) 2003-2024 Simon Fraser University
+ * Copyright (c) 2003-2024 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
+ *
+ * @class SwordSettingsForm
+ * @brief Form for SWORD plugin settings
+ */
 
 namespace APP\plugins\generic\sword;
 

@@ -3,8 +3,8 @@
 /**
  * @file SwordSettingsTabHandler.php
  *
- * Copyright (c) 2003-2021 Simon Fraser University
- * Copyright (c) 2003-2021 John Willinsky
+ * Copyright (c) 2003-2024 Simon Fraser University
+ * Copyright (c) 2003-2024 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class SwordSettingsTabHandler
@@ -19,10 +19,10 @@ use PKP\plugins\PluginRegistry;
 use PKP\security\Role;
 use PKP\i18n\Locale;
 use PKP\core\JSONMessage;
-use APP\notification\NotificationManager;
+
 use APP\handler\Handler;
 use APP\template\TemplateManager;
-
+use APP\notification\NotificationManager;
 use APP\plugins\generic\sword\SwordSettingsForm;
 use APP\plugins\generic\sword\SwordPlugin;
 
