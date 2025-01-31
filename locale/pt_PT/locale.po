@@ -173,7 +173,7 @@ msgid "plugins.generic.sword.settings.showDepositButton"
 msgstr "Apresentar aos autores um botão \"Depositar\" na sua submissão"
 
 msgid "plugins.generic.sword.accessDenied"
-msgstr "(Acesso Negado)"
+msgstr "(Por favor, verifique suas credenciais acima)"
 
 msgid "plugins.generic.sword.depositsComplete"
 msgstr "Os seguintes depósitos foram concluídos com sucesso:"

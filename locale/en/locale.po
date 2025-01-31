@@ -18,7 +18,7 @@ msgid "plugins.generic.sword.description"
 msgstr "Allow Managers and (optionally) Authors to deposit submissions via the SWORD protocol"
 
 msgid "plugins.generic.sword.accessDenied"
-msgstr "(Access Denied)"
+msgstr "(Please check your credentials above)"
 
 msgid "plugins.generic.sword.descriptionUnsupported"
 msgstr "Allow Managers and (optionally) Authors to deposit submissions via the SWORD protocol. Note that this plugin requires the Zip extension, which is currently NOT installed."

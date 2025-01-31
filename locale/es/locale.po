@@ -179,7 +179,7 @@ msgid "plugins.generic.sword.badDepositPointUrl"
 msgstr "Compruebe la URL del punto de depósito."
 
 msgid "plugins.generic.sword.accessDenied"
-msgstr "(Acceso denegado)"
+msgstr "(Por favor verifique sus credenciales arriba)"
 
 msgid "plugins.generic.sword.settings.showDepositButton"
 msgstr "Mostrar a los autores un botón para \"Depositar\" durante el envío"
