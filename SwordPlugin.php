@@ -22,7 +22,7 @@ use PKP\linkAction\LinkAction;
 use PKP\core\Registry;
 
 use APP\template\TemplateManager;
-
+use APP\core\Application;
 use APP\plugins\generic\sword\classes\DepositPointDAO;
 use APP\plugins\generic\sword\classes\PKPSwordDeposit;
 use APP\plugins\generic\sword\SwordImportExportPlugin;
@@ -79,7 +79,7 @@ class SwordPlugin extends GenericPlugin {
 		$template = $args[1];
 		if ($template == 'authorDashboard/authorDashboard.tpl') {
 			$request = Application::get()->getRequest();
-			$journal = $request->getJournal();
+			$journal = $request->getContext();
 			if ($this->getSetting($journal->getId(), 'showDepositButton')) {
 				$templateMgr->registerFilter("output", [$this, 'authorDashboardFilter']);
 			}
@@ -369,9 +369,9 @@ class SwordPlugin extends GenericPlugin {
 	 * @return ?string
 	 */
 	public function getAlternateLink($xml) {
-		$doc = new DOMDocument();
+		$doc = new \DOMDocument();
 		$doc->loadXML($xml);
-		$xpath = new DOMXpath($doc);
+		$xpath = new \DOMXpath($doc);
 		$xpath->registerNamespace('atom', 'http://www.w3.org/2005/Atom');
 		$elements = $xpath->query('//atom:link[@rel="alternate"]/@href');
 		foreach ($elements as $element) {
