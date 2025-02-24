@@ -20,6 +20,7 @@ use PKP\plugins\Hook;
 use PKP\db\DAORegistry;
 use PKP\linkAction\LinkAction;
 use PKP\core\Registry;
+use APP\core\Services;
 
 use APP\template\TemplateManager;
 use APP\core\Application;
