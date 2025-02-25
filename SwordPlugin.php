@@ -108,7 +108,7 @@ class SwordPlugin extends GenericPlugin {
 		$newPublication =& $args[0];
 
 		if ($newPublication->getData('status') != STATUS_PUBLISHED) return false;
-		$submission = Services::get('submission')->get($newPublication->getData('submissionId'));
+		$submission = Repo::submission()->get($newPublication->getData('submissionId'));
 
 		$this->performAutomaticDeposits($submission);
 	}
