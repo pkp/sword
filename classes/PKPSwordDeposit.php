@@ -15,6 +15,7 @@
 
 namespace APP\plugins\generic\sword\classes;
 
+use APP\core\Services;
 use APP\core\Application;
 use APP\facades\Repo;
 use APP\plugins\generic\sword\classes\PKPPackagerMetsSwap;
@@ -108,10 +109,10 @@ class PKPSwordDeposit {
 	 * @param $submissionFile SubmissionFile
 	 */
 	public function _addFile($submissionFile) {
-		$file = app()->get('file')->get($submissionFile->getData('fileId'));
+		$file = Services::get('file')->get($submissionFile->getData('fileId'));
 		$targetFilename = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $submissionFile->getLocalizedData('name'));
 		$targetFilePath = $this->_outPath . '/files/' . $targetFilename;
-		file_put_contents($targetFilePath, app()->get('file')->fs->read($file->path));
+		file_put_contents($targetFilePath, Services::get('file')->fs->read($file->path));
 		$this->_package->addFile($targetFilename, $file->mimetype);
 	}
 
