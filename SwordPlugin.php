@@ -210,7 +210,7 @@ class SwordPlugin extends GenericPlugin {
 					'contextName' => htmlspecialchars($context->getLocalizedName()),
 					'submissionTitle' => htmlspecialchars($submission->getCurrentPublication()->getLocalizedTitle()),
 					'swordDepositUrl' => $dispatcher->url(
-						$request, ROUTE_PAGE, null, 'sword', 'index', $submission->getId()
+						$request, ROUTE_PAGE, null, 'sword', 'index', [$submission->getId()]
 					)
 				]);
 
@@ -321,8 +321,8 @@ class SwordPlugin extends GenericPlugin {
 					'swordSettings',
 					new RedirectAction($dispatcher->url(
 						$request, ROUTE_PAGE,
-						null, 'management', 'settings', 'website',
-						array('uid' => uniqid()),
+						null, 'management', 'settings', ['website'],
+						['uid' => uniqid()],
 						'swordSettings'
 						)),
 					__('manager.plugins.settings'),
