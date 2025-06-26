@@ -90,7 +90,11 @@ class SwordPlugin extends GenericPlugin {
 	}
 
 	public function authorDashboardFilter($output, $templateMgr) {
-		if ($index = strrpos($output, '</pkp-header>')) {
+		if (strpos($output, '<div class="pkpWorkflow">') !== false
+			&& preg_match_all('/<\/pkp-header>/', $output, $matches, PREG_OFFSET_CAPTURE)
+		) {
+			$match = $matches[0][1];
+			$index = $match[1];
 			$request =& Registry::get('request');
 			$headerAddition = '<form action="' . $request->url(null, 'sword', 'index', $request->getRequestedArgs()) . '"><button class="pkpButton">' . __('plugins.importexport.sword.deposit') . '</button></form>';
 			$output = substr($output, 0, $index) . $headerAddition . substr($output, $index);
