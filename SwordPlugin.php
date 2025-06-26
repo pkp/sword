@@ -78,7 +78,7 @@ class SwordPlugin extends GenericPlugin {
 	public function callbackDisplayTemplate($hookName, $args) {
 		$templateMgr = $args[0];
 		$template = $args[1];
-		if ($template == 'authorDashboard/authorDashboard.tpl') {
+		if ($template == 'authorDashboard/authorDashboard.tpl') { // FIXME: THIS NO LONGER APPLIES FOR 3.5.0 OR NEWER!
 			$request = Application::get()->getRequest();
 			$journal = $request->getContext();
 			if ($this->getSetting($journal->getId(), 'showDepositButton')) {
