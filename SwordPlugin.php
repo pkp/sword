@@ -21,7 +21,7 @@ use PKP\db\DAORegistry;
 use PKP\linkAction\LinkAction;
 use PKP\core\Registry;
 use APP\core\Services;
-
+use APP\facades\Repo;
 use APP\template\TemplateManager;
 use APP\core\Application;
 use APP\plugins\generic\sword\classes\DepositPointDAO;
