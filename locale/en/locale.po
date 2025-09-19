@@ -38,6 +38,9 @@ msgstr "Present authors with a \"Deposit\" button on their submission"
 msgid "plugins.generic.sword.settings.depositPoints"
 msgstr "Deposit Points"
 
+msgid "plugins.generic.sword.settings.showDepositButtonPublishedOnly"
+msgstr "Only allow depositing of posted content"
+
 msgid "plugins.generic.sword.depositPoints.create"
 msgstr "Create Deposit Point"
 
