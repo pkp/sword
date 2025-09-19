@@ -24,6 +24,7 @@ use APP\core\Services;
 use APP\facades\Repo;
 use APP\template\TemplateManager;
 use APP\core\Application;
+use APP\submission\Submission;
 use APP\plugins\generic\sword\classes\DepositPointDAO;
 use APP\plugins\generic\sword\classes\PKPSwordDeposit;
 use APP\plugins\generic\sword\SwordImportExportPlugin;
@@ -81,7 +82,9 @@ class SwordPlugin extends GenericPlugin {
 		if ($template == 'authorDashboard/authorDashboard.tpl') { // FIXME: THIS NO LONGER APPLIES FOR 3.5.0 OR NEWER!
 			$request = Application::get()->getRequest();
 			$journal = $request->getContext();
-			if ($this->getSetting($journal->getId(), 'showDepositButton')) {
+			$submission = $templateMgr->getTemplateVars('submission');
+			$publication = $submission->getCurrentPublication();
+			if ($this->getSetting($journal->getId(), 'showDepositButton') && ($publication->getData('status') == Submission::STATUS_PUBLISHED || !$this->getSetting($journal->getId(), 'showDepositButtonPublishedOnly'))) {
 				$templateMgr->registerFilter("output", [$this, 'authorDashboardFilter']);
 			}
 		}

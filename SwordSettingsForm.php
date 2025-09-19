@@ -47,6 +47,7 @@ class SwordSettingsForm extends Form {
 	public function initData() {
 		$this->setData('allowAuthorSpecify', $this->_plugin->getSetting($this->_context->getId(), 'allowAuthorSpecify'));
 		$this->setData('showDepositButton', $this->_plugin->getSetting($this->_context->getId(), 'showDepositButton'));
+		$this->setData('showDepositButtonPublishedOnly', $this->_plugin->getSetting($this->_context->getId(), 'showDepositButtonPublishedOnly'));
 	}
 
 	/**
@@ -55,7 +56,7 @@ class SwordSettingsForm extends Form {
 	 * @return void
 	 */
 	public function readInputData() {
-		$this->readUserVars(['allowAuthorSpecify', 'showDepositButton']);
+		$this->readUserVars(['allowAuthorSpecify', 'showDepositButton', 'showDepositButtonPublishedOnly']);
 	}
 
 	/**
@@ -76,6 +77,9 @@ class SwordSettingsForm extends Form {
 
 		$showDepositButton = intval($this->getData('showDepositButton'));
 		$this->_plugin->updateSetting($this->_context->getId(), 'showDepositButton', $showDepositButton);
+
+		$showDepositButtonPublishedOnly = intval($this->getData('showDepositButtonPublishedOnly'));
+		$this->_plugin->updateSetting($this->_context->getId(), 'showDepositButtonPublishedOnly', $showDepositButtonPublishedOnly);
 
 		parent::execute(...$functionArgs);
 	}

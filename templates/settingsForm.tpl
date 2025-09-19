@@ -13,6 +13,14 @@
 		$('#swordSettingsForm').pkpHandler(
 			'$.pkp.controllers.form.AjaxFormHandler'
 		);
+
+		$('#showDepositButton').click(function() {ldelim}
+			const $showDepositButtonPublishedOnly = $('#showDepositButtonPublishedOnly');
+			$showDepositButtonPublishedOnly.attr('disabled', !$showDepositButtonPublishedOnly.attr('disabled'));
+			if ($showDepositButtonPublishedOnly.attr('disabled')) {ldelim}
+				$showDepositButtonPublishedOnly.prop('checked', '');
+			{rdelim}
+		{rdelim});
 	{rdelim});
 </script>
 
@@ -26,6 +34,7 @@
 		{fbvFormSection for="allowAuthorSpecify" list=true description="plugins.generic.sword.settings"}
 			{fbvElement type="checkbox" id="allowAuthorSpecify" value="1" checked=$allowAuthorSpecify label="plugins.generic.sword.settings.allowAuthorSpecify"}
 			{fbvElement type="checkbox" id="showDepositButton" value="1" checked=$showDepositButton label="plugins.generic.sword.settings.showDepositButton"}
+			{fbvElement type="checkbox" id="showDepositButtonPublishedOnly" value="1" checked=$showDepositButtonPublishedOnly label="plugins.generic.sword.settings.showDepositButtonPublishedOnly" disabled=!$showDepositButton}
 		{/fbvFormSection}
 	{/fbvFormArea}
 
