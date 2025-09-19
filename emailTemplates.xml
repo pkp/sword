@@ -11,5 +11,5 @@
   -->
 
 <emails>
-	<email key="SWORD_DEPOSIT_NOTIFICATION" can_edit="1" can_disable="1" subject="emails.swordDepositNotification.subject" description="emails.swordDepositNotification.description" body="emails.swordDepositNotification.body" />
+	<email key="SWORD_DEPOSIT_NOTIFICATION" can_edit="1" can_disable="1" name="emails.swordDepositNotification.name" subject="emails.swordDepositNotification.subject" body="emails.swordDepositNotification.body" />
 </emails>

@@ -31,6 +31,8 @@ use APP\plugins\generic\sword\SwordImportExportPlugin;
 use APP\plugins\generic\sword\classes\SwordSchemaMigration;
 use APP\plugins\generic\sword\controllers\grid\SwordDepositPointsGridHandler;
 use APP\plugins\generic\sword\controllers\grid\SubmissionListGridHandler;
+use APP\notification\NotificationManager;
+use Illuminate\Support\Facades\Mail;
 
 define('SWORD_DEPOSIT_TYPE_AUTOMATIC',		1);
 define('SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION',	2);
@@ -201,27 +203,23 @@ class SwordPlugin extends GenericPlugin {
 				}
 			}
 
-			$userDao = DAORegistry::getDAO('UserDAO');
-
 			foreach ($submissionAuthors as $userId) {
-				$submittingUser = $userDao->getById($userId);
+				$submittingUser = Repo::user()->get($userId);
 				$contactName = $context->getSetting('contactName');
 				$contactEmail = $context->getSetting('contactEmail');
 
-				$mail = new SubmissionMailTemplate($submission, 'SWORD_DEPOSIT_NOTIFICATION', null, $context, true);
+				$mail = Repo::emailTemplate()->getByKey($context->getId(), 'SWORD_DEPOSIT_NOTIFICATION');
+				if ($mail) {
+					$mailable = new SwordDepositNotification($context, $submission);
+					$mailable->from($contactEmail, $contactName)
+						->recipients([$submittingUser])
+						->subject($mail->getLocalizedData('subject'))
+						->body($mail->getLocalizedData('body'));
 
-				$mail->setFrom($contactEmail, $contactName);
-				$mail->addRecipient($submittingUser->getEmail(), $submittingUser->getFullName());
-
-				$mail->assignParams([
-					'contextName' => htmlspecialchars($context->getLocalizedName()),
-					'submissionTitle' => htmlspecialchars($submission->getCurrentPublication()->getLocalizedTitle()),
-					'swordDepositUrl' => $dispatcher->url(
-						$request, ROUTE_PAGE, null, 'sword', 'index', $submission->getId()
-					)
-				]);
-
-				$mail->send($request);
+					Mail::send($mailable);
+				} else {
+					error_log('Cannot send SWORD_DEPOSIT_NOTIFICATION; template does not exist.');
+				}
 			}
 		}
 
