@@ -44,7 +44,8 @@ class DepositPointsHelper {
 	public static function loadCollectionsFromServer($url, $username, $password, $apikey = null) {
 		$depositPoints = [];
 		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
-		$client = new \SWORDAPPClient($clientOpts);
+		$client = new \SWORDAPPClient();
+		$client->SWORDAPPClient($clientOpts);
 		$doc = $client->servicedocument($url, $username, $password, '');
 		if ($doc->sac_status != 200) {
 			return ['#' => __('plugins.generic.sword.accessDenied')];

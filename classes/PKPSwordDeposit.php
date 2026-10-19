@@ -181,7 +181,8 @@ class PKPSwordDeposit {
 			throw new Exception(__('plugins.generic.sword.badDepositPointUrl'));
 		}
 		$clientOpts = $apikey ? [CURLOPT_HTTPHEADER => ["X-Ojs-Sword-Api-Token:".$apikey]] : [];
-		$client = new \SWORDAPPClient($clientOpts);
+		$client = new \SWORDAPPClient();
+		$client->SWORDAPPClient($clientOpts);
 		$response = $client->deposit(
 			$url, $username, $password,
 			'',
