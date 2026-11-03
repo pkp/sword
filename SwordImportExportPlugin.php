@@ -108,7 +108,7 @@ class SwordImportExportPlugin extends ImportExportPlugin {
 				$dispatcher = $request->getDispatcher();
 				$settingUrl = $dispatcher->url(
 					$request, ROUTE_PAGE,
-					null, 'management', 'settings', 'website',
+					null, 'management', 'settings', ['website'],
 					[],
 					'swordSettings'
 				);

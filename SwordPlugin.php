@@ -24,6 +24,7 @@ use APP\core\Services;
 use APP\facades\Repo;
 use APP\template\TemplateManager;
 use APP\core\Application;
+use PKP\decision\types\Accept;
 use APP\submission\Submission;
 use APP\plugins\generic\sword\classes\DepositPointDAO;
 use APP\plugins\generic\sword\classes\PKPSwordDeposit;
@@ -31,8 +32,13 @@ use APP\plugins\generic\sword\SwordImportExportPlugin;
 use APP\plugins\generic\sword\classes\SwordSchemaMigration;
 use APP\plugins\generic\sword\controllers\grid\SwordDepositPointsGridHandler;
 use APP\plugins\generic\sword\controllers\grid\SubmissionListGridHandler;
+use APP\notification\Notification;
 use APP\notification\NotificationManager;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
+use PKP\observers\events\DecisionAdded;
+use PKP\stageAssignment\StageAssignment;
+use PKP\security\Role;
 
 define('SWORD_DEPOSIT_TYPE_AUTOMATIC',		1);
 define('SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION',	2);
@@ -57,7 +63,7 @@ class SwordPlugin extends GenericPlugin {
 				Hook::add('LoadHandler', array($this, 'callbackSwordLoadHandler'));
 				Hook::add('Template::Settings::website', array($this, 'callbackSettingsTab'));
 				Hook::add('LoadComponentHandler', array($this, 'setupGridHandler'));
-				Hook::add('EditorAction::recordDecision', array($this, 'callbackAuthorDeposits'));
+				Event::listen(DecisionAdded::class, [$this, 'callbackAuthorDeposits']);
 
 				// Preprints
 				Hook::add('Publication::publish', array($this, 'callbackPublish'));
@@ -124,17 +130,14 @@ class SwordPlugin extends GenericPlugin {
 
 	/**
 	 * Performs automatic deposit on accept decision
-	 * @param $hookName string
-	 * @param $args array
+	 * @param $event DecisionAdded
 	 */
-	public function callbackAuthorDeposits($hookName, $args) {
-		$submission =& $args[0];
-		$editorDecision =& $args[1];
-		$decision = $editorDecision['decision'];
-		// Determine if the decision was an "Accept"
-		if ($decision != SUBMISSION_EDITOR_DECISION_ACCEPT) return false;
+	public function callbackAuthorDeposits(DecisionAdded $event) {
+		if (!($event->decisionType instanceof Accept)) {
+			return;
+		}
 
-		$this->performAutomaticDeposits($submission);
+		$this->performAutomaticDeposits($event->submission);
 	}
 
 	/**
@@ -174,7 +177,7 @@ class SwordPlugin extends GenericPlugin {
 
 				$notificationMgr->createTrivialNotification(
 					$user->getId(),
-					NOTIFICATION_TYPE_SUCCESS,
+					Notification::NOTIFICATION_TYPE_SUCCESS,
 					[
 						'contents' => __('plugins.generic.sword.automaticDepositComplete', [
 							'itemTitle' => $submission->getCurrentPublication()->getLocalizedTitle(),
@@ -185,7 +188,7 @@ class SwordPlugin extends GenericPlugin {
 			} catch (\Exception $e) {
 				$notificationMgr->createTrivialNotification(
 					$user->getId(),
-					NOTIFICATION_TYPE_ERROR,
+					Notification::NOTIFICATION_TYPE_ERROR,
 					['contents' => __('plugins.importexport.sword.depositFailed') . ': ' . $e->getMessage()]
 				);
 				error_log($e->getTraceAsString());
@@ -194,10 +197,11 @@ class SwordPlugin extends GenericPlugin {
 
 		if ($sendDepositNotification) {
 			$submissionAuthors = [];
-			$dao = DAORegistry::getDAO('StageAssignmentDAO');
-			$daoResult = $dao->getBySubmissionAndRoleId($submission->getId(), ROLE_ID_AUTHOR);
-			while ($record = $daoResult->next()) {
-				$userId = $record->getData('userId');
+			$stageAssignments = StageAssignment::withSubmissionIds([$submission->getId()])
+				->withRoleIds([Role::ROLE_ID_AUTHOR])
+				->get();
+			foreach ($stageAssignments as $stageAssignment) {
+				$userId = $stageAssignment->getData('userId');
 				if (!in_array($userId, $submissionAuthors)) {
 					array_push($submissionAuthors, $userId);
 				}
@@ -286,7 +290,6 @@ class SwordPlugin extends GenericPlugin {
 		$component = $params[0];
 		$componentInstance =& $params[2];
 		if ($component == 'plugins.generic.sword.controllers.grid.SwordDepositPointsGridHandler') {
-			import($component);
 			$componentInstance = new SwordDepositPointsGridHandler($this);
 			return true;
 		}

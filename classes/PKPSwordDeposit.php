@@ -90,9 +90,10 @@ class PKPSwordDeposit {
 		$this->_package->setTitle(html_entity_decode($publication->getLocalizedTitle(), ENT_QUOTES, 'UTF-8'));
 		$this->_package->setAbstract(html_entity_decode(strip_tags($publication->getLocalizedData('abstract')), ENT_QUOTES, 'UTF-8'));
 		$this->_package->setType($this->_section->getLocalizedIdentifyType());
+		$pubLocale = $publication->getData('locale');
 		foreach ($publication->getData('authors') as $author) {
 			$creator = $author->getFullName(true);
-			$affiliation = $author->getLocalizedAffiliation();
+			$affiliation = $author->getLocalizedAffiliationNamesAsString($pubLocale);
 			if (!empty($affiliation)) $creator .= "; $affiliation";
 			$this->_package->addCreator($creator);
 			$this->_package->sac_name_records[] = [

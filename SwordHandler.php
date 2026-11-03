@@ -28,6 +28,7 @@ use APP\plugins\generic\sword\classes\DepositPoint;
 use APP\plugins\generic\sword\classes\DepositPointsHelper;
 use APP\plugins\generic\sword\DepositPointForm;
 use APP\template\TemplateManager;
+use PKP\stageAssignment\StageAssignment;
 
 class SwordHandler extends Handler {
 	/** @var SwordPlugin Sword plugin */
@@ -122,16 +123,10 @@ class SwordHandler extends Handler {
 				$request->redirect(null, 'index');
 		}
 
-		$userCanDeposit = false;
-		/** @var StageAssignmentDAO $stageAssignmentDao */
-		$stageAssignmentDao = DAORegistry::getDAO('StageAssignmentDAO');
-		$daoResult = $stageAssignmentDao->getBySubmissionAndRoleId($submission->getId(), Role::ROLE_ID_AUTHOR);
-		while ($record = $daoResult->next()) {
-			if($user->getId() == $record->getData('userId')) {
-				$userCanDeposit = true;
-				break;
-			}
-		}
+		$userCanDeposit = StageAssignment::withSubmissionIds([$submission->getId()])
+			->withRoleIds([Role::ROLE_ID_AUTHOR])
+			->withUserId($user->getId())
+			->exists();
 
 		if (!$userCanDeposit) {
 			$request->redirect(null, 'index');

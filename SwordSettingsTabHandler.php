@@ -19,6 +19,7 @@ use PKP\plugins\PluginRegistry;
 use PKP\security\Role;
 use PKP\i18n\Locale;
 use PKP\core\JSONMessage;
+use APP\notification\Notification;
 
 use APP\handler\Handler;
 use APP\template\TemplateManager;
@@ -71,7 +72,7 @@ class SwordSettingsTabHandler extends Handler {
 				$notificationManager = new NotificationManager();
 				$notificationManager->createTrivialNotification(
 					$request->getUser()->getId(),
-					NOTIFICATION_TYPE_SUCCESS,
+					Notification::NOTIFICATION_TYPE_SUCCESS,
 					array('contents' => __('plugins.generic.sword.settings.saved'))
 				);
 			}
