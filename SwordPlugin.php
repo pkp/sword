@@ -24,7 +24,7 @@ use APP\core\Services;
 use APP\facades\Repo;
 use APP\template\TemplateManager;
 use APP\core\Application;
-use APP\decision\types\Accept;
+use PKP\decision\types\Accept;
 use APP\submission\Submission;
 use APP\plugins\generic\sword\classes\DepositPointDAO;
 use APP\plugins\generic\sword\classes\PKPSwordDeposit;
