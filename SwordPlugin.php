@@ -37,6 +37,8 @@ use APP\notification\NotificationManager;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
 use PKP\observers\events\DecisionAdded;
+use PKP\stageAssignment\StageAssignment;
+use PKP\security\Role;
 
 define('SWORD_DEPOSIT_TYPE_AUTOMATIC',		1);
 define('SWORD_DEPOSIT_TYPE_OPTIONAL_SELECTION',	2);
@@ -195,10 +197,11 @@ class SwordPlugin extends GenericPlugin {
 
 		if ($sendDepositNotification) {
 			$submissionAuthors = [];
-			$dao = DAORegistry::getDAO('StageAssignmentDAO');
-			$daoResult = $dao->getBySubmissionAndRoleId($submission->getId(), ROLE_ID_AUTHOR);
-			while ($record = $daoResult->next()) {
-				$userId = $record->getData('userId');
+			$stageAssignments = StageAssignment::withSubmissionIds([$submission->getId()])
+				->withRoleIds([Role::ROLE_ID_AUTHOR])
+				->get();
+			foreach ($stageAssignments as $stageAssignment) {
+				$userId = $stageAssignment->getData('userId');
 				if (!in_array($userId, $submissionAuthors)) {
 					array_push($submissionAuthors, $userId);
 				}
